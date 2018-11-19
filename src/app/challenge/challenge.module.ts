@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OpdrachtComponent } from './opdracht.component';
+import { ChallengeComponent } from './challenge.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [OpdrachtComponent]
+  declarations: [ChallengeComponent]
 })
-export class OpdrachtModule { }
+export class ChallengeModule { }

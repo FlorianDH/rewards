@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OpdrachtModule} from './Opdracht/opdracht.module';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './login/login.module';7
+
+import { ChallengeModule} from './challenge/challenge.module';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { LoginModule } from './login/login.module';
 
     NgbModule.forRoot(),
     RewardModule,
-    OpdrachtModule,
+    ChallengeModule,
     LoginModule
   ],
   providers: [],
