@@ -7,11 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ChallengeModule} from './challenge/challenge.module';
+import { AchievementComponent } from './achievement/achievement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    AchievementComponent
   ],
   imports: [
     BrowserModule,
