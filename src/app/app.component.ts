@@ -6,16 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'rewards';
+  title = 'Reward APP';
 
   screenWidth: number;
 
-  constructor() {
-  // set screenWidth on page load
-  this.screenWidth = window.innerWidth;
-  window.onresize = () => {
-    // set screenWidth on screen size change
-    this.screenWidth = window.innerWidth;
-  };
-}
+  constructor() {}
 }
