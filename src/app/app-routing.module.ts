@@ -4,7 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   // {
   //   path: '',
-  //   component: //loginComponent
+  //   component: loginComponent
+  // },
+  // {
+  //   path: 'rewards',
+  //   component: rewardComponent
+  // },
+  // {
+  //   path: 'achievements',
+  //   component: achievementComponent
   // },
   
 ];
