@@ -7,7 +7,9 @@ import { ChallengeComponent} from './challenge/challenge.component';
 const routes: Routes = [
   {path: 'challenge', component: ChallengeComponent},
   {path: 'reward', component: RewardComponent},
-  {path: '',component:LoginComponent}
+  // {path: 'achievements', component: AchievementComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent}
 ];
 
 @NgModule({

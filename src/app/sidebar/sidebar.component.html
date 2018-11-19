@@ -1,38 +1,27 @@
-<div class="sidebar">
-  <a routerLink="" [class.activated]="currentUrl == '/'">
-    Challenges
-  </a>
-  <a routerLink="rewards" [class.activated]="currentUrl == '/rewards'">
-    Rewards
- </a>
- <a routerLink="achievements" [class.activated]="currentUrl == '/achievements'">
-  Achievements
- </a>
- 
-</div>
-
-
-<!-- <nav>
-  <ul>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>JStack Rewards</h3>
+  </div>
+  <ul class="list-unstyled components">
     <li>
-      <a routerLink="" [class.activated]="currentUrl == '/'">
-        Challanges
+      <a routerLink="challenge" [class.activated]="currentUrl == '/challenges'">
+        <i class="fas fa-fw fa-bullhorn"></i> Challenges
       </a>
     </li>
     <li>
-      <a routerLink="rewards" [class.activated]="currentUrl == '/rewards'">
-         Rewards
+      <a routerLink="reward" [class.activated]="currentUrl == '/reward'">
+        <i class="fas fa-fw fa-award"></i> Rewards
       </a>
     </li>
     <li>
       <a routerLink="achievements" [class.activated]="currentUrl == '/achievements'">
-       Achievements
+        <i class="fas fa-fw fa-trophy"></i> Achievements
       </a>
     </li>
-    <span class="navbar-text d-md-block d-sm-none username" *ngIf="user">
-      <img [src]="user.photoURL" class="avatar" alt="avatar">
-          {{ user.displayName }} 
-    </span>
-    
+    <li>
+      <a routerLink="login" [class.activated]="currentUrl == '/login'">
+        <i class="fas fa-fw fa-sign-out-alt"></i> Logout
+      </a>
+    </li>
   </ul>
-</nav> -->
+</nav>

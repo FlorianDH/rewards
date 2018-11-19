@@ -23,26 +23,74 @@ $theme-colors: (
 
 body{
     background-color: $black;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    //margin: 0;
+    //font-family: 'Montserrat', sans-serif;
+    //height: 100vh;
 }
 
- 
+#sidebar{
+  background: $yellow;
+  width: 250px;
+  height: 100vh;
+  z-index: 999;
+  color: $white;
+  transition: all 0.3s;
+  overflow: auto;
 
-// #container {
-//    display: grid;
-//    grid-template-columns: 70px auto;
-//    height: 100%;
+  .sidebar-header{
+    padding: 20px;
+  }
 
-//    #content {
-//        padding: 30px 50px;
-//        margin-left: 20px;
+  .active {
+    margin-left: -250px;
+  }
 
-//        .card{
-//            margin: 10px;
-//        }
+  a {
+    display: block;
+    color: $white;
+    //font-weight: lighter;
+    font-size: 18px;
+    font-stretch: condensed;
+    font-style: revert;
+    letter-spacing: 2px;
+    //background-color: $white;
+    padding: 16px;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
 
-//     }
 
-// }
+  }
+
+  a.activated {
+    background-color: $blue;
+    color: white;
+  }
+
+  a:hover:not(.active) {
+    background-color: $green;
+    color: white;
+  }
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+//  @media screen and (max-width: 900px) {
+//    .sidebar {
+//      width: 100%;
+//      height: auto;
+//      position: relative;
+//    }
+//    .sidebar a {float: left;}
+//    div#content {margin-left: 0;}
+//  }
+//
+//  @media screen and (max-width: 700px) {
+//    .sidebar a {
+//      text-align: center;
+//      float: none;
+//    }
+//  }

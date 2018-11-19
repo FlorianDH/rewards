@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoginModule } from './login/login.module';7
-
+import { LoginModule } from './login/login.module';
+import { SidebarModule } from 'ng-sidebar';
 import { ChallengeModule} from './challenge/challenge.module';
 
 
@@ -24,7 +24,8 @@ import { ChallengeModule} from './challenge/challenge.module';
     NgbModule.forRoot(),
     RewardModule,
     ChallengeModule,
-    LoginModule
+    LoginModule,
+    SidebarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
