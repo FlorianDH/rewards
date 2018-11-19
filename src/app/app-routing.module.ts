@@ -3,7 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { RewardComponent} from './reward/reward.component';
 
 const routes: Routes = [
-  {path: 'reward', component: RewardComponent}
+  {path: 'reward', component: RewardComponent},
+  // {
+  //   path: '',
+  //   component: //loginComponent
+  // },
 ];
 
 @NgModule({

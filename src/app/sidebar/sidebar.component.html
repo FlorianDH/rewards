@@ -1,0 +1,29 @@
+<nav>
+  <ul>
+    <li>
+      <a routerLink="" [class.activated]="currentUrl == '/'">
+        <i class="material-icons">supervised_user_circle</i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
+        <i class="material-icons">message</i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="dokters" [class.activated]="currentUrl == '/dokters'">
+        <i class="material-icons">healing</i>
+      </a>
+    </li>
+    <span class="navbar-text d-md-block d-sm-none" *ngIf="user">
+      <img [src]="user.photoURL" class="avatar" alt="avatar">
+          {{ user.displayName }}
+    </span>
+    <li *ngIf="!user">
+      <a routerLink="/login" [class.activated]="currentUrl == '/posts'">Login</a>
+    </li>
+    <li *ngIf="user">
+      <a routerLink="/login" (click)="authService.logout()">Logout</a>
+    </li>
+  </ul>
+</nav>
