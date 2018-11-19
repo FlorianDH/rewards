@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-challenge',
@@ -12,9 +13,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ChallengeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public data: DataService) { }
 
   ngOnInit() {
+
+    console.log("alle challenges : " + this.data.getChallenges());
   }
 
 }

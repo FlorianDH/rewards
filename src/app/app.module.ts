@@ -8,12 +8,12 @@ import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginModule } from './login/login.module';
 import { ChallengeModule} from './challenge/challenge.module';
-<<<<<<< HEAD
+
 import { AchievementComponent } from './achievement/achievement.component';
-=======
+
 import { FormModule} from './form/form.module';
 
->>>>>>> 5d4a3ce72550118b218d809f1d260659ef03124c
+
 
 @NgModule({
   declarations: [
