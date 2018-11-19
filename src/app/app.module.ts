@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginModule } from './login/login.module';
 import { ChallengeModule} from './challenge/challenge.module';
 import { FormModule} from './form/form.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FormModule} from './form/form.module';
     NgbModule.forRoot(),
     RewardModule,
     ChallengeModule,
-    FormModule
+    FormModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
