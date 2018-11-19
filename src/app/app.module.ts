@@ -13,8 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
-    NgBootstrapModule
+    NgBootstrapModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
+
     imports: [
         CommonModule,
         NgbAlertModule.forRoot()
@@ -11,6 +12,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
         NgbAlertModule
     ],
     declarations: []
+
 })
 export class NgBootstrapModule {
 }
