@@ -1,26 +1,35 @@
-<nav id="sidebar">
+<nav id="sidebar" class="sticky-top">
   <div class="sidebar-header">
-    <h3>JStack Rewards</h3>
+    <h1>jstack rewards</h1>
   </div>
-  <ul class="list-unstyled components">
-    <li>
-      <a routerLink="challenge" [class.activated]="currentUrl == '/challenges'">
-        <i class="fas fa-fw fa-bullhorn"></i> Challenges
+  <!--<button id="sidebar-button" class="navbar-toggler navbar-toggler-right" type="button" (click)="showFullSidebar()">-->
+  <button id="sidebar-button" class="navbar-toggler navbar-toggler-right" type="button">
+    <i class="fas fa-fw fa-bars"></i> <span class="sidebar-text"> jstack rewards</span>
+  </button>
+  <ul class="list-unstyled">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="challenge" routerLinkActive="active" [class.activated]="currentUrl == '/challenge'">
+        <i class="fas fa-fw fa-bullhorn"></i> <span class="sidebar-text"> Challenges</span>
       </a>
     </li>
-    <li>
-      <a routerLink="reward" [class.activated]="currentUrl == '/reward'">
-        <i class="fas fa-fw fa-award"></i> Rewards
+    <li class="nav-item">
+      <a class="nav-link" routerLink="reward" routerLinkActive="active" [class.activated]="currentUrl == '/reward'">
+        <i class="fas fa-fw fa-award"></i> <span class="sidebar-text"> Rewards</span>
       </a>
     </li>
-    <li>
-      <a routerLink="achievements" [class.activated]="currentUrl == '/achievements'">
-        <i class="fas fa-fw fa-trophy"></i> Achievements
+    <li class="nav-item">
+      <a class="nav-link" routerLink="achievement" routerLinkActive="active" [class.activated]="currentUrl == '/achievement'">
+        <i class="fas fa-fw fa-trophy"></i> <span class="sidebar-text"> Achievements</span>
       </a>
     </li>
-    <li>
-      <a routerLink="login" [class.activated]="currentUrl == '/login'">
-        <i class="fas fa-fw fa-sign-out-alt"></i> Logout
+    <li class="nav-item">
+      <a class="nav-link" routerLink="admin" routerLinkActive="active" [class.activated]="currentUrl == '/admin'">
+        <i class="fas fa-fw fa-wrench"></i> <span class="sidebar-text"> Admin dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="login" routerLinkActive="active" [class.activated]="currentUrl == '/login'">
+        <i class="fas fa-fw fa-sign-out-alt"></i> <span class="sidebar-text"> Logout</span>
       </a>
     </li>
   </ul>

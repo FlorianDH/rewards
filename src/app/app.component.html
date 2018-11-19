@@ -1,8 +1,11 @@
-<div class="row wrapper">
-  <div class="col-auto">
+<div class="row wrapper no-gutters">
+  <div class="col-auto sticky-top">
     <app-sidebar></app-sidebar>
+    <!--<app-sidebar [@slideInOut]="sidebarState"></app-sidebar>-->
   </div>
-  <div class="col">
+  <div class="col mt-3">
+    <div class="container-fluid">
     <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
