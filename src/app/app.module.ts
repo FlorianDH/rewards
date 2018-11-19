@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RewardModule } from './reward/reward.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { OpdrachtModule} from './Opdracht/opdracht.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AppRoutingModule,
     NgBootstrapModule,
     NgbModule.forRoot(),
-    RewardModule
+    RewardModule,
+    OpdrachtModule
   ],
   providers: [],
   bootstrap: [AppComponent]
