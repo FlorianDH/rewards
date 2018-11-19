@@ -5,6 +5,7 @@ $green: #73B644;
 $yellow: #F39800;
 $white: #FEFEFE;
 
+
 // BS variabelen en mixins
 $theme-colors: (
   'primary' : $blue,
@@ -27,20 +28,21 @@ body{
     height: 100vh;
 }
 
-#container {
-   display: grid;
-   grid-template-columns: 70px auto;
-   height: 100%;
+ 
 
-   #content {
-       padding: 30px 50px;
-       margin-left: 20px;
+// #container {
+//    display: grid;
+//    grid-template-columns: 70px auto;
+//    height: 100%;
 
-       .card{
-           margin: 10px;
-       }
+//    #content {
+//        padding: 30px 50px;
+//        margin-left: 20px;
 
+//        .card{
+//            margin: 10px;
+//        }
 
-    }
+//     }
 
-}
+// }

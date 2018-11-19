@@ -17,6 +17,7 @@ import { OpdrachtModule} from './Opdracht/opdracht.module';
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
+
     NgbModule.forRoot(),
     RewardModule,
     OpdrachtModule

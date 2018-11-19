@@ -8,7 +8,15 @@ const routes: Routes = [
   {path: 'reward', component: RewardComponent},
   // {
   //   path: '',
-  //   component: //loginComponent
+  //   component: loginComponent
+  // },
+  // {
+  //   path: 'rewards',
+  //   component: rewardComponent
+  // },
+  // {
+  //   path: 'achievements',
+  //   component: achievementComponent
   // },
 ];
 
