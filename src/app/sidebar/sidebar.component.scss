@@ -8,7 +8,7 @@ $white: #FEFEFE;
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: $black;
+    background-color: $yellow;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -16,7 +16,7 @@ $white: #FEFEFE;
   
   .sidebar a {
     display: block;
-    color: $white;
+    color: $black;
     padding: 16px;
     text-decoration: none;
   }

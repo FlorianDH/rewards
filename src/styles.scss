@@ -5,12 +5,7 @@ $green: #73B644;
 $yellow: #F39800;
 $white: #FEFEFE;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Overschrijf BS variabelen en mixins
 
-=======
-=======
 // BS variabelen en mixins
 $theme-colors: (
   'primary' : $blue,
@@ -26,7 +21,6 @@ $theme-colors: (
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
->>>>>>> 4abd536e5b2e5fcfa3b6fbd41b204173f007df66
 body{
     background-color: $black;
     margin: 0;
@@ -34,21 +28,21 @@ body{
     height: 100vh;
 }
 
-#container {
-   display: grid;
-   grid-template-columns: 70px auto;
-   height: 100%;
+ 
 
-   #content {
-       padding: 30px 50px;
-       margin-left: 20px;
+// #container {
+//    display: grid;
+//    grid-template-columns: 70px auto;
+//    height: 100%;
 
-       .card{
-           margin: 10px;
-       }
->>>>>>> 2296891d062d74af01f236fc07cbfdc0e3016902
+//    #content {
+//        padding: 30px 50px;
+//        margin-left: 20px;
 
+//        .card{
+//            margin: 10px;
+//        }
 
-    }
+//     }
 
-}
+// }
