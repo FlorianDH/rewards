@@ -1,14 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-// BS variabelen en mixins
-$theme-colors: ();
-
-// Link to BS en FA
-@import "~bootstrap/scss/bootstrap";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-
 // Colors
-
 $black: #35404A;
 $blue: #0DAEE1;
 $green: #73B644;
@@ -16,9 +6,27 @@ $yellow: #F39800;
 $white: #FEFEFE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Overschrijf BS variabelen en mixins
 
 =======
+=======
+// BS variabelen en mixins
+$theme-colors: (
+  'primary' : $blue,
+  'secondary' : $yellow ,
+  'white' : $white,
+  'succes' : $green,
+  'warning' : $yellow,
+  'info' : $blue,
+  'dark' : $black
+);
+
+// Link to BS en FA
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+>>>>>>> 4abd536e5b2e5fcfa3b6fbd41b204173f007df66
 body{
     background-color: $black;
     margin: 0;
