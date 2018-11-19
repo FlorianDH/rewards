@@ -16,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
+
     NgbModule.forRoot(),
     RewardModule
   ],

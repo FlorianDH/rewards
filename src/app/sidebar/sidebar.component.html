@@ -1,29 +1,38 @@
-<nav>
+<div class="sidebar">
+  <a routerLink="" [class.activated]="currentUrl == '/'">
+    Challenges
+  </a>
+  <a routerLink="rewards" [class.activated]="currentUrl == '/rewards'">
+    Rewards
+ </a>
+ <a routerLink="achievements" [class.activated]="currentUrl == '/achievements'">
+  Achievements
+ </a>
+ 
+</div>
+
+
+<!-- <nav>
   <ul>
     <li>
       <a routerLink="" [class.activated]="currentUrl == '/'">
-        <i class="material-icons">supervised_user_circle</i>
+        Challanges
       </a>
     </li>
     <li>
-      <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
-        <i class="material-icons">message</i>
+      <a routerLink="rewards" [class.activated]="currentUrl == '/rewards'">
+         Rewards
       </a>
     </li>
     <li>
-      <a routerLink="dokters" [class.activated]="currentUrl == '/dokters'">
-        <i class="material-icons">healing</i>
+      <a routerLink="achievements" [class.activated]="currentUrl == '/achievements'">
+       Achievements
       </a>
     </li>
-    <span class="navbar-text d-md-block d-sm-none" *ngIf="user">
+    <span class="navbar-text d-md-block d-sm-none username" *ngIf="user">
       <img [src]="user.photoURL" class="avatar" alt="avatar">
-          {{ user.displayName }}
+          {{ user.displayName }} 
     </span>
-    <li *ngIf="!user">
-      <a routerLink="/login" [class.activated]="currentUrl == '/posts'">Login</a>
-    </li>
-    <li *ngIf="user">
-      <a routerLink="/login" (click)="authService.logout()">Logout</a>
-    </li>
+    
   </ul>
-</nav>
+</nav> -->
