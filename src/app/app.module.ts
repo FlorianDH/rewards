@@ -4,6 +4,7 @@ import {NgBootstrapModule} from './sharedModules/ng-bootstrap.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RewardModule } from './reward/reward.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RewardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
