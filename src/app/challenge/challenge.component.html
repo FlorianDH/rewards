@@ -5,7 +5,7 @@
       <h1 class="card-title">35 <i class="fas fa-fw fa-coins"></i></h1>
     </div>
     <div class="progress" style="height: 40px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
+      <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
     </div>
   </div>
 </div>
@@ -17,6 +17,7 @@
         <h5 class="card-title"  id="title" >{{challenge.title}}</h5>
         <p class="card-text">{{challenge.points}}</p>
 
+
         <input type="text" id="tekst{{i}}" class="form-control"
                (ngModel)="request.title"
         > 
@@ -24,4 +25,7 @@
         <a (click)="challengeExecuted(i)" class="btn btn-primary">Opdracht uitgevoerd</a>
       </div>
     </div>
-</div>
+
+    </div>
+  </div>
+

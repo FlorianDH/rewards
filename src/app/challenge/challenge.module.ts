@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChallengeComponent } from './challenge.component';
-import { ChallengeService } from './services/challenge.service';
+import { ChallengeService } from '../services/challenge.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   declarations: [
     ChallengeComponent,
-    
+
   ],
   providers:[ ChallengeService]
 

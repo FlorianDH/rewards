@@ -19,6 +19,6 @@ export class LoginComponent implements OnInit {
   }
   setUser(data){
     localStorage.setItem("user",data.myName);
-    window.location.href = '/challenge';
+    window.location.reload();
   }
 }

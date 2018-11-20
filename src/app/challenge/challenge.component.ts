@@ -1,7 +1,9 @@
+
 import { Component, OnInit, ReflectiveInjector, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from '../data.service';
-import { ChallengeService } from './services/challenge.service';
+import { DataService } from '../services/data.service';
+import { ChallengeService } from '../services/challenge.service';
+
 import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
 import { formatDate } from '@angular/common';
@@ -9,15 +11,10 @@ import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-challenge',
-  templateUrl: './challenge.component.html',
-  styles: [`
-    ngb-progressbar {
-      margin-top: 5rem;
-    }
-  `],
-  
+  templateUrl: './challenge.component.html'
 })
 export class ChallengeComponent implements OnInit {
+
 
 
   challengesList : Challenge[] = [];
@@ -29,7 +26,11 @@ export class ChallengeComponent implements OnInit {
 
   
   ngOnInit() {   
+    console.log("hallo test");
     this.challengesList = this.challengeService.getChallenges();
+    
+    console.log("hallo test" + this.challengeService.getChallenges());
+
     this.request = {
       points : "",
     title : "",
@@ -77,3 +78,4 @@ export class ChallengeComponent implements OnInit {
 
    
   }
+
