@@ -19,6 +19,8 @@ export class DataService {
       );
   }
 
+
+
   getRewards(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/rewards').pipe(
       tap( req => console.log('req ', req)),
@@ -26,6 +28,7 @@ export class DataService {
         return data;
       })
     );
+
   }
 
 }

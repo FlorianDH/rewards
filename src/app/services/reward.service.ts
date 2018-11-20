@@ -14,6 +14,11 @@ export class RewardService {
   constructor(public data: DataService) {}
 
   getRewards() {
+
+    if (this.rewardsList.length <= 0) {
+      
+    
+
      this.data.getRewards().subscribe(
        data => {
          console.log('** data ' , data);
@@ -35,6 +40,7 @@ export class RewardService {
 
        }
      );
+    }
      return this.rewardsList;
    }
 }
