@@ -19,4 +19,8 @@ export class DataService {
       );
   }
 
+  postRequest(){
+    
+  }
+
 }
