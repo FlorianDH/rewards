@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';      // (1)
-import { EMPTY, Observable } from 'rxjs';
-import { catchError, share, tap } from 'rxjs/operators';
+import { DataService } from 'src/app/services/data.service';
+import { Reward } from '../interfaces/reward';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RewardService {
 
-  readonly ROOT_URL = 'https://localhost:3000/rewards';
 
-  constructor(private http: HttpClient) {
-  }
+  rewardsList: Reward[] = [];
 
-  getRewards$(): Observable<any> {
-    const params = new HttpParams();
+  constructor(public data: DataService) {}
 
-    return this.http.get(this.ROOT_URL, {params})
-      .pipe(
-        tap(req => console.log('get-request', req)),               // (6)
-        catchError(                                                // (7)
-          (error) => {
-            console.log(error);
-            alert(error.message);
-            return EMPTY;
-          }),
-        share()                                                    // (8)
-      );
-  }
+  getRewards() {
+     this.data.getRewards().subscribe(
+       data => {
+         console.log('** data ' , data);
+
+
+         for (let i = 0; i < data.length; i++) {
+
+         let reward: Reward = {
+           points : data[i].points,
+           descriptionShort : data[i].descriptionShort,
+         };
+
+
+         this.rewardsList.push(reward);
+
+         console.log('toegevoegd : ' + reward.descriptionShort );
+
+         }
+
+       }
+     );
+     return this.rewardsList;
+   }
 }

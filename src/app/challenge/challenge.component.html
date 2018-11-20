@@ -11,15 +11,15 @@
 </div>
 
 <div class="row">
-  <div class="col-xl-4 col-sm-6 mt-3 d-flex">
+  <div *ngFor="let challenge of challengesList" class="col-xl-4 col-sm-6 mt-3 d-flex">
     <div class="card text-center flex-fill">
       <div class="card-body">
-        <h5 class="card-title">Blogpost schrijven</h5>
-        <p class="card-text">1 punt</p>
+        <h5 class="card-title">{{challenge.title}}</h5>
+        <p class="card-text">{{challenge.points}}</p>
         <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
       </div>
     </div>
-  </div>
+  <!-- </div>
   <div class="col-xl-4 col-sm-6  mt-3 d-flex">
     <div class="card text-center flex-fill">
       <div class="card-body">
@@ -55,5 +55,5 @@
         <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

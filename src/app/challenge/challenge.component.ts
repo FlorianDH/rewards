@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from '../data.service';
+import { ChallengeService } from '../services/challenge.service';
+import { Challenge } from '../interfaces/challenge';
 
 @Component({
   selector: 'app-challenge',
-  templateUrl: './challenge.component.html',
-  // styles: [`
-  //   ngb-progressbar {
-  //     margin-top: 5rem;
-  //   }
-  // `]
+  templateUrl: './challenge.component.html'
 })
 export class ChallengeComponent implements OnInit {
 
-  // constructor(public data: DataService) { }
+
+  challengesList: Challenge[] = [];
+
+
+
+  constructor(private challengeService: ChallengeService) {  }
 
   ngOnInit() {
+    this.challengesList = this.challengeService.getChallenges();
 
-    // console.log("alle challenges : " + this.data.getChallenges());
   }
-
 }

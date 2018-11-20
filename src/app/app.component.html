@@ -1,4 +1,4 @@
-<div class="row wrapper no-gutters">
+<div class="row wrapper no-gutters" *ngIf="navVisible">
   <div class="col-auto sticky-top">
     <app-sidebar></app-sidebar>
     <!--<app-sidebar [@slideInOut]="sidebarState"></app-sidebar>-->
@@ -8,4 +8,9 @@
     <router-outlet></router-outlet>
     </div>
   </div>
+</div>
+<div *ngIf="!navVisible" class="container h-100 mt-5 justify-content-center">
+    <div class="my-auto">
+        <app-login></app-login>
+    </div>
 </div>

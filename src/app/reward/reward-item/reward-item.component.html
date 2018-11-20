@@ -1,9 +1,9 @@
-<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
+<div *ngFor="let reward of rewardsList" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
   <div class="card text-center flex-fill">
     <div class="card-body">
-      <h5 class="card-title">{{ fdc.descriptionShort}}</h5>
+      <h5 class="card-title">{{ reward.descriptionShort}}</h5>
       <p class="card-text">
-        <a href="#" class="btn btn-primary">{{ fdc.points }} <i class="fas fa-fw fa-coins"></i></a>
+        <a href="#" class="btn btn-primary">{{ reward.points }} <i class="fas fa-fw fa-coins"></i></a>
       </p>
     </div>
   </div>

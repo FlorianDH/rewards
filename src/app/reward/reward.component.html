@@ -5,63 +5,9 @@
       <h1 class="card-title">35 <i class="fas fa-fw fa-coins"></i></h1>
     </div>
     <div class="progress" style="height: 40px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
+      <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
     </div>
   </div>
 </div>
 
-<app-reward-item class="row"></app-reward-item>
-
-
-<div class="row">
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill">
-      <div class="card-body">
-        <h5 class="card-title">Bak bier</h5>
-        <p class="card-text">
-        <a href="#" class="btn btn-primary">15 <i class="fas fa-fw fa-coins"></i></a>
-      </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill">
-      <div class="card-body">
-        <h5 class="card-title">Bon bol.com (25 euro)</h5>
-        <p class="card-text">
-          <a href="#" class="btn btn-primary">25 <i class="fas fa-fw fa-coins"></i></a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill">
-      <div class="card-body">
-        <h5 class="card-title">Fles champagne</h5>
-        <p class="card-text">
-          <a href="#" class="btn btn-primary">30 <i class="fas fa-fw fa-coins"></i></a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill" >
-      <div class="card-body">
-        <h5 class="card-title">Puppy</h5>
-        <p class="card-text">
-          <a href="#" class="btn btn-primary disabled">50 <i class="fas fa-fw fa-coins"></i></a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill">
-      <div class="card-body">
-        <h5 class="card-title">Reis Aruba</h5>
-        <p class="card-text">
-          <a href="#" class="btn btn-primary disabled">3000 <i class="fas fa-fw fa-coins"></i></a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+<app-reward-item [rewardsList]="rewardsList" class="row"></app-reward-item>
