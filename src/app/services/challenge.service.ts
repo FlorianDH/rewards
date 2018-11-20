@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DataService } from 'src/app/data.service';
-import {Challenge} from '../../interfaces/Challenge';
+import { DataService } from 'src/app/services/data.service';
+import { Challenge } from '../interfaces/challenge';
 
 
 @Injectable({
@@ -9,31 +9,31 @@ import {Challenge} from '../../interfaces/Challenge';
 export class ChallengeService {
 
 
-  challengesList : Challenge[] = [];
-  
-  constructor(public data : DataService) {} 
+  challengesList: Challenge[] = [];
+
+  constructor(public data: DataService) {}
 
 
-   getChallenges(){
+   getChallenges() {
      this.data.getChallenges().subscribe(
        data => {
          console.log('** data ' , data);
-         
- 
+
+
          for (let i = 0; i < data.length; i++) {
- 
+
          let challenge: Challenge = {
            points : data[i].points,
            title : data[i].title,
          };
- 
-         
+
+
          this.challengesList.push(challenge);
- 
-         console.log("toegevoegd : " + challenge.title);
- 
+
+         console.log('toegevoegd : ' + challenge.title);
+
          }
- 
+
        }
      );
      return this.challengesList;

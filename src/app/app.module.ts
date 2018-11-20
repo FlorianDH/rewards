@@ -11,9 +11,17 @@ import { AchievementComponent } from './achievement/achievement.component';
 import { FormModule} from './form/form.module';
 import { Error404Module } from './error404/error404.module';
 import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+<<<<<<< HEAD
+import { HttpClientModule } from '@angular/common/http';
+import {ChallengeFormModule} from './challengeForm/challengeForm.module';
+import {MedewerkerFormModule} from './medewerkerform/medewerkerForm.module';
+import {RewardFormModule} from './rewardForm/rewardForm.module';
+
+=======
+>>>>>>> 80e43c6ae326b9141dd978a8f10cc2d23281a695
 
 @NgModule({
   declarations: [
@@ -33,7 +41,13 @@ import { HttpClientModule }    from '@angular/common/http';
     FormsModule,
     Error404Module,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+<<<<<<< HEAD
+    ChallengeFormModule,
+    MedewerkerFormModule,
+    RewardFormModule
+=======
+>>>>>>> 80e43c6ae326b9141dd978a8f10cc2d23281a695
   ],
   providers: [],
   bootstrap: [AppComponent]

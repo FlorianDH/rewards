@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { RewardService} from '../services/reward.service';
+import { Reward} from '../interfaces/reward';
 
 @Component({
   selector: 'app-reward',
-  templateUrl: './reward.component.html',
-  // styles: [`
-  //   ngb-progressbar {
-  //     margin-top: 5rem;
-  //   }
-  // `]
+  templateUrl: './reward.component.html'
 })
 export class RewardComponent implements OnInit {
 
-  constructor() { }
+  rewardsList: Reward[] = [];
+
+  constructor(private rewardService: RewardService) {}
 
   ngOnInit() {
+    this.rewardsList = this.rewardService.getRewards();
   }
-
 }
