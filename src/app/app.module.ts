@@ -13,6 +13,7 @@ import { AchievementComponent } from './achievement/achievement.component';
 import { FormModule} from './form/form.module';
 import { Error404Module } from './error404/error404.module';
 import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminModule } from './admin/admin.module';
     FormModule,
     LoginModule,
     Error404Module,
-    AdminModule
+    AdminModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
