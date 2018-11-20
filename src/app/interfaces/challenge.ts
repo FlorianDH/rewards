@@ -1,4 +1,4 @@
 export interface Challenge {
-    points : String;
-    title : String;
+    points: String;
+    title: String;
 }

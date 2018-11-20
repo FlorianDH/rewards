@@ -9,7 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { RewardFormComponent} from './rewardForm/rewardForm.component';
 
 const routes: Routes = [
-  //{path: '', component: LoginComponent, pathMatch: 'full'},
+  {path: '', component: LoginComponent, pathMatch: 'full'},
   {path: 'challenge', component: ChallengeComponent},
   {path: 'reward', component: RewardComponent},
   {path: 'achievement', component: AchievementComponent},
