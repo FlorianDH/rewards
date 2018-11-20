@@ -9,22 +9,24 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginModule } from './login/login.module';7
 
 import { ChallengeModule} from './challenge/challenge.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
-
+    FormsModule,
     NgbModule.forRoot(),
     RewardModule,
-    ChallengeModule,
-    LoginModule
+    ChallengeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

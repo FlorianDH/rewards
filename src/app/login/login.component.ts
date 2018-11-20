@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  user = {
+    name: '',
+    password: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
-    console.log("test");
+    
   }
-
+  setUser(data){
+    localStorage.setItem("user",data.myName);
+    window.location.href = '/challenge';
+  }
 }

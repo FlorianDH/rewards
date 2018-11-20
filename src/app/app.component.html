@@ -1,4 +1,4 @@
-<div id="container-fluid">
+<div id="container-fluid" *ngIf="navVisible">
   <div class="row">
   <div class="col-sm-2">
       <app-sidebar></app-sidebar>
@@ -9,4 +9,9 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+</div>
+<div *ngIf="!navVisible" class="container h-100 mt-5 justify-content-center">
+    <div class="my-auto">
+        <app-login></app-login>
+    </div>
 </div>
