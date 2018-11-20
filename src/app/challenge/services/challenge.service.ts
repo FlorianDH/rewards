@@ -28,8 +28,6 @@ export class ChallengeService {
          };
  
          
-        
-         
          this.challengesList.push(challenge);
  
          console.log("toegevoegd : " + challenge.title);
@@ -38,5 +36,6 @@ export class ChallengeService {
  
        }
      );
+     return this.challengesList;
    }
 }

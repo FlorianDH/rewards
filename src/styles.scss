@@ -16,33 +16,121 @@ $theme-colors: (
   'info' : $blue,
   'dark' : $black
 );
-
+.centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+}
 // Link to BS en FA
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body{
-    background-color: $black;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+  background-color: $black;
+  font-family: 'Montserrat', sans-serif;
 }
 
- 
+#sidebar {
+  background: $yellow;
+  height: 100vh;
+  z-index: 999;
+  color: $white;
+  transition: all 0.3s;
+  overflow: hidden;
 
-// #container {
-//    display: grid;
-//    grid-template-columns: 70px auto;
-//    height: 100%;
+  .sidebar-header {
+    padding: 20px;
+    display: inline-block;
+  }
 
-//    #content {
-//        padding: 30px 50px;
-//        margin-left: 20px;
+  .sidebar-text{
+    display: inline;
+  }
 
-//        .card{
-//            margin: 10px;
-//        }
+  a, #sidebar-button {
+    display: block;
+    color: $white;
+    //font-weight: lighter;
+    font-size: 18px;
+    font-stretch: condensed;
+    font-style: revert;
+    letter-spacing: 2px;
+    //background-color: $white;
+    padding: 16px;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+  }
 
-//     }
+  #sidebar-button{
+    display: none;
+  }
 
-// }
+  .activated, a:active {
+    background-color: $blue;
+    color: white;
+  }
+
+  a:hover:not(.active) {
+    background-color: $green;
+    color: white;
+  }
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.card-text{
+  a{
+    margin-top: 10px;
+    font-size: 30px;
+    i{
+      color: $yellow;
+    }
+  }
+}
+
+.totalPoints {
+  color: $white;
+  i{
+  color: $yellow;
+  //background-color: $white;
+  position: center; font-weight: bold;
+  //width:200px;height:200px;font-size:20px;text-align:center;line-height:0;padding-top:80px;border-radius:50%;
+}}
+
+.progress{
+  background-color: $black;
+  div{
+  font-size: 18px;
+  font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div#content {margin-left: 0;}
+}
+
+@media screen and (max-width: 900px) {
+  #sidebar {
+    .sidebar-header, .sidebar-text{
+      display: none;
+    }
+    #sidebar-button{
+      display: inline-block;
+    }
+  }
+
+  a {
+    text-align: center;
+    float: none;
+  }
+}

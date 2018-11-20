@@ -21,19 +21,14 @@ export class ChallengeComponent implements OnInit {
 
   
 
-  constructor(public challengeService : ChallengeService) { 
-   
-  
-  
-  }
+  constructor(private challengeService : ChallengeService) {  }
 
   ngOnInit() {
     console.log("HALLLOOOO");
-    
 
+    //console.log(this.challengeService.getChallenges());
 
-    //hier gebleven : er is een fout in de constructor 
-    //console.log("alle challenges : " + this.challengeService.getChallenges());
+    this.challengesList = this.challengeService.getChallenges();
+
   }
-
 }

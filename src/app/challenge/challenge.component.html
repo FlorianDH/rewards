@@ -1,61 +1,59 @@
-<div class="container">
-  <!-- Hier punten weergeven-->
-  <div class="card text-center">
-    <div class="card-header">
-      <h5 class="card-title">Uw punten</h5>
+<div class="card text-center bg-success">
+  <div class="card-body text-center">
+    <div class="totalPoints text-center">
+      <h3 class="card-title">Uw punten</h3>
+      <h1 class="card-title">35 <i class="fas fa-fw fa-coins"></i></h1>
     </div>
-    <div class="card-body">
-      <h1 class="card-title">35</h1>
-      <p class="card-text">Nog 15 punten voor je de volgende prijs kan winnen</p>
-      <!--<p><ngb-progressbar type="warning" [value]="75" [striped]="true" [animated]="true"><i>50%</i></ngb-progressbar></p>-->
+    <div class="progress" style="height: 40px;">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-xl-4 col-lg-4 col-sm-6 mt-3 d-flex">
-      <div class="card text-center flex-fill">
-        <div class="card-body">
-          <h5 class="card-title">Blogpost schrijven</h5>
-          <p class="card-text">1 punt</p>
-          <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
-        </div>
+<div class="row">
+  <div *ngFor="let challenge of challengesList" class="col-xl-4 col-sm-6 mt-3 d-flex">
+    <div class="card text-center flex-fill">
+      <div class="card-body">
+        <h5 class="card-title">{{challenge.title}}</h5>
+        <p class="card-text">{{challenge.points}}</p>
+        <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
       </div>
     </div>
-    <div class="col-xl-4 col-lg-4 col-sm-6  mt-3 d-flex">
-      <div class="card text-center flex-fill">
-        <div class="card-body">
-          <h5 class="card-title">Presentatie geven</h5>
-          <p class="card-text">5 punten</p>
-          <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-lg-4 col-sm-6  mt-3 d-flex">
-      <div class="card text-center flex-fill">
-        <div class="card-body">
-          <h5 class="card-title">Nieuwe technologieën onderzoeken</h5>
-          <p class="card-text">10 punten</p>
-          <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-lg-4 col-sm-6  mt-3 d-flex">
-      <div class="card text-center flex-fill" >
-        <div class="card-body">
-          <h5 class="card-title">Conferentie bijwonen</h5>
-          <p class="card-text">10 punten</p>
-          <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-lg-4 col-sm-6  d-flex mt-3">
-      <div class="card text-center flex-fill">
-        <div class="card-body">
-          <h5 class="card-title">naar een meetup gaan</h5>
-          <p class="card-text">5 punten</p>
-          <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
-        </div>
+  <!-- </div>
+  <div class="col-xl-4 col-sm-6  mt-3 d-flex">
+    <div class="card text-center flex-fill">
+      <div class="card-body">
+        <h5 class="card-title">Presentatie geven</h5>
+        <p class="card-text">5 punten</p>
+        <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
       </div>
     </div>
   </div>
+  <div class="col-xl-4 col-sm-6  mt-3 d-flex">
+    <div class="card text-center flex-fill">
+      <div class="card-body">
+        <h5 class="card-title">Nieuwe technologieën onderzoeken</h5>
+        <p class="card-text">10 punten</p>
+        <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-4 col-sm-6  mt-3 d-flex">
+    <div class="card text-center flex-fill" >
+      <div class="card-body">
+        <h5 class="card-title">Conferentie bijwonen</h5>
+        <p class="card-text">10 punten</p>
+        <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-4 col-sm-6  d-flex mt-3">
+    <div class="card text-center flex-fill">
+      <div class="card-body">
+        <h5 class="card-title">Naar een meetup gaan</h5>
+        <p class="card-text">5 punten</p>
+        <a href="#" class="btn btn-primary">Opdracht uitgevoerd</a>
+      </div>
+    </div>
+  </div> -->
 </div>
