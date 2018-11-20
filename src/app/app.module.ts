@@ -13,7 +13,11 @@ import { Error404Module } from './error404/error404.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import {ChallengeFormModule} from './challengeForm/challengeForm.module';
+import {MedewerkerFormModule} from './medewerkerform/medewerkerForm.module';
+import {RewardFormModule} from './rewardForm/rewardForm.module';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,10 @@ import { HttpClientModule }    from '@angular/common/http';
     FormsModule,
     Error404Module,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    ChallengeFormModule,
+    MedewerkerFormModule,
+    RewardFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]
