@@ -14,6 +14,7 @@
   <div *ngFor="let challenge of challengesList; index as i" class="col-xl-4 col-sm-6 mt-3 d-flex">
     <div class="card text-center flex-fill">
       <div class="card-body">
+
         <h5 class="card-title"  id="title" >{{challenge.title}}</h5>
         <p class="card-text">{{challenge.points}}</p>
 
@@ -23,6 +24,7 @@
         > 
 
         <a (click)="challengeExecuted(i)" class="btn btn-primary">Opdracht uitgevoerd</a>
+
       </div>
     </div>
 

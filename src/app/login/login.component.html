@@ -1,95 +1,27 @@
-<style>
-  html, body {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-}
-
-body {
-  background: tomato;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-}
-
-form {
-  background: white;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
-  font-family: lato;
-  position: relative;
-  color: #333;
-  border-radius: 10px;
-  width: 100%
-}
-form header {
-  background: #FF3838;
-  padding: 30px 20px;
-  color: white;
-  font-size: 1.2em;
-  font-weight: 600;
-  border-radius: 10px 10px 0 0;
-}
-form label {
-  margin-left: 20px;
-  display: inline-block;
-  margin-top: 30px;
-  margin-bottom: 5px;
-  position: relative;
-}
-form input {
-  display: block;
-  width: 95%;
-  margin-left: 20px;
-  padding: 5px 20px;
-  font-size: 1em;
-  border-radius: 3px;
-  outline: none;
-  border: 1px solid #ccc;
-}
-form button {
-  position: relative;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-family: inherit;
-  color: white;
-  background: #FF3838;
-  outline: none;
-  border: none;
-  padding: 5px 15px;
-  font-size: 1.3em;
-  font-weight: 400;
-  border-radius: 3px;
-  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.4);
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-}
-form button:hover {
-  background: #ff5252;
-}
-
-</style>
-<form #f="ngForm" (submit)="setUser(f.value)">
-  <div class="form-group">
-      <header>Login</header>
-    <label for="name">Name</label>
-    <input type="text" id="name" class="form-control"
-           required
-           minlength="3"
-           name="myName"
-           [(ngModel)]="user.name">
-  </div>
-  <div class="form-group">
-    <label for="password">Wachtwoord</label>
-    <input type="password" id="password" class="form-control"
-           required
-           name="myPassword"
-           [(ngModel)]="user.password">
-  </div>
-  <button type="submit" class="btn btn-primary">
+<form class="card" #f="ngForm" (submit)="setUser(f.value)">
+  <div class="card-header">
     Login
-  </button>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control"
+             required
+             minlength="3"
+             name="myName"
+             [(ngModel)]="user.name">
+    </div>
+    <div class="form-group">
+      <label for="password">Wachtwoord</label>
+      <input type="password" id="password" class="form-control"
+             required
+             name="myPassword"
+             [(ngModel)]="user.password">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">
+        Login
+      </button>
+    </div>
+  </div>
 </form>
