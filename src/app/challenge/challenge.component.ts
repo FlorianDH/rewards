@@ -26,15 +26,10 @@ export class ChallengeComponent implements OnInit {
 
   
   ngOnInit() {   
-    console.log("hallo test");
+    
     this.challengesList = this.challengeService.getChallenges();
     
-    
-
     this.request = {
-      points : "",
-    title : "",
-    _id : "",
     motivation : "",
     challenge_id : "",
     date : "",
@@ -45,11 +40,7 @@ export class ChallengeComponent implements OnInit {
 
   challengeExecuted(i){
     
-    
     this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+00:00');
-
-
-    
 
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].title);
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].points);
@@ -60,16 +51,13 @@ export class ChallengeComponent implements OnInit {
     console.log("HIER MOET EEN datum KOMEN :" + this.jstoday);
 
     this.request = {
-      points : this.challengesList[i].points,
-      title : this.challengesList[i].title,
-      _id : "",
       motivation : motivation,
       challenge_id : this.challengesList[i]._id,
       date : this.jstoday,
       isAccepted : false,
       }
 
-      //this.challengeService.addChallangeRequest(this.request).subscribe(test => this)
+     //this.challengeService.addChallangeRequest(this.request).subscribe(test => this)
 
     }
 

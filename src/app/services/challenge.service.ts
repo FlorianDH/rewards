@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { DataService } from 'src/app/services/data.service';
@@ -26,11 +26,10 @@ export class ChallengeService {
 
   
 
-
   addChallangeRequest (request: Request): Observable<Request> {
-    return this.http.post<Request>('http://localhost:3000/challenges', request, this.httpOptions)
+    return this.http.post<Request>('http://localhost:3000/challengeRequest', request, this.httpOptions)
       .pipe(
-        // catchError("this.handleError('addHero', hero)")
+        catchError(e =>throwError(new Error("SOMETHING BAD HAPPENED")))
       );
   }
 
