@@ -28,7 +28,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="login" routerLinkActive="active" [class.activated]="currentUrl == '/login'">
+      <a class="nav-link" (click)="logOut()" routerLinkActive="active" [class.activated]="currentUrl == '/login'">
         <i class="fas fa-fw fa-sign-out-alt"></i> <span class="sidebar-text"> Logout</span>
       </a>
     </li>

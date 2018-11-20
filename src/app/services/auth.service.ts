@@ -10,7 +10,7 @@ export class AuthService {
     let path = window.location.pathname;
     let page = path.split("/").pop();
 
-    if ((page.trim() === "")) {
+    if ((page.trim() === "") || (page.trim() === "login")) {
       return false;
     }
     else
