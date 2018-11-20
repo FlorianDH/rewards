@@ -20,7 +20,7 @@ export class ChallengeService {
     })
   };
 
-  challengesList : Challenge[];
+  challengesList : Challenge[]  = [];
   
   constructor(public data : DataService, private http: HttpClient) {} 
 
@@ -37,6 +37,10 @@ export class ChallengeService {
 
 
    getChallenges() {
+
+     if (this.challengesList.length <= 0) {
+       
+     
      this.data.getChallenges().subscribe(
        data => {
          console.log('** data ' , data);
@@ -61,6 +65,8 @@ export class ChallengeService {
 
        }
      );
+
+    }
      return this.challengesList;
    }
 }

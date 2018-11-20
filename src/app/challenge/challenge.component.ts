@@ -22,14 +22,14 @@ export class ChallengeComponent implements OnInit {
   today = new Date ();
   jstoday ='';
   
-  constructor(private challengeService : ChallengeService) {  }
+  constructor(public challengeService : ChallengeService) {  }
 
   
   ngOnInit() {   
     console.log("hallo test");
     this.challengesList = this.challengeService.getChallenges();
     
-    console.log("hallo test" + this.challengeService.getChallenges());
+    
 
     this.request = {
       points : "",
@@ -49,9 +49,7 @@ export class ChallengeComponent implements OnInit {
     this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+00:00');
 
 
-    // alle challenge gegevens moeten opgeslagen worden in request gegevens
-    // request wegschrijven naar API
-    // bij het submitten --> alert met "aangevraagd".
+    
 
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].title);
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].points);
