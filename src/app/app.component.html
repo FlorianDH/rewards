@@ -1,14 +1,13 @@
-<div id="container-fluid" *ngIf="navVisible">
-  <div class="row">
-  <div class="col-sm-2">
-      <app-sidebar></app-sidebar>
+<div class="row wrapper no-gutters" *ngIf="navVisible">
+  <div class="col-auto sticky-top">
+    <app-sidebar></app-sidebar>
+    <!--<app-sidebar [@slideInOut]="sidebarState"></app-sidebar>-->
   </div>
-  
-
-  <div id="content" class="col-sm-10">
+  <div class="col mt-3">
+    <div class="container-fluid">
     <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
 </div>
 <div *ngIf="!navVisible" class="container h-100 mt-5 justify-content-center">
     <div class="my-auto">

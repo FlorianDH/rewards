@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RewardComponent} from './reward/reward.component';
 import { LoginComponent } from './login/login.component';
-import { ChallengeComponent} from './challenge/challenge.component';
+import { ChallengeComponent } from './challenge/challenge.component';
+import { RewardComponent } from './reward/reward.component';
+import { AchievementComponent } from './achievement/achievement.component';
+import { Error404Component } from './error404/error404.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
+  {path: '', component: LoginComponent, pathMatch: 'full'},
   {path: 'challenge', component: ChallengeComponent},
   {path: 'reward', component: RewardComponent},
-  {path: '',component:LoginComponent}
+  {path: 'achievement', component: AchievementComponent},
+  // {path: 'login', component: LoginComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'error404', component: Error404Component},
+  {path: '**', redirectTo: 'error404'}
 ];
 
 @NgModule({
