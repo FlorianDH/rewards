@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ReflectiveInjector } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../data.service';
+import { ChallengeService } from './services/challenge.service';
+import { Challenge } from '../interfaces/challenge';
 
 @Component({
   selector: 'app-challenge',
@@ -9,15 +11,29 @@ import { DataService } from '../data.service';
     ngb-progressbar {
       margin-top: 5rem;
     }
-  `]
+  `],
+  
 })
 export class ChallengeComponent implements OnInit {
 
-  constructor(public data: DataService) { }
+
+  challengesList : Challenge[] = [];
+
+  
+
+  constructor(public challengeService : ChallengeService) { 
+   
+  
+  
+  }
 
   ngOnInit() {
+    console.log("HALLLOOOO");
+    
 
-    console.log("alle challenges : " + this.data.getChallenges());
+
+    //hier gebleven : er is een fout in de constructor 
+    //console.log("alle challenges : " + this.challengeService.getChallenges());
   }
 
 }

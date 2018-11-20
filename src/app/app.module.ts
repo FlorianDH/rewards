@@ -25,7 +25,6 @@ import { FormModule} from './form/form.module';
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
-
     NgbModule.forRoot(),
     RewardModule,
     ChallengeModule,
