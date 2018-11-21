@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,14 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  constructor(private api:AuthService,private router: Router) { }
 
   ngOnInit() {
-    
   }
   setUser(data){
-    localStorage.setItem("user",data.myName);
-    window.location.reload();
+    this.api.login(data.myName,data.myPassword).pipe().subscribe(data=>
+      window.location.reload()
+      );
+
   }
 }
