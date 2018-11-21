@@ -26,7 +26,6 @@ export class ChallengeComponent implements OnInit {
 
   
   ngOnInit() {   
-    
     this.challengesList = this.challengeService.getChallenges();
     
     this.request = {

@@ -9,6 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { RewardFormComponent} from './rewardForm/rewardForm.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogGuard } from './guards/log.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent, pathMatch: 'full',canActivate:[AuthGuard]},
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: 'achievement', component: AchievementComponent,canActivate:[LogGuard]},
   {path: 'form', component: RewardFormComponent,canActivate:[LogGuard]},
   {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
-  {path: 'admin', component: AdminComponent,canActivate:[LogGuard]},
+  {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
   {path: '**', redirectTo: 'error404',canActivate:[LogGuard]}
 ];
