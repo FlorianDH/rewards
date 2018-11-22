@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { DataService } from 'src/app/services/data.service';
 import { Challenge } from '../interfaces/challenge';
+import { Request } from '../interfaces/request';
 
 
 @Injectable({
@@ -16,7 +17,6 @@ export class ChallengeService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
     })
   };
 
@@ -26,18 +26,23 @@ export class ChallengeService {
 
   
 
-  // addChallangeRequest (request: any) : Observable<any>{
+  addChallangeRequest (request: Request) : Observable<Request>{
 
-  //   console.log("request voor de post : " + request.motivation);
+    console.log("request voor de post : " + request.motivation);
+    console.log("request voor de post : " + request.challenge_id);
 
    
 
 
-  //   return this.http.post<Request>('http://localhost:3000/challengeRequests', request, this.httpOptions)
-  //   .map(res => res.json())
-  //   .catch(err => Observable.throw(err));
-  // }
+    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests', request, this.httpOptions).pipe(
+    tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
+    catchError(err => throwError(err))
+    );
+  }
 
+  private log(message: String){
+
+  }
 
 
    getChallenges() {

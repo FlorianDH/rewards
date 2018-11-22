@@ -39,12 +39,12 @@ export class ChallengeComponent implements OnInit {
 
   challengeExecuted(i){
     
-    this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+00:00');
+    this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
 
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].title);
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].points);
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i]._id);
-    console.log("HIER MOET EEN TITEL KOMEN :" + document.getElementById("tekst" + i));
+    //console.log("HIER MOET EEN TITEL KOMEN :" + document.getElementById("tekst" + i));
     const motivation= ((document.getElementById("tekst" + i) as HTMLInputElement).value);
     console.log("HIER MOET EEN TITEL KOMEN :" + motivation);
     console.log("HIER MOET EEN datum KOMEN :" + this.jstoday);
@@ -56,7 +56,7 @@ export class ChallengeComponent implements OnInit {
       isAccepted : false,
       }
 
-     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
+    this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
 
     }
 
