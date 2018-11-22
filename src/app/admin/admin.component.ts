@@ -4,6 +4,7 @@ import { Challenge } from '../interfaces/challenge';
 import { RewardService } from '../services/reward.service';
 import { Reward } from '../interfaces/reward';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -17,6 +18,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
     this.rewardsList = this.rewardService.getRewards();
+
+
   }
 
 }

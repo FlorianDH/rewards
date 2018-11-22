@@ -11,11 +11,15 @@ export class SidebarComponent implements OnInit {
     router.events.subscribe((_: NavigationEnd) => this.currentUrl = this.router.url);
   }
   currentUrl: string;
-
+  admin = '';
   ngOnInit() {
+    if(localStorage.getItem('admin') === "true"){
+      this.admin = localStorage.getItem('admin');
+    }
+    this.currentUrl = this.router.url
   }
   logOut(){
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     this.router.navigate(["login"]);
   }
 }
