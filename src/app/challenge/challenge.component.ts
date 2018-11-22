@@ -57,7 +57,7 @@ export class ChallengeComponent implements OnInit {
       isAccepted : false,
       }
 
-     //this.challengeService.addChallangeRequest(this.request).subscribe(test => this)
+     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
 
     }
 

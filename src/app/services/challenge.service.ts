@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { DataService } from 'src/app/services/data.service';
 import { Challenge } from '../interfaces/challenge';
@@ -26,12 +26,17 @@ export class ChallengeService {
 
   
 
-  addChallangeRequest (request: Request): Observable<Request> {
-    return this.http.post<Request>('http://localhost:3000/challengeRequest', request, this.httpOptions)
-      .pipe(
-        catchError(e =>throwError(new Error("SOMETHING BAD HAPPENED")))
-      );
-  }
+  // addChallangeRequest (request: any) : Observable<any>{
+
+  //   console.log("request voor de post : " + request.motivation);
+
+   
+
+
+  //   return this.http.post<Request>('http://localhost:3000/challengeRequests', request, this.httpOptions)
+  //   .map(res => res.json())
+  //   .catch(err => Observable.throw(err));
+  // }
 
 
 
