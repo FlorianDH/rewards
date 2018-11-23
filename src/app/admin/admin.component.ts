@@ -25,9 +25,9 @@ export class AdminComponent implements OnInit {
 
   }
 
-  gegevensMeegeven(title, punten) {
+  gegevensMeegeven(title, points) {
     const gegTitle = localStorage.setItem('title', title );
-    const gegPunten = localStorage.setItem('punten', punten);
+    const gegPunten = localStorage.setItem('points', points);
   }
   deleteUser(id){
     this.userService.deleteUser(id);
