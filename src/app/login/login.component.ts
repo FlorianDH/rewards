@@ -23,9 +23,8 @@ export class LoginComponent implements OnInit {
   setUser(data){
     this.loading = true;
     this.api.login(data.myName,data.myPassword).pipe().subscribe(token=> {
-      const helper = new JwtHelperService();
-      const decodedToken = helper.decodeToken(localStorage.getItem("token"));
-      localStorage.setItem("admin",decodedToken.isAdmin);
+      let user = JSON.parse(localStorage.getItem("user"));
+      localStorage.setItem("admin",user.isAdmin);
       this.router.navigate(["challenge"])
     },error =>{
       this.loading = false;
