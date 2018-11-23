@@ -23,6 +23,8 @@ export class ChallengeFormComponent implements OnInit {
 
     document.getElementById('title').value = localStorage.title;
     document.getElementById('points').value = localStorage.punten;
+    localStorage.removeItem('title');
+    localStorage.removeItem('punten');
 
   }
 
