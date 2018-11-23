@@ -11,7 +11,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getChallenges(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/challenges').pipe(
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/challenges').pipe(
       tap( req => console.log('req ', req)),
       map( data => {
         return data;
@@ -22,7 +22,7 @@ export class DataService {
 
 
   getRewards(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/rewards').pipe(
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewards').pipe(
       tap( req => console.log('req ', req)),
       map( data => {
         return data;

@@ -32,7 +32,18 @@ export class ChallengeComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-  }
+
+  // ngOnInit() {
+  //
+  //   this.challengesList = this.challengeService.getChallenges();
+  //
+  //   this.request = {
+  //   motivation : "",
+  //   challenge_id : "",
+  //   date : "",
+  //   isAccepted : false,
+  //   };
+  // }
 
   private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
@@ -44,13 +55,7 @@ export class ChallengeComponent implements OnInit {
       }
     }
 
-  challengeExecuted(i) {
-
-
     this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+00:00');
-
-
-
 
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].title);
     console.log("HIER MOET EEN TITEL KOMEN :" + this.challengesList[i].points);
@@ -69,12 +74,6 @@ export class ChallengeComponent implements OnInit {
       date : this.jstoday,
       isAccepted : false,
       };
-
-      // this.challengeService.addChallangeRequest(this.request).subscribe(test => this)
-
     }
-
-
-
   }
 

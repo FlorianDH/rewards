@@ -16,8 +16,6 @@ export class RewardService {
   getRewards() {
 
     if (this.rewardsList.length <= 0) {
-      
-    
 
      this.data.getRewards().subscribe(
        data => {

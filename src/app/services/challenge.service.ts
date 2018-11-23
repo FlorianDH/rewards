@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { DataService } from 'src/app/services/data.service';
@@ -21,26 +21,21 @@ export class ChallengeService {
   };
 
   challengesList : Challenge[]  = [];
-  
-  constructor(public data : DataService, private http: HttpClient) {} 
 
-  
+  constructor(public data : DataService, private http: HttpClient) {}
+
 
 
   addChallangeRequest (request: Request): Observable<Request> {
-    return this.http.post<Request>('http://localhost:3000/challenges', request, this.httpOptions)
+    return this.http.post<Request>('http://localhost:3000/challengeRequest', request, this.httpOptions)
       .pipe(
-        // catchError("this.handleError('addHero', hero)")
+        catchError(e =>throwError(new Error("SOMETHING BAD HAPPENED")))
       );
   }
 
-
-
    getChallenges() {
-
      if (this.challengesList.length <= 0) {
-       
-     
+
      this.data.getChallenges().subscribe(
        data => {
          console.log('** data ' , data);
@@ -56,7 +51,7 @@ export class ChallengeService {
 
 
          this.challengesList.push(challenge);
- 
+
          console.log("id van persoon " + i + " : " + challenge._id);
 
          console.log('toegevoegd : ' + challenge.title);
