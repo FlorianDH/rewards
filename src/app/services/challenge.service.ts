@@ -47,7 +47,15 @@ export class ChallengeService {
       catchError(err => throwError(err))
     );
   }
-
+  deleteChallenge(id){
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
+    this.challengesList.splice(index, 1);
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challenges/'+id,{headers}).subscribe()
+  }
 
    getChallenges() {
      if (this.challengesList.length <= 0) {

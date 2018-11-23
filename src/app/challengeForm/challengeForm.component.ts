@@ -41,6 +41,14 @@ addChallenge() {
   this.challengeService.addChallenge(title, points).subscribe();
 }
 
+removeChallenge()
+{
+  let id = localStorage.id;
+  this.challengeService.deleteChallenge(id);
+  localStorage.removeItem('id');
+
+}
+
 
 
 }
