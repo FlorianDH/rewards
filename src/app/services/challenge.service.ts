@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
+import { catchError, tap } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
-
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +37,7 @@ export class ChallengeService {
   private log(message: String) {
 
   }
-  addChallenge (title:string, points:string): Observable<Challenge> {
+  addChallenge (title: string, points: string): Observable<Challenge> {
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]

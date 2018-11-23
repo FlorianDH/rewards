@@ -36,7 +36,7 @@ export class ChallengeItemComponent implements OnInit {
       date : this.jstoday,
       isAccepted : false,
       user_id : this.user._id,
-      _id : ""
+      _id : ''
     };
 
     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
