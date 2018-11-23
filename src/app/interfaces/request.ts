@@ -1,7 +1,7 @@
 export interface Request {
     motivation : String;
-    challenge_id : String;
+    challenge_id : any;
     date : String;
     isAccepted : Boolean;
-    user_id : String;
+    user_id : any;
 }
