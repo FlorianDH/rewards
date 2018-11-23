@@ -23,7 +23,11 @@ export class AdminComponent implements OnInit {
     this.rewardsList = this.rewardService.getRewards();
     this.usersList = this.userService.getUsers();
 
+  }
 
+  gegevensMeegeven(title, punten) {
+    const gegTitle = localStorage.setItem('title', title );
+    const gegPunten = localStorage.setItem('punten', punten);
   }
 
 }

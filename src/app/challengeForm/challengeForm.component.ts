@@ -13,9 +13,16 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ChallengeFormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
+
+
 
   ngOnInit() {
+
+    document.getElementById('title').value = localStorage.title;
+    document.getElementById('points').value = localStorage.punten;
 
   }
 
