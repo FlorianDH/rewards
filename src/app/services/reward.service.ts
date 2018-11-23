@@ -26,16 +26,15 @@ export class RewardService {
 
          let reward: Reward = {
            points : data[i].points,
-           descriptionShort : data[i].descriptionShort,
+           title : data[i].title,
          };
 
 
          this.rewardsList.push(reward);
 
-         console.log('toegevoegd : ' + reward.descriptionShort );
+         console.log('toegevoegd : ' + reward.title );
 
          }
-
        }
      );
     }

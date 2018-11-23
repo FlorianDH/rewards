@@ -10,20 +10,22 @@
   </div>
 </div>
 
-<div class="row">
-  <div *ngFor="let challenge of challengesList; index as i" class="col-xl-4 col-sm-6 mt-3 d-flex">
-    <div class="card text-center flex-fill">
-      <div class="card-body">
+<app-challenge-item [challengesList]="challengesList" class="row"></app-challenge-item>
 
-        <h5 class="card-title"  id="title" >{{challenge.title}}</h5>
-        <p class="card-text">{{challenge.points}}</p>
+<!--<div class="row">-->
+  <!--<div *ngFor="let challenge of challengesList; index as i" class="col-xl-4 col-sm-6 mt-3 d-flex">-->
+    <!--<div class="card text-center flex-fill">-->
+      <!--<div class="card-body">-->
 
-        <a (click)="challengeExecuted(i)" class="btn btn-primary" (click)="open(content)">Opdracht uitgevoerd</a>
+        <!--<h5 class="card-title"  id="title" >{{challenge.title}}</h5>-->
+        <!--<p class="card-text">{{challenge.points}}</p>-->
 
-      </div>
-    </div>
-  </div>
-</div>
+        <!--<a (click)="challengeExecuted(i)" class="btn btn-primary" (click)="open(content)">Opdracht uitgevoerd</a>-->
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 <ng-template #content let-modal>
   <div class="modal-header">
