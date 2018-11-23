@@ -28,7 +28,7 @@ export class RewardService {
            points : data[i].points,
            descriptionShort : data[i].descriptionShort,
          };
-
+        
 
          this.rewardsList.push(reward);
 
