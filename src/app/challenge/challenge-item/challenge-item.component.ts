@@ -29,15 +29,14 @@ export class ChallengeItemComponent implements OnInit {
   }
 
   challengeExecuted(i) {
-
     this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
 
     console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].title);
     console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].points);
     console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i]._id);
     // console.log('HIER MOET EEN TITEL KOMEN :' + document.getElementById("tekst" + i));
-    const motivation = ((document.getElementById('tekst' + i) as HTMLInputElement).value);
-    console.log('HIER MOET EEN TITEL KOMEN :' + motivation);
+    const motivation = ((document.getElementById('motivation' + i) as HTMLInputElement).value);
+    console.log('Motivatie is :' + motivation);
     console.log('HIER MOET EEN datum KOMEN :' + this.jstoday);
 
     this.request = {
@@ -45,7 +44,7 @@ export class ChallengeItemComponent implements OnInit {
       challenge_id : this.challengesList[i]._id,
       date : this.jstoday,
       isAccepted : false,
-      user_id_id : '5bf548c4673f2b0016b84958' // user1 hardcoded
+      // user_id : this.user._id,
     };
 
     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
