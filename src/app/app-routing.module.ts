@@ -10,6 +10,7 @@ import { RewardFormComponent} from './rewardForm/rewardForm.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogGuard } from './guards/log.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { ChallengeFormComponent} from './challengeForm/challengeForm.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent, pathMatch: 'full',canActivate:[AuthGuard]},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
   {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
+  {path: 'challengeForm', component: ChallengeFormComponent},
   {path: '**', redirectTo: 'error404',canActivate:[LogGuard]}
+
 ];
 
 @NgModule({
