@@ -22,7 +22,14 @@ export class DataService {
       );
   }
 
-
+  getUsers(): Observable<any> {
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/users').pipe(
+      tap( req => console.log('req ', req)),
+      map( data => {
+        return data.users;
+      })
+    );
+  }
 
   getRewards(): Observable<any> {
     return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewards').pipe(

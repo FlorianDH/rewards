@@ -50,7 +50,13 @@
       <div class="card-body">
         <h5 class="card-title">Medewerkers aanpassen</h5>
         <div style="overflow: visible; Height: 500px;">
-          Aanmaken/updaten/verwijderen van medewerkers
+          <div *ngFor="let user of usersList" class="card mb-2 bg-info text-white">
+            <div class="card-body">{{user.name}} - {{user.isAdmin}}
+              <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>

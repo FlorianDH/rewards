@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
     this.currentUrl = this.router.url
   }
   logOut(){
-    localStorage.removeItem("token");
+    localStorage.clear();
     this.router.navigate(["login"]);
   }
 }
