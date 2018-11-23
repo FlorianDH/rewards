@@ -36,10 +36,10 @@ if (localStorage.getItem('title') !== null && localStorage.getItem('points') !==
 
 addChallenge() {
 
-  let points = (<HTMLInputElement>document.getElementById('title')).value;
-  let title = (<HTMLInputElement>document.getElementById('points')).value;
-
-   this.challengeService.addChallenge(title, points);
+  let title= (<HTMLInputElement>document.getElementById('title')).value;
+  let points = (<HTMLInputElement>document.getElementById('points')).value;
+  console.log(title);
+  this.challengeService.addChallenge(title, points).subscribe();
 }
 
 
