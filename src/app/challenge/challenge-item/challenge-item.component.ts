@@ -39,13 +39,13 @@ export class ChallengeItemComponent implements OnInit {
     console.log('Motivatie is :' + motivation);
     console.log('HIER MOET EEN datum KOMEN :' + this.jstoday);
 
-    this.request = {
-      motivation : motivation,
-      challenge_id : this.challengesList[i]._id,
-      date : this.jstoday,
-      isAccepted : false,
-      // user_id : this.user._id,
-    };
+    // this.request = {
+    //   motivation : motivation,
+    //   challenge_id : this.challengesList[i]._id,
+    //   date : this.jstoday,
+    //   isAccepted : false,
+    //   // user_id : this.user._id,
+    // };
 
     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
   }

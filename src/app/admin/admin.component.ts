@@ -36,7 +36,11 @@ export class AdminComponent implements OnInit {
 
 
   deleteRequest(i){
-    console.log(i);
+  
+  const id = this.requestList[i]._id;
+  console.log("id : " , id);
+  
+  this.requestService.deleteRequest(id, i);
 
   }
 

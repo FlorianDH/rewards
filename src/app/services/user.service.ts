@@ -41,6 +41,6 @@ export class UserService {
    deleteUser(id){
      let index = this.userList.indexOf(this.userList.find(user => user.id == id));
      this.userList.splice(index, 1);
-    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id).subscribe()
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id).subscribe();
    }
 }
