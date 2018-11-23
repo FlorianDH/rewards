@@ -20,6 +20,7 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   today = new Date ();
   jstoday = '';
+  user = JSON.parse(localStorage.getItem("user"));
 
   constructor(public challengeService: ChallengeService) {  }
 
@@ -50,13 +51,14 @@ export class ChallengeComponent implements OnInit {
     const motivation = ((document.getElementById('tekst' + i) as HTMLInputElement).value);
     console.log('HIER MOET EEN TITEL KOMEN :' + motivation);
     console.log('HIER MOET EEN datum KOMEN :' + this.jstoday);
+    console.log('HIER MOET EEN userID KOMEN :' + this.user._id);
 
     this.request = {
       motivation : motivation,
       challenge_id : this.challengesList[i]._id,
       date : this.jstoday,
       isAccepted : false,
-      user_id : "5bf548c4673f2b0016b84958", //user1 hardcoded
+      user_id : this.user._id, 
       }
 
       this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
