@@ -15,8 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import {ChallengeFormModule} from './challengeForm/challengeForm.module';
-import {MedewerkerFormModule} from './medewerkerform/medewerkerForm.module';
-import {EmployeesFormModule} from './employeesForm/employeesForm.module';
+import {EmployeeFormModule} from './employeeform/employeeForm.module';
+import {RewardFormModule} from './rewardForm/rewardForm.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +38,8 @@ import {EmployeesFormModule} from './employeesForm/employeesForm.module';
     AdminModule,
     HttpClientModule,
     ChallengeFormModule,
-    MedewerkerFormModule,
-    EmployeesFormModule
+    EmployeeFormModule,
+    RewardFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

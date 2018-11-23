@@ -3,14 +3,14 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './medewerkerForm.component.html',
+  templateUrl: './employeeForm.component.html',
   styles: [`
     ngb-progressbar {
       margin-top: 5rem;
     }
   `]
 })
-export class MedewerkerFormComponent implements OnInit {
+export class EmployeeFormComponent implements OnInit {
 
   constructor() { }
 
