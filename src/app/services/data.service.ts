@@ -10,11 +10,14 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+
+
+  
   getChallenges(): Observable<any> {
     return this.http.get<any>('https://reward-platform-api.herokuapp.com/challenges').pipe(
       tap( req => console.log('req ', req)),
       map( data => {
-        return data;
+        return data.challenges;
       })
       );
   }
@@ -25,7 +28,7 @@ export class DataService {
     return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewards').pipe(
       tap( req => console.log('req ', req)),
       map( data => {
-        return data;
+        return data.rewards;
       })
     );
 

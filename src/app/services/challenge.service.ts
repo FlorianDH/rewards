@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { DataService } from 'src/app/services/data.service';
 import { Challenge } from '../interfaces/challenge';
+import { Request } from '../interfaces/request';
 
 
 @Injectable({
@@ -16,21 +17,29 @@ export class ChallengeService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
     })
   };
 
-  challengesList : Challenge[]  = [];
+  challengesList: Challenge[]  = [];
 
-  constructor(public data : DataService, private http: HttpClient) {}
+  constructor(public data: DataService, private http: HttpClient) {}
 
 
 
   addChallangeRequest (request: Request): Observable<Request> {
-    return this.http.post<Request>('http://localhost:3000/challengeRequest', request, this.httpOptions)
-      .pipe(
-        catchError(e =>throwError(new Error("SOMETHING BAD HAPPENED")))
-      );
+
+    console.log('request voor de post : ' + request.motivation);
+    console.log('request voor de post : ' + request.challenge_id);
+
+
+    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests', request, this.httpOptions).pipe(
+    tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
+    catchError(err => throwError(err))
+    );
+  }
+
+  private log(message: String) {
+
   }
 
    getChallenges() {
@@ -43,7 +52,7 @@ export class ChallengeService {
 
          for (let i = 0; i < data.length; i++) {
 
-         let challenge: Challenge = {
+         const challenge: Challenge = {
            points : data[i].points,
            title : data[i].title,
            _id : data[i]._id,
@@ -52,7 +61,7 @@ export class ChallengeService {
 
          this.challengesList.push(challenge);
 
-         console.log("id van persoon " + i + " : " + challenge._id);
+         console.log('id van persoon ' + i + ' : ' + challenge._id);
 
          console.log('toegevoegd : ' + challenge.title);
 

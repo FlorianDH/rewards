@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-form',
   templateUrl: './challengeForm.component.html',
@@ -15,6 +16,7 @@ export class ChallengeFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

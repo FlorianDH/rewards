@@ -5,13 +5,17 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private router: Router) {}
   
   canActivate(
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       if(localStorage.getItem("token")){
-        this.router.navigate(['challenge']);
+        if(localStorage.getItem("admin")==="true"){
+          return true
+        }else{
+          this.router.navigate(['challenge']);
+        }
       }
       return true;
   }
