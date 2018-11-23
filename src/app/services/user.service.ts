@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DataService } from './data.service';
 import { User } from '../interfaces/user';
 
@@ -39,8 +39,12 @@ export class UserService {
      return this.userList;
    }
    deleteUser(id){
+     let token = localStorage.getItem("token").split('"')
+     let headers : HttpHeaders = new HttpHeaders({
+       "Authorization":"bearer "+token[1]
+     })
      let index = this.userList.indexOf(this.userList.find(user => user.id == id));
      this.userList.splice(index, 1);
-    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id).subscribe();
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe()
    }
 }

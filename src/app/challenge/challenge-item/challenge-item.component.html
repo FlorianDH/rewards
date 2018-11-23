@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title"  id="title" >{{challenge.title}}</h5>
       <p class="card-text">{{challenge.points}} <i class="coincolor fas fa-fw fa-coins"></i></p>
-      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Uitgevoerd!</button>
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content, i)">Uitgevoerd!</button>
     </div>
   </div>
   <ng-template #content let-modal>

@@ -15,7 +15,7 @@ import {Challenge} from '../interfaces/challenge';
 })
 export class ChallengeFormComponent implements OnInit {
 
-  constructor() {
+  constructor(private challengeService: ChallengeService) {
 
   }
 
@@ -33,13 +33,13 @@ if (localStorage.getItem('title') !== null && localStorage.getItem('points') !==
 
 }
 
-/*addChallenge()
-{
-  const challenge = new Challenge();
-  challenge.points = document.getElementById('points').value;
-  challenge.title = document.getElementById('title').value;
+addChallenge() {
 
-}*/
+  let points = (<HTMLInputElement>document.getElementById('title')).value;
+  let title = (<HTMLInputElement>document.getElementById('points')).value;
+
+   this.challengeService.addChallenge(title, points);
+}
 
 
 
