@@ -22,8 +22,8 @@ export class ChallengeFormComponent implements OnInit {
   ngOnInit() {
 if (localStorage.getItem('title') !== null && localStorage.getItem('punten') !== null) {
 
-    document.getElementById('title').value = localStorage.title;
-    document.getElementById('points').value = localStorage.punten;
+    (<HTMLInputElement>document.getElementById('title')).value = localStorage.title;
+    (<HTMLInputElement>document.getElementById('points')).value = localStorage.punten;
     localStorage.removeItem('title');
     localStorage.removeItem('punten');
 
