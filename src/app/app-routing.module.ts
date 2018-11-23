@@ -6,7 +6,7 @@ import { RewardComponent } from './reward/reward.component';
 import { AchievementComponent } from './achievement/achievement.component';
 import { Error404Component } from './error404/error404.component';
 import { AdminComponent } from './admin/admin.component';
-import { EmployeesFormComponent} from './employeesForm/employeesForm.component';
+// import { EmployeesFormComponent} from './employeesForm/employeesForm.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogGuard } from './guards/log.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -17,11 +17,12 @@ const routes: Routes = [
   {path: 'challenge', component: ChallengeComponent,canActivate:[LogGuard]},
   {path: 'reward', component: RewardComponent,canActivate:[LogGuard]},
   {path: 'achievement', component: AchievementComponent,canActivate:[LogGuard]},
-  {path: 'form', component: EmployeesFormComponent,canActivate:[LogGuard]},
+  // {path: 'form', component: EmployeesFormComponent,canActivate:[LogGuard]},
   {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
   {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
   {path: 'challengeForm', component: ChallengeFormComponent},
+  // {path:'employeeForm',component:EmployeesFormComponent},
   {path: '**', redirectTo: 'error404',canActivate:[LogGuard]}
 
 ];
