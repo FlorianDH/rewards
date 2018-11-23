@@ -30,10 +30,9 @@ export class ChallengeService {
 
     console.log("request voor de post : " + request.motivation);
     console.log("request voor de post : " + request.challenge_id);
+    console.log("request voor de post : " + request.user_id);
 
    
-
-
     return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests', request, this.httpOptions).pipe(
     tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
     catchError(err => throwError(err))
