@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Observable, throwError } from 'rxjs';
 import { Reward } from '../interfaces/reward';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,10 +10,16 @@ import { Reward } from '../interfaces/reward';
 })
 export class RewardService {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
   rewardsList: Reward[] = [];
 
-  constructor(public data: DataService) {}
+  constructor(public data: DataService, private  http: HttpClient) {}
+
 
   getRewards() {
 
@@ -26,13 +34,13 @@ export class RewardService {
 
          let reward: Reward = {
            points : data[i].points,
-           descriptionShort : data[i].descriptionShort,
+           title : data[i].title,
          };
         
 
          this.rewardsList.push(reward);
 
-         console.log('toegevoegd : ' + reward.descriptionShort );
+         console.log('toegevoegd : ' + reward.title );
 
          }
 

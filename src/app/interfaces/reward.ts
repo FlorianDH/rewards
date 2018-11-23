@@ -1,4 +1,4 @@
 export class Reward {
   points: String;
-  descriptionShort: String;
+  title: String;
 }

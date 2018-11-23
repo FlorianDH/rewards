@@ -28,10 +28,13 @@ export class ChallengeComponent implements OnInit {
     this.challengesList = this.challengeService.getChallenges();
 
     this.request = {
-      motivation : '',
-      challenge_id : '',
-      date : '',
-      isAccepted : false,
+
+    motivation : "",
+    challenge_id : "",
+    user_id : "",
+    date : "",
+    isAccepted : false,
+
     };
   }
 
@@ -53,9 +56,14 @@ export class ChallengeComponent implements OnInit {
       challenge_id : this.challengesList[i]._id,
       date : this.jstoday,
       isAccepted : false,
+      user_id : "5bf548c4673f2b0016b84958", //user1 hardcoded
+      }
+
+      this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
     };
 
-    this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
 
+    
+  
   }
-}
+
