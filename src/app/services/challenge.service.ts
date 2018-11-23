@@ -25,15 +25,13 @@ export class ChallengeService {
   constructor(public data: DataService, private http: HttpClient) {}
 
 
-
-
   addChallangeRequest (request: Request): Observable<Request> {
 
     console.log('request voor de post : ' + request.motivation);
     console.log('request voor de post : ' + request.challenge_id);
 
 
-    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests', request, this.httpOptions).pipe(
+    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests/', request, this.httpOptions).pipe(
     tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
     catchError(err => throwError(err))
     );
