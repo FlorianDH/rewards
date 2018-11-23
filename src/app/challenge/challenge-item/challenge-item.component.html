@@ -1,0 +1,29 @@
+<div *ngFor="let challenge of challengesList; index as i" class="col-xl-4 col-sm-6 mt-3 d-flex">
+  <div class="card text-center flex-fill">
+    <div class="card-body">
+      <h5 class="card-title"  id="title" >{{challenge.title}}</h5>
+      <p class="card-text">{{challenge.points}} <i class="coincolor fas fa-fw fa-coins"></i></p>
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Uitgevoerd!</button>
+    </div>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{challenge.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label class="">Uw motivatie:</label>
+          <input id="motivation" class="form-control" type="text" name="motivation" placeholder="Wat heb ik gedaan?">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="challengeExecuted(i)">Versturen</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>
+

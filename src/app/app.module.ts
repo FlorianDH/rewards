@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import {ChallengeFormModule} from './challengeForm/challengeForm.module';
-import {MedewerkerFormModule} from './medewerkerform/medewerkerForm.module';
+import {EmployeeFormModule} from './employeeform/employeeForm.module';
 import {RewardFormModule} from './rewardForm/rewardForm.module';
 
 @NgModule({
@@ -38,7 +38,7 @@ import {RewardFormModule} from './rewardForm/rewardForm.module';
     AdminModule,
     HttpClientModule,
     ChallengeFormModule,
-    MedewerkerFormModule,
+    EmployeeFormModule,
     RewardFormModule
   ],
   providers: [],
