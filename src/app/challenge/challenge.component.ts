@@ -18,13 +18,9 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   today = new Date();
   jstoday = '';
-  user = JSON.parse(localStorage.getItem("user"));
+  user = JSON.parse(localStorage.getItem('user'));
 
-  closeResult: string; // resultaat van de modal
-
-  constructor(public challengeService: ChallengeService, private modalService: NgbModal) {
-  }
-
+  constructor(public challengeService: ChallengeService, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
