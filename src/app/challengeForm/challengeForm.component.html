@@ -1,9 +1,14 @@
+<script>
+  // localStorage.getItem(title);
+  document.getElementById("naam").innerHTML = localStorage.getItem("title");
+</script>
 <div class="container">
   <form>
     <div class="card" >
     <div class="form-group card-body">
       <label for="naam">Naam challenge:</label>
-      <input type="text" class="form-control" id="naam">
+      <input type="text" class="form-control"  id="naam">
+
       <label for="punten">Aantal punten:</label>
       <input type="text" class="form-control" id="punten">
       <br/>

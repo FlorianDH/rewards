@@ -5,10 +5,16 @@
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
           <div *ngFor="let challenge of challengesList" class="list-group">
-            <a href="#" class="list-group-item">{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i></a>
+            <a href="challengeForm" class="list-group-item">{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i></a>
+            <script>
+              localStorage.setItem('title', '{{challenge.title}}');
+              console.log(localStorage.getItem('title'));
+            </script>
           </div>
           Aanmaken/updaten/verwijderen van mogelijke opdrachten en de daaraan gekoppelde punten<br>
           Bepalen hoeveel ‘credits’ welke uitdaging heeft
+          <br>
+          <a href="challengeForm"> nieuwe challenge aanmaken</a>
         </div>
       </div>
     </div>
@@ -29,9 +35,9 @@
   </div>
   <div class="col-xl-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-trophy"></i> Achievements</h5>
+      <h5 class="card-header"><i class="fas fa-fw fa-trophy"></i> Goedkeuring requests</h5>
       <div class="card-body">
-        <h5 class="card-title">Achievements aanpassen</h5>
+        <h5 class="card-title">lijst requests die goedkeuring nodig hebben</h5>
         <div style="overflow: visible; Height: 500px;">
 
         </div>
