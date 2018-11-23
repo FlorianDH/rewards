@@ -43,7 +43,6 @@ export class RewardService {
          console.log('toegevoegd : ' + reward.title );
 
          }
-
        }
      );
     }

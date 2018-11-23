@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RewardItemComponent implements OnInit {
 
-  @Input() rewardsList: any;        // (1)
+  @Input() rewardsList: any;
   Constructor() { }
 
   ngOnInit() {

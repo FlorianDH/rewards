@@ -37,6 +37,15 @@ export class AdminComponent implements OnInit {
 
   deleteRequest(i){
     console.log(i);
+
   }
 
+  gegevensMeegeven(title, points) {
+    const gegTitle = localStorage.setItem('title', title );
+    const gegPunten = localStorage.setItem('points', points);
+  }
+  
+  deleteUser(id){
+    this.userService.deleteUser(id);
+  }
 }

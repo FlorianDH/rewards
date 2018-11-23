@@ -5,10 +5,9 @@
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
           <div *ngFor="let challenge of challengesList" class="list-group">
-            <a href="challengeForm" class="list-group-item">{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i></a>
+            <a href="challengeForm"  (click)="gegevensMeegeven(challenge.title, challenge.points)"  class="list-group-item">{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i></a>
             <script>
               localStorage.setItem('title', '{{challenge.title}}');
-              console.log(localStorage.getItem('title'));
             </script>
           </div>
           Aanmaken/updaten/verwijderen van mogelijke opdrachten en de daaraan gekoppelde punten<br>
@@ -53,16 +52,17 @@
   </div>
   <div class="col-xl-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill" >
-      <h5 class="card-header"><i class="fas fa-fw fa-user"></i> Employees</h5>
+      <h5 class="card-header"><i class="fas fa-fw fa-user"></i> Employees<button type="button" style="float: right" class="btn btn-succes"><i class="fa fa-plus" aria-hidden="true"></i>
+      </button></h5>
       <div class="card-body">
         <h5 class="card-title">Medewerkers aanpassen</h5>
         <div style="overflow: visible; Height: 500px;">
           <div *ngFor="let user of usersList" class="card mb-2 bg-info text-white">
-            <div class="card-body">{{user.name}} - {{user.isAdmin}}
-              <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+            <div class="card-body">{{user.name}}
+              <button type="button" style="float: right" (click)="deleteUser(user.id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </div>
-            
+
           </div>
         </div>
       </div>

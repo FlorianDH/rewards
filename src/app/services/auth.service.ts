@@ -18,7 +18,7 @@ export class AuthService {
     }
     else
       return true;
-  } 
+  }
 
   login(username:string,password:string){
     const helper = new JwtHelperService();
