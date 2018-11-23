@@ -29,5 +29,7 @@ export class AdminComponent implements OnInit {
     const gegTitle = localStorage.setItem('title', title );
     const gegPunten = localStorage.setItem('points', points);
   }
-
+  deleteUser(id){
+    this.userService.deleteUser(id);
+  }
 }
