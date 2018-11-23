@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-xl-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-bullhorn"></i> Challenges</h5>
+      <h5 class="card-header"><i class="fas fa-fw fa-bullhorn"></i> Challenges<a href="challengeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i>
+      </a></h5>
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
           <div *ngFor="let challenge of challengesList" class="list-group">
@@ -13,7 +14,6 @@
           Aanmaken/updaten/verwijderen van mogelijke opdrachten en de daaraan gekoppelde punten<br>
           Bepalen hoeveel ‘credits’ welke uitdaging heeft
           <br>
-          <a href="challengeForm"> nieuwe challenge aanmaken</a>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Rewards</h5>
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
-          <div *ngFor="let reward of rewardsList" class="list-group">
+          <div  *ngFor="let reward of rewardsList" class="list-group">
             <a href="#" class="list-group-item">{{reward.title}} - {{reward.points}} <i class="fas fa-fw fa-coins"></i></a>
           </div>
           Toekennen van rewards voor een ingegeven ‘event’ van een medewerker<br>

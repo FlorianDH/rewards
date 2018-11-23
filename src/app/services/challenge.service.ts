@@ -41,7 +41,11 @@ export class ChallengeService {
 
   }
   addChallenge (title:string, points:string): Observable<Challenge> {
-    return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, this.httpOptions).pipe(
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, {headers}).pipe(
       tap((challenge: Challenge) => this.log(`added challenge w/ id=${challenge.title}`)),
       catchError(err => throwError(err))
     );

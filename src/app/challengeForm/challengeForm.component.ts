@@ -26,7 +26,6 @@ if (localStorage.getItem('title') !== null && localStorage.getItem('points') !==
 
     (<HTMLInputElement>document.getElementById('title')).value = localStorage.title;
     (<HTMLInputElement>document.getElementById('points')).value = localStorage.points;
-
     localStorage.removeItem('title');
     localStorage.removeItem('points');
 
