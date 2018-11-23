@@ -20,35 +20,32 @@ export class ChallengeService {
     })
   };
 
-  challengesList : Challenge[]  = [];
-  
-  constructor(public data : DataService, private http: HttpClient) {} 
+  challengesList: Challenge[]  = [];
 
-  
+  constructor(public data: DataService, private http: HttpClient) {}
 
-  addChallangeRequest (request: Request) : Observable<Request>{
-
-    console.log("request voor de post : " + request.motivation);
-    console.log("request voor de post : " + request.challenge_id);
-    console.log("request voor de post : " + request.user_id);
 
    
+
+  addChallangeRequest (request: Request): Observable<Request> {
+
+    console.log('request voor de post : ' + request.motivation);
+    console.log('request voor de post : ' + request.challenge_id);
+
+
     return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests', request, this.httpOptions).pipe(
     tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
     catchError(err => throwError(err))
     );
   }
 
-  private log(message: String){
+  private log(message: String) {
 
   }
 
-
    getChallenges() {
-
      if (this.challengesList.length <= 0) {
-       
-     
+
      this.data.getChallenges().subscribe(
        data => {
          console.log('** data ' , data);
@@ -56,7 +53,7 @@ export class ChallengeService {
 
          for (let i = 0; i < data.length; i++) {
 
-         let challenge: Challenge = {
+         const challenge: Challenge = {
            points : data[i].points,
            title : data[i].title,
            _id : data[i]._id,
@@ -64,8 +61,8 @@ export class ChallengeService {
 
 
          this.challengesList.push(challenge);
- 
-         console.log("id van persoon " + i + " : " + challenge._id);
+
+         console.log('id van persoon ' + i + ' : ' + challenge._id);
 
          console.log('toegevoegd : ' + challenge.title);
 
