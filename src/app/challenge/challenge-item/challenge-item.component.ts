@@ -22,43 +22,23 @@ export class ChallengeItemComponent implements OnInit {
   }
 
   open(content, i) {
-    console.log(i);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {}, (reason) => {});
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].title);
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].points);
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i]._id);
   }
 
   challengeExecuted(i) {
-    console.log(i);
     this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
-    //
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].title);
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i].points);
-    // console.log('HIER MOET EEN TITEL KOMEN :' + this.challengesList[i]._id);
-    // console.log('HIER MOET EEN TITEL KOMEN :' + document.getElementById("tekst" + i));
-    const motivation = ((document.getElementById('motivation' + i) as HTMLInputElement).value);
-    console.log('Motivatie is :' + motivation);
-    console.log('HIER MOET EEN datum KOMEN :' + this.jstoday);
+
+    const motivation = ((document.getElementById('motivation') as HTMLInputElement).value);
 
     this.request = {
       motivation : motivation,
       challenge_id : this.challengesList[i]._id,
       date : this.jstoday,
       isAccepted : false,
-      user_id : this.user_id,
+      user_id : this.user._id,
     };
 
     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+    // TODO modal close
   }
 }

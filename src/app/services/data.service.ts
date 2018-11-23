@@ -12,6 +12,15 @@ export class DataService {
 
 
 
+  getRequests(): Observable<any> {
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/challengeRequests?populate=challenge,user').pipe(
+      tap( req => console.log('req ', req)),
+      map( data => {
+        return data.challengeRequests;
+      })
+      );
+  }
+
   
   getChallenges(): Observable<any> {
     return this.http.get<any>('https://reward-platform-api.herokuapp.com/challenges').pipe(

@@ -18,7 +18,7 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   today = new Date();
   jstoday = '';
-  user = JSON.parse(localStorage.getItem("user"));
+  user = JSON.parse(localStorage.getItem('user'));
 
   constructor(public challengeService: ChallengeService, private modalService: NgbModal) {}
 
