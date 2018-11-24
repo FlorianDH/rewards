@@ -25,7 +25,6 @@ export class RewardService {
     token = localStorage.getItem("token").split('"');
   constructor(public data: DataService, private  http: HttpClient) {}
 
-
   addRewardClaim (claim: Claim): Observable<Claim> {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+this.token[1]
@@ -57,7 +56,7 @@ export class RewardService {
      this.data.getRewards().subscribe(
        data => {for (let i = 0; i < data.length; i++) {
            const reward: Reward = {
-             id:data[i]._id,
+             id : data[i]._id,
              points : data[i].points,
              title : data[i].title,
            };

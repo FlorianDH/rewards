@@ -43,14 +43,17 @@ export class UserService {
      })
      let index = this.userList.indexOf(this.userList.find(user => user._id == id));
      this.userList.splice(index, 1);
-    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe()
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/' + id, {headers}).subscribe();
    }
-  addUser(name, password, punten) {
+  addUser(name, password, points) {
     let token = localStorage.getItem('token').split('"')
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
-    })
-    return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
+    });
+    return this.http.post<any>(
+      'https://reward-platform-api.herokuapp.com/users',
+      { 'name': name, 'password': password, 'points': points},
+      {headers});
    }
 
    updateUser (id : any, currentPoints: any, totalPoints: any) {
@@ -59,20 +62,19 @@ export class UserService {
       "Authorization":"bearer "+token[1]
     });
 
-
-    return this.http.patch("https://reward-platform-api.herokuapp.com/users/" + id, [
+    return this.http.patch('https://reward-platform-api.herokuapp.com/users/' + id, [
       {
-      "propName": "currentPoints", "value" : currentPoints
+      'propName': 'currentPoints', 'value' : currentPoints
       },
       {
-        "propName": "totalPoints", "value" : totalPoints
+        'propName': 'totalPoints', 'value' : totalPoints
         }
       ],  {headers} ).subscribe(
         data => {
-            console.log("PUT Request is successful ", data);
+            console.log('PUT Request is successful ', data);
         },
         error => {
-            console.log("Error", error);
+            console.log('Error', error);
         }
     );
 
