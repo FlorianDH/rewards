@@ -8,6 +8,8 @@ import { User } from '../interfaces/user';
 import { RequestService } from '../services/request.service';
 import { Request } from '../interfaces/request';
 import { Claim} from '../interfaces/claim';
+import {ModalDismissReasons, NgbModal, NgbModalRef, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-admin',
@@ -16,9 +18,6 @@ import { Claim} from '../interfaces/claim';
 })
 
 export class AdminComponent implements OnInit {
-
-  // @Input() claimList: any;
-  // @Input() claim: Claim;
 
   challengesList: Challenge[] = [];
   rewardsList: Reward[] = [];

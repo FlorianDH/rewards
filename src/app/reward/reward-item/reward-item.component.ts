@@ -19,7 +19,7 @@ export class RewardItemComponent implements OnInit {
   constructor(public rewardService: RewardService, private modalService: NgbModal) { }
   today = new Date();
   jstoday = '';
-  modalReference:NgbModalRef;
+  modalReference: NgbModalRef;
   closeResult;
   ngOnInit() {
   }
@@ -43,7 +43,7 @@ export class RewardItemComponent implements OnInit {
 
     this.rewardService.addRewardClaim(this.claim).subscribe();
   }
-  close(){
+  close() {
     this.modalReference.close();
   }
   private getDismissReason(reason: any): string {

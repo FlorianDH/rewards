@@ -6,7 +6,6 @@ import { RewardComponent } from './reward/reward.component';
 import { AchievementComponent } from './achievement/achievement.component';
 import { Error404Component } from './error404/error404.component';
 import { AdminComponent } from './admin/admin.component';
-import { RewardFormComponent} from './rewardForm/rewardForm.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogGuard } from './guards/log.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -14,17 +13,16 @@ import { ChallengeFormComponent} from './challengeForm/challengeForm.component';
 import { EmployeeFormComponent } from './employeeform/employeeForm.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent, pathMatch: 'full',canActivate:[AuthGuard]},
-  {path: 'challenge', component: ChallengeComponent,canActivate:[LogGuard]},
-  {path: 'reward', component: RewardComponent,canActivate:[LogGuard]},
-  {path: 'achievement', component: AchievementComponent,canActivate:[LogGuard]},
-  {path: 'form', component: RewardFormComponent,canActivate:[LogGuard]},
-  {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
-  {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
+  {path: '', component: LoginComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'challenge', component: ChallengeComponent, canActivate: [LogGuard]},
+  {path: 'reward', component: RewardComponent, canActivate: [LogGuard]},
+  {path: 'achievement', component: AchievementComponent, canActivate: [LogGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   {path: 'error404', component: Error404Component},
   {path: 'challengeForm', component: ChallengeFormComponent},
-  {path:'employeeForm',component:EmployeeFormComponent},
-  {path: '**', redirectTo: 'error404',canActivate:[LogGuard]}
+  {path: 'employeeForm', component: EmployeeFormComponent},
+  {path: '**', redirectTo: 'error404', canActivate: [LogGuard]}
 
 ];
 

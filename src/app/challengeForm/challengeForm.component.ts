@@ -6,13 +6,8 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './challengeForm.component.html',
-  styles: [`
-    ngb-progressbar {
-      margin-top: 5rem;
-    }
-  `]
+  selector: 'app-challengeform',
+  templateUrl: './challengeForm.component.html'
 })
 export class ChallengeFormComponent implements OnInit {
 
@@ -49,7 +44,7 @@ removeChallenge()
   this.challengeService.deleteChallenge(id);
   localStorage.removeItem('id');
   this.router.navigate(["admin"]);
- 
+
 }
 
 editChallenge() {

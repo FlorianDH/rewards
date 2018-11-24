@@ -5,7 +5,6 @@ import { Reward } from '../interfaces/reward';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
-import {Challenge} from '../interfaces/challenge';
 
 @Injectable({
   providedIn: 'root'
@@ -75,10 +74,10 @@ export class RewardService {
         data => {for (let i = 0; i < data.length; i++) {
             const claim: Claim = {
               _id : data[i]._id,
-              reward_id : data[i].reward,
+              reward : data[i].reward,
               date : data[i].date,
               received : data[i].received,
-              user_id : data[i].user,
+              user : data[i].user,
             };
             this.claimList.push(claim);
           }

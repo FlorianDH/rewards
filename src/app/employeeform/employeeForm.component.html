@@ -2,13 +2,13 @@
   <form #f="ngForm" (submit)="addUser(f.value)">
     <div class="card" >
     <div class="form-group card-body">
-      <label for="naam" >Naam medewerker:</label>
+      <label for="name" >Naam medewerker:</label>
       <input type="text" id="name" class="form-control"
       required
       minlength="3"
       name="name"
       [(ngModel)]="user.name">
-      <label for="wachtwoord">Wachtwoord:</label>
+      <label for="password">Wachtwoord:</label>
       <input type="password" id="password" class="form-control"
       required
       name="password"
