@@ -67,9 +67,9 @@ export class ChallengeService {
     })
     let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
     this.challengesList.splice(index, 1);
-   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/challenges/'+id, {
-    "title": title,
-    "points": points}, 
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/challenges/'+ id, 
+   [{"propName": "title" , "value": title},
+    {"propName":"points", "value": points}], 
     {headers}).subscribe();
 
   }

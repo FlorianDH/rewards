@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
   this.requestService.deleteRequest(id, i);
   }
 
-  gegevensMeegeven(title, points, id) {
+  passDataChallenge(title, points, id) {
     const gegTitle = localStorage.setItem('title', title );
     const gegPunten = localStorage.setItem('points', points);
     const gegId = localStorage.setItem('id', id);
@@ -59,6 +59,6 @@ export class AdminComponent implements OnInit {
   deleteUser(id) {
     this.userService.deleteUser(id);
   }
-  claimReceived(id) {
+  claimReceived(i) {
   }
 }
