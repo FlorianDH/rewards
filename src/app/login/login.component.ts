@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.api.login(data.myName,data.myPassword).pipe().subscribe(token=> {
       let user = JSON.parse(localStorage.getItem("user"));
       localStorage.setItem("admin",user.isAdmin);
-      this.router.navigate(["challenge"])
+      this.router.navigate(["admin"])
     },error =>{
       this.loading = false;
       this.error = "Verkeerd wachtwoord of naam";

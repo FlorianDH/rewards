@@ -24,9 +24,6 @@ export class ChallengeService {
 
   addChallangeRequest (request: Request): Observable<Request> {
 
-    console.log('request voor de post : ' + request.motivation);
-    console.log('request voor de post : ' + request.challenge_id);
-
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]

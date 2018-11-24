@@ -24,7 +24,6 @@ export class ChallengeComponent implements OnInit {
 
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
-    console.log(this.user);
     //
     // this.request = {
     //
