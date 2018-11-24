@@ -38,7 +38,11 @@
       <div class="card-body">
         <h5 class="card-title">lijst requests die goedkeuring nodig hebben</h5>
         <div style="overflow: visible; Height: 500px;">
-
+            <div *ngFor="let request of requestList; index as i" class="card mb-2 bg-info text-white">
+                <div class="card-body">{{request.motivation}},  {{request.user_id.name}}, {{request.challenge_id.title}}
+                  <button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </div>
         </div>
       </div>
     </div>
