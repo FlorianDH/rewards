@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDismissReasons, NgbModal,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {formatDate} from '@angular/common';
 import {Request} from '../../interfaces/request';
 import {ChallengeService} from '../../services/challenge.service';
@@ -17,14 +17,31 @@ export class ChallengeItemComponent implements OnInit {
   constructor(public challengeService: ChallengeService, private modalService: NgbModal) { }
   today = new Date();
   jstoday = '';
-
+  closeResult;
+  modalReference:NgbModalRef;
   ngOnInit() {
   }
 
   open(content, i) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {}, (reason) => {});
+    this.modalReference = this.modalService.open(content);
+    this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
-
+  close(){
+    this.modalReference.close();
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   challengeExecuted(i) {
     this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
 
@@ -40,6 +57,6 @@ export class ChallengeItemComponent implements OnInit {
     };
 
     this.challengeService.addChallangeRequest(this.request).subscribe(test => this);
-    // TODO modal close
+    this.modalReference.close();
   }
 }
