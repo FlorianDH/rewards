@@ -35,6 +35,12 @@ export class AdminComponent implements OnInit {
   }
 
 
+  acceptRequest(i){
+
+    const id = this.requestList[i]._id;
+    this.requestService.acceptRequest(id, i);
+  }
+
   deleteRequest(i){
   
   const id = this.requestList[i]._id;
