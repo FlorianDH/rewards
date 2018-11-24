@@ -23,11 +23,6 @@ export class ChallengeService {
 
 
   addChallangeRequest (request: Request): Observable<Request> {
-
-    console.log('request voor de post : ' + request.motivation);
-    console.log('request voor de post : ' + request.challenge_id);
-
-
     return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests/', request, this.httpOptions).pipe(
     tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
     catchError(err => throwError(err))
@@ -62,7 +57,6 @@ export class ChallengeService {
 
      this.data.getChallenges().subscribe(
        data => {
-         console.log('** data ' , data);
 
 
          for (let i = 0; i < data.length; i++) {
@@ -75,10 +69,6 @@ export class ChallengeService {
 
 
          this.challengesList.push(challenge);
-
-         console.log('id van persoon ' + i + ' : ' + challenge._id);
-
-         console.log('toegevoegd : ' + challenge.title);
 
          }
 

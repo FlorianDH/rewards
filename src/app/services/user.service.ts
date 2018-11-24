@@ -23,9 +23,9 @@ export class UserService {
               id: data[i]._id,
               name: data[i].name,
               password: "***",
-              isAdmin: data[i].isAdmin
+              isAdmin: data[i].isAdmin,
+              points: data[i].currentPoints
              };
-            
     
              this.userList.push(user);
           }
