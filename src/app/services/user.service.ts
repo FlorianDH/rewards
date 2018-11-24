@@ -20,7 +20,7 @@ export class UserService {
           for (let i = 0; i < data.length; i++) {
             if (data[i].isAdmin === false) {
               let user: User = {
-                id: data[i]._id,
+                _id: data[i]._id,
                 name: data[i].name,
                 password: '***',
                 isAdmin: data[i].isAdmin,
@@ -34,35 +34,35 @@ export class UserService {
     }
      return this.userList;
    }
-   deleteUser(id){
-     let token = localStorage.getItem("token").split('"')
+   deleteUser(id) {
+     let token = localStorage.getItem('token').split('"');
      let headers : HttpHeaders = new HttpHeaders({
-       "Authorization":"bearer "+token[1]
-     })
-     let index = this.userList.indexOf(this.userList.find(user => user.id == id));
+       'Authorization': 'bearer ' + token[1]
+     });
+     let index = this.userList.indexOf(this.userList.find(user => user._id === id));
      this.userList.splice(index, 1);
-    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe()
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe();
    }
 
-   addUser(name,password,punten){
-    let token = localStorage.getItem("token").split('"')
+   addUser(name,password,points){
+    let token = localStorage.getItem('token').split('"');
 
     let headers : HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
-    })
-    let index = this.userList.indexOf(this.userList.find(user => user.id === id));
+    });
+    let index = this.userList.indexOf(this.userList.find(user => user._id === id));
     this.userList.splice(index, 1);
     return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/' + id, { headers }).subscribe();
   }
-  addUser(name, password, punten) {
-    let token = localStorage.getItem('token').split('"')
+  addUser(name, password, points) {
+    let token = localStorage.getItem('token').split('"');
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
     })
-    return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
+    return this.http.post<any>('https://reward-platform-api.herokuapp.com/users', { 'name': name, 'password': password, 'points': points}, {headers});
    }
 
-
+z
 
 
    updateUser (id : any, currentPoints: any, totalPoints: any) {
