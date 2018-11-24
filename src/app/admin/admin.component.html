@@ -45,6 +45,8 @@
                 <div class="card-body">{{request.motivation}},  {{request.user_id.name}}, {{request.challenge_id.title}}
                   <button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
+                  <button type="button" style="float: right" (click)="acceptRequest(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i>
+                  </button>
                 </div>
         </div>
       </div>
