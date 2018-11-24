@@ -48,19 +48,35 @@ export class ChallengeService {
       "Authorization":"bearer "+token[1]
     });
     return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, {headers}).pipe(
-      tap((challenge: Challenge) => this.log(`added challenge w/ id=${challenge.title}`)),
+      tap((challenge: Challenge) => this.log(`added challenge w/ title=${challenge.title}`)),
       catchError(err => throwError(err))
     );
   }
-  deleteChallenge(id){
+
+  deleteChallenge(id: any){
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     })
     let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
     this.challengesList.splice(index, 1);
-   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challenges/'+id,{headers}).subscribe()
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challenges/'+id,{headers}).subscribe();
   }
+
+  EditChallenge(id, title ,points) {
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
+    this.challengesList.splice(index, 1);
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/challenges/'+id, {
+    "title": title,
+    "points": points}, 
+    {headers}).subscribe();
+
+  }
+
 
    getChallenges() {
      if (this.challengesList.length <= 0) {

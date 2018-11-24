@@ -7,12 +7,6 @@
         <div style="overflow: auto; Height: 500px;">
           <div *ngFor="let challenge of challengesList" class="list-group ">
             <a href="challengeForm"  (click)="gegevensMeegeven(challenge.title, challenge.points, challenge._id)"  class="list-group-item">{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i></a>
-          <!--  <div class="card-body" >{{challenge.title}} - {{challenge.points}} <i class="fas fa-fw fa-coins"></i>
-              <button type="button" style="float: right" href="challengeForm" (click)="gegevensMeegeven(challenge.title, challenge.points)" class="btn btn-danger"><i class="fa fa-edit" aria-hidden="true"></i>
-              </button> 
-              <button type="button" style="float: right" (click)="deleteUser(user.id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>-->
           </div>
           Aanmaken/updaten/verwijderen van mogelijke opdrachten en de daaraan gekoppelde punten<br>
           Bepalen hoeveel ‘credits’ welke uitdaging heeft
