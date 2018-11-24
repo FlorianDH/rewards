@@ -31,6 +31,8 @@ export class RequestService {
 
     this.requestList[i].isAccepted = true;
     
+    
+    
     return this.http.patch("https://reward-platform-api.herokuapp.com/challengeRequests/" + id, [{
       "propName": "isAccepted", "value" : "true"
       }],  {headers} ).subscribe(
