@@ -30,8 +30,6 @@ export class AdminComponent implements OnInit {
     this.rewardsList = this.rewardService.getRewards();
     this.usersList = this.userService.getUsers();
     this.requestList = this.requestService.getRequests();
-
-    
   }
 
 

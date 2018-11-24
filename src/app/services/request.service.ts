@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class RequestService {
   
 
 
-  constructor(public data: DataService,private http: HttpClient) {
+  constructor(private userService: UserService ,public data: DataService,private http: HttpClient) {
     
    }
 
@@ -29,8 +30,17 @@ export class RequestService {
     });
     
 
+    let user = this.requestList[i].user_id;
+    let challenge = this.requestList[i].challenge_id;
+   
+    user.currentPoints += challenge.points;
+    user.totalPoints += challenge.points;
+    console.log( user.currentPoints);
+    console.log( challenge.points);
+
+    this.userService.updateUser(user._id, user.currentPoints, user.totalPoints);
+
     this.requestList[i].isAccepted = true;
-    
     
     
     return this.http.patch("https://reward-platform-api.herokuapp.com/challengeRequests/" + id, [{
