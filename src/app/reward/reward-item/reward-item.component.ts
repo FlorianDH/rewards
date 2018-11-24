@@ -33,16 +33,15 @@ export class RewardItemComponent implements OnInit {
     });
 
     this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
-
     this.claim = {
-      reward_id : this.rewardsList[i]._id,
+      reward_id : this.rewardsList[i].id,
       date : this.jstoday,
       received : false,
       user_id : this.user._id,
       _id : ''
     };
 
-    this.rewardService.addRewardClaim(this.claim).subscribe(test => this);
+    this.rewardService.addRewardClaim(this.claim).subscribe();
   }
   close(){
     this.modalReference.close();

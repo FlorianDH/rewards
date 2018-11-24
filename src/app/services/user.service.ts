@@ -53,7 +53,7 @@ export class UserService {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     })
-    return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten})
+    return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
    }
 
 
