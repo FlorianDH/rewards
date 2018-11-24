@@ -67,7 +67,6 @@ export class ChallengeService {
 
      this.data.getChallenges().subscribe(
        data => {
-         console.log('** data ' , data);
 
 
          for (let i = 0; i < data.length; i++) {
@@ -80,10 +79,6 @@ export class ChallengeService {
 
 
          this.challengesList.push(challenge);
-
-         console.log('id van persoon ' + i + ' : ' + challenge._id);
-
-         console.log('toegevoegd : ' + challenge.title);
 
          }
 

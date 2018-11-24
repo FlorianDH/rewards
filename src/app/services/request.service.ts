@@ -67,7 +67,6 @@ export class RequestService {
 
     this.data.getRequests().subscribe(
       data => {
-        console.log('** data ' , data);
 
         
         for (let i = 0; i < data.length; i++) {
