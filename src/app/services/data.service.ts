@@ -10,15 +10,6 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getRequests(): Observable<any> {
-    return this.http.get<any>('https://reward-platform-api.herokuapp.com/challengeRequests?populate=challenge,user').pipe(
-      tap(),
-      map( data => {
-        return data.challengeRequests;
-      })
-      );
-  }
-
   getChallenges(): Observable<any> {
     return this.http.get<any>('https://reward-platform-api.herokuapp.com/challenges').pipe(
       tap(),
@@ -47,12 +38,20 @@ export class DataService {
   }
 
   getClaims(): Observable<any> {
-    return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewardClaims?populate=reward,user').pipe(
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewardclaims?populate=reward,user').pipe(
+      tap(),
+      map( data => {
+        return data.rewardClaims;
+      })
+    );
+  }
+
+  getRequests(): Observable<any> {
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/challengerequests?populate=challenge,user').pipe(
       tap(),
       map( data => {
         return data.challengeRequests;
       })
     );
   }
-
 }

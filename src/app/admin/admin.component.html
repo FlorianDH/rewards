@@ -1,16 +1,86 @@
 <div class="row">
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Reward claims</h5>
-      <div class="card-body">
-        <div style="overflow: auto; Height: 500px;">
-          <div *ngFor="let claim of claimList; index as i" class="list-group ">
-            <p class="list-group-item"> ezfzf efez  fe{{claim._id}} -  <a (click)="claimReceived(i)" class="btn"><i class="fas fa-fw fa-check-circle"></i></a></p>
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="claimTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="claims-tab" data-toggle="tab" href="#claims" role="tab" aria-controls="claims" aria-selected="true"><i class="fas fa-fw fa-award"></i> Reward claims</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="claimsHistory-tab" data-toggle="tab" href="#claimHistory" role="tab" aria-controls="claimHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> History</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content" id="tabclaim">
+          <div class="tab-pane fade show active" id="claims" role="tabpanel" aria-labelledby="claims-tab">
+            <div style="overflow: auto; Height: 500px;">
+              <div *ngFor="let claim of claimList; index as i" class="list-group">
+                <p class="list-group-item">{{claim.user.name}} -  <a (click)="claimReceived(i)" class="btn"><i class="fas fa-fw fa-check-circle"></i></a></p>
+              </div>
+            </div>
           </div>
+          <div class="tab-pane fade" id="claimHistory" role="tabpanel" aria-labelledby="claimsHistory-tab">
+            Claim History
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12 mb-3 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="requestTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="true"><i class="fas fa-fw fa-bullhorn"></i> Challenge requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="requestsHistory-tab" data-toggle="tab" href="#requestsHistory" role="tab" aria-controls="requestsHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> History</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content" id="tabrequest">
+        <div class="tab-pane fade show active" id="requests" role="tabpanel" aria-labelledby="requests-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <div *ngFor="let request of requestList; index as i" class="list-group">
+              <div class="list-group-item">
+                <span class="mr-3 font-weight-bold">{{request.user_id.name}},</span> {{request.challenge_id.title}}
+                <button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button type="button" style="float: right" (click)="acceptRequest(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                <br>
+                <span>{{request.motivation}}</span>
+                <br>
+                <span class="small">{{ request.date | date:'dd-LL-yy, H:mm' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="requestsHistory" role="tabpanel" aria-labelledby="requestsHistory-tab">
+          Request History
         </div>
       </div>
     </div>
   </div>
+
+  <!--<div class="col-lg-6 col-md-12 mb-3 d-flex">-->
+    <!--<div class="card flex-fill">-->
+      <!--<h5 class="card-header"><i class="fas fa-fw fa-trophy"></i> Goedkeuring requests</h5>-->
+      <!--<div class="card-body">-->
+        <!--<h5 class="card-title">lijst requests die goedkeuring nodig hebben</h5>-->
+        <!--<div style="overflow: visible; Height: 500px;">-->
+          <!--<div *ngFor="let request of requestList; index as i" class="card mb-2 bg-info text-white">-->
+            <!--<div class="card-body">{{request.motivation}},  {{request.user_id.name}}, {{request.challenge_id.title}}-->
+              <!--<button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>-->
+              <!--</button>-->
+              <!--<button type="button" style="float: right" (click)="acceptRequest(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i>-->
+              <!--</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <h5 class="card-header"><i class="fas fa-fw fa-bullhorn"></i> Challenges<a href="challengeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i></a></h5>
@@ -28,35 +98,17 @@
   </div>
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Rewards</h5>
+      <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Rewards<a href="rewardForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i></a></h5>
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
           <div  *ngFor="let reward of rewardsList" class="list-group">
-            <a href="#" class="list-group-item">{{reward.title}} - {{reward.points}} <i class="fas fa-fw fa-coins"></i></a>
+            <a href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward.id)" class="list-group-item">{{reward.title}} - {{reward.points}} <i class="fas fa-fw fa-coins"></i></a>
           </div>
           Toekennen van rewards voor een ingegeven ‘event’ van een medewerker<br>
           Als medewerker een opdracht heeft voltooid moet de administrator zijn toestemming geven om de rewards uit te keren
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-6 col-md-12 mb-3 d-flex">
-    <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-trophy"></i> Goedkeuring requests</h5>
-      <div class="card-body">
-        <h5 class="card-title">lijst requests die goedkeuring nodig hebben</h5>
-        <div style="overflow: visible; Height: 500px;">
-            <div *ngFor="let request of requestList; index as i" class="card mb-2 bg-info text-white">
-                <div class="card-body">{{request.motivation}},  {{request.user_id.name}}, {{request.challenge_id.title}}
-                  <button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" style="float: right" (click)="acceptRequest(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i>
-                  </button>
-                </div>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
   <div class="col-lg-6  col-md-12 mb-3 d-flex">
     <div class="card flex-fill" >

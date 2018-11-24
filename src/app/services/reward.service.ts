@@ -5,7 +5,6 @@ import { Reward } from '../interfaces/reward';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
-import {Challenge} from '../interfaces/challenge';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +45,30 @@ export class RewardService {
     );
   }
 
+  deleteReward(id: any){
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward.id == id));
+    this.rewardsList.splice(index, 1);
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/rewards/'+id,{headers}).subscribe();
+  }
+
+  EditReward(id: any, title: string ,points: string) {
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward.id == id));
+    this.rewardsList.splice(index, 1);
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/rewards/'+ id, 
+   [{"propName": "title" , "value": title},
+    {"propName":"points", "value": points}], 
+    {headers}).subscribe();
+
+  }
+
   private log(message: String) {
 
   }
@@ -75,10 +98,10 @@ export class RewardService {
         data => {for (let i = 0; i < data.length; i++) {
             const claim: Claim = {
               _id : data[i]._id,
-              reward_id : data[i].reward,
+              reward : data[i].reward,
               date : data[i].date,
               received : data[i].received,
-              user_id : data[i].user,
+              user : data[i].user,
             };
             this.claimList.push(claim);
           }

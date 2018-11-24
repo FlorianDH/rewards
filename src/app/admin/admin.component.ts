@@ -8,6 +8,8 @@ import { User } from '../interfaces/user';
 import { RequestService } from '../services/request.service';
 import { Request } from '../interfaces/request';
 import { Claim} from '../interfaces/claim';
+import {ModalDismissReasons, NgbModal, NgbModalRef, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-admin',
@@ -16,9 +18,6 @@ import { Claim} from '../interfaces/claim';
 })
 
 export class AdminComponent implements OnInit {
-
-  // @Input() claimList: any;
-  // @Input() claim: Claim;
 
   challengesList: Challenge[] = [];
   rewardsList: Reward[] = [];
@@ -50,10 +49,16 @@ export class AdminComponent implements OnInit {
   this.requestService.deleteRequest(id, i);
   }
 
-  passDataChallenge(title, points, id) {
-    const gegTitle = localStorage.setItem('title', title );
-    const gegPunten = localStorage.setItem('points', points);
-    const gegId = localStorage.setItem('id', id);
+  passDataChallenge(title, points,id) {
+    localStorage.setItem('title', title );
+    localStorage.setItem('points', points);
+    localStorage.setItem('id',id);
+  }
+
+  passDataReward(title, points, id) {
+    localStorage.setItem('title', title );
+    localStorage.setItem('points', points);
+    localStorage.setItem('id',id);
   }
 
   deleteUser(id) {

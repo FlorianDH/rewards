@@ -20,7 +20,7 @@ export class RewardItemComponent implements OnInit {
   constructor(public rewardService: RewardService, private modalService: NgbModal, private userService:UserService) { }
   today = new Date();
   jstoday = '';
-  modalReference:NgbModalRef;
+  modalReference: NgbModalRef;
   closeResult;
   currentPoints = 0;
 
@@ -49,7 +49,7 @@ export class RewardItemComponent implements OnInit {
     this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
     this.rewardService.addRewardClaim(this.claim).subscribe();
   }
-  close(){
+  close() {
     this.modalReference.close();
   }
   private getDismissReason(reason: any): string {

@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-employeeform',
   templateUrl: './employeeForm.component.html',
   styles: [`
     ngb-progressbar {

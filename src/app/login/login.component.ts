@@ -22,11 +22,19 @@ export class LoginComponent implements OnInit {
   }
   setUser(data) {
     this.loading = true;
+<<<<<<< HEAD
     this.api.login(data.myName, data.myPassword).pipe().subscribe(token => {
       const user = JSON.parse(localStorage.getItem('user'));
       localStorage.setItem('admin', user.isAdmin);
       this.router.navigate(['admin']);
     }, error => {
+=======
+    this.api.login(data.myName,data.myPassword).pipe().subscribe(token=> {
+      let user = JSON.parse(localStorage.getItem("user"));
+      localStorage.setItem("admin",user.isAdmin);
+      this.router.navigate(["admin"])
+    },error =>{
+>>>>>>> 8d930f2b1083d14eb5b10f631bb04e05611a0e34
       this.loading = false;
       this.error = 'Verkeerd wachtwoord of naam';
     }
