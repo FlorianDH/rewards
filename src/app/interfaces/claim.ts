@@ -1,7 +1,7 @@
 export interface Claim {
   _id: String;
-  reward: any;
-  date: String;
+  reward_id: any;
+  date: any;
   received: Boolean;
-  user: any;
+  user_id: any;
 }

@@ -12,14 +12,15 @@ import { UserService } from './user.service';
 export class RequestService {
 
   requestList: Request[] = [];
+  requestHistoryList: Request[] = [];
 
-  constructor(private userService: UserService ,public data: DataService,private http: HttpClient) {}
+  constructor(private userService: UserService, public data: DataService, private http: HttpClient) {}
 
   private log(message: String) {
 
   }
 
-   acceptRequest (id: any, i : any) {
+   acceptRequest (id: any, i: any) {
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
@@ -50,7 +51,7 @@ export class RequestService {
 
   }
 
-  deleteRequest(id: any, i : any): any {
+  deleteRequest(id: any, i: any): any {
 
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
@@ -58,10 +59,8 @@ export class RequestService {
     });
 
     this.requestList.splice(i, 1);
-    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challengeRequests/'+ id, {headers}).subscribe();
-
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challengeRequests/' + id, {headers}).subscribe();
   }
-
 
   getRequests() {
     if (this.requestList.length <= 0) {
@@ -72,7 +71,7 @@ export class RequestService {
 
         for (let i = 0; i < data.length; i++) {
 
-        if (data[i].isAccepted == false) {
+        if (data[i].isAccepted === false) {
 
           const request: Request = {
             motivation : data[i].motivation,
@@ -91,6 +90,28 @@ export class RequestService {
     return this.requestList;
   }
 
+  getRequestsHistory() {
+    if (this.requestHistoryList.length <= 0) {
 
+      this.data.getRequests().subscribe(
+        data => {
+          for (let i = 0; i < 20; i++) {
+            if (data[i].isAccepted === true) {
 
+              const request: Request = {
+                motivation : data[i].motivation,
+                challenge_id : data[i].challenge,
+                _id : data[i]._id,
+                date : data[i].date,
+                isAccepted : data[i].isAccepted,
+                user_id : data[i].user,
+              };
+              this.requestHistoryList.push(request);
+            }
+          }
+        }
+      );
+    }
+    return this.requestHistoryList;
+  }
 }

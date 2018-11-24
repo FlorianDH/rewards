@@ -8,8 +8,6 @@ import { User } from '../interfaces/user';
 import { RequestService } from '../services/request.service';
 import { Request } from '../interfaces/request';
 import { Claim} from '../interfaces/claim';
-import {ModalDismissReasons, NgbModal, NgbModalRef, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
-
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +21,9 @@ export class AdminComponent implements OnInit {
   rewardsList: Reward[] = [];
   usersList: User[] = [];
   requestList: Request[] = [];
+  requestHistoryList: Request[] = [];
   claimList: Claim[] = [];
+  claimHistoryList: Claim[] = [];
 
   constructor(private requestService: RequestService,
               private challengeService: ChallengeService,
@@ -34,8 +34,10 @@ export class AdminComponent implements OnInit {
     this.challengesList = this.challengeService.getChallenges();
     this.rewardsList = this.rewardService.getRewards();
     this.claimList = this.rewardService.getClaims();
+    this.claimHistoryList = this.rewardService.getClaimsHistory();
     this.usersList = this.userService.getUsers();
     this.requestList = this.requestService.getRequests();
+    this.requestHistoryList = this.requestService.getRequestsHistory();
   }
 
   acceptRequest(i) {
@@ -49,16 +51,16 @@ export class AdminComponent implements OnInit {
   this.requestService.deleteRequest(id, i);
   }
 
-  passDataChallenge(title, points,id) {
+  passDataChallenge(title, points, id) {
     localStorage.setItem('title', title );
     localStorage.setItem('points', points);
-    localStorage.setItem('id',id);
+    localStorage.setItem('id', id);
   }
 
   passDataReward(title, points, id) {
     localStorage.setItem('title', title );
     localStorage.setItem('points', points);
-    localStorage.setItem('id',id);
+    localStorage.setItem('id', id);
   }
 
   deleteUser(id) {

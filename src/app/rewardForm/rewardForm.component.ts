@@ -6,11 +6,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form',
   templateUrl: './rewardForm.component.html',
-  styles: [`
-    ngb-progressbar {
-      margin-top: 5rem;
-    }
-  `]
 })
 export class RewardFormComponent implements OnInit {
 
@@ -23,7 +18,6 @@ export class RewardFormComponent implements OnInit {
       (<HTMLInputElement>document.getElementById('points')).value = localStorage.points;
       localStorage.removeItem('title');
       localStorage.removeItem('points');
-  
   }
   }
 
@@ -41,7 +35,7 @@ export class RewardFormComponent implements OnInit {
   this.rewardService.deleteReward(id);
   localStorage.removeItem('id');
   this.router.navigate(["admin"]);
- 
+
 }
 
 editReward() {
