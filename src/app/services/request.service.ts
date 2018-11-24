@@ -35,11 +35,11 @@ export class RequestService {
    
     user.currentPoints += challenge.points;
     user.totalPoints += challenge.points;
-    console.log( user.currentPoints);
-    console.log( challenge.points);
+    
 
     this.userService.updateUser(user._id, user.currentPoints, user.totalPoints);
 
+    //hier jens!!!
     this.requestList[i].isAccepted = true;
     
     
