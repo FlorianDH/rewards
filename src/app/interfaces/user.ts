@@ -1,7 +1,8 @@
 export class User {
-  id: string;
+  _id: string;
   name: string;
   password: string;
   isAdmin: string;
-  points:string;
+  currentPoints: string;
+  totalPoints: string;
 }

@@ -10,16 +10,12 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class RequestService {
-  
-  requestList : Request[] = [];
-  
 
+  requestList: Request[] = [];
 
-  constructor(private userService: UserService ,public data: DataService,private http: HttpClient) {
-    
-   }
+  constructor(private userService: UserService ,public data: DataService,private http: HttpClient) {}
 
-   private log(message: String) {
+  private log(message: String) {
 
   }
 
@@ -28,21 +24,19 @@ export class RequestService {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     });
-    
+
+    this.requestList[i].isAccepted = true;
 
     let user = this.requestList[i].user_id;
     let challenge = this.requestList[i].challenge_id;
-   
+
     user.currentPoints += challenge.points;
     user.totalPoints += challenge.points;
-    
 
     this.userService.updateUser(user._id, user.currentPoints, user.totalPoints);
 
-    //hier jens!!!
     this.requestList[i].isAccepted = true;
-    
-    
+
     return this.http.patch("https://reward-platform-api.herokuapp.com/challengeRequests/" + id, [{
       "propName": "isAccepted", "value" : "true"
       }],  {headers} ).subscribe(
@@ -52,12 +46,9 @@ export class RequestService {
         error => {
             console.log("Error", error);
         }
-    );  
-    
+    );
+
   }
-
-
-
 
   deleteRequest(id: any, i : any): any {
 
@@ -68,7 +59,7 @@ export class RequestService {
 
     this.requestList.splice(i, 1);
     return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challengeRequests/'+ id, {headers}).subscribe();
-   
+
   }
 
 
@@ -78,9 +69,9 @@ export class RequestService {
     this.data.getRequests().subscribe(
       data => {
 
-        
+
         for (let i = 0; i < data.length; i++) {
-        
+
         if (data[i].isAccepted == false) {
 
           const request: Request = {
@@ -91,17 +82,11 @@ export class RequestService {
             isAccepted : data[i].isAccepted,
             user_id : data[i].user,
           };
-
-
           this.requestList.push(request);
-
           }
-
         }
-
       }
     );
-
    }
     return this.requestList;
   }

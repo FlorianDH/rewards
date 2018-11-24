@@ -9,33 +9,31 @@ import { User } from '../interfaces/user';
 export class UserService {
   userList: User[] = [];
 
-  constructor(private dataService:DataService,private http: HttpClient) { }
+  constructor(private dataService: DataService, private http: HttpClient) { }
   getUsers() {
 
     if (this.userList.length <= 0) {
 
-     this.dataService.getUsers().subscribe(
-       data => {
+      this.dataService.getUsers().subscribe(
+        data => {
 
-         for (let i = 0; i < data.length; i++) {
-          if(data[i].isAdmin == false){
-            let user: User = {
-              id: data[i]._id,
-              name: data[i].name,
-              password: "***",
-              isAdmin: data[i].isAdmin,
-              points: data[i].currentPoints
-             };
-    
-             this.userList.push(user);
-          }
-
-
-         }
-
-       }
-     );
-    }
+          for (let i = 0; i < data.length; i++) {
+            let user:User;
+            if (data[i].isAdmin === false) {
+              user = {
+                _id: data[i]._id,
+                name: data[i].name,
+                password: '***',
+                isAdmin: data[i].isAdmin,
+                currentPoints: data[i].currentPoints,
+                totalPoints:  data[i].totalPoints
+              }
+              };
+              this.userList.push(user);
+            }
+          }        
+      );
+        }
      return this.userList;
    }
    deleteUser(id){
@@ -43,15 +41,14 @@ export class UserService {
      let headers : HttpHeaders = new HttpHeaders({
        "Authorization":"bearer "+token[1]
      })
-     let index = this.userList.indexOf(this.userList.find(user => user.id == id));
+     let index = this.userList.indexOf(this.userList.find(user => user._id == id));
      this.userList.splice(index, 1);
     return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe()
    }
-
-   addUser(name,password,punten){
-    let token = localStorage.getItem("token").split('"')
-    let headers : HttpHeaders = new HttpHeaders({
-      "Authorization":"bearer "+token[1]
+  addUser(name, password, punten) {
+    let token = localStorage.getItem('token').split('"')
+    let headers: HttpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + token[1]
     })
     return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
    }
@@ -61,8 +58,8 @@ export class UserService {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     });
-    
-   
+
+
     return this.http.patch("https://reward-platform-api.herokuapp.com/users/" + id, [
       {
       "propName": "currentPoints", "value" : currentPoints
@@ -77,12 +74,8 @@ export class UserService {
         error => {
             console.log("Error", error);
         }
-    );  
-    
+    );
+
   }
-
-
-
-
 
 }
