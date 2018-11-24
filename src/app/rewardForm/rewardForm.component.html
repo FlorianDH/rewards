@@ -2,15 +2,15 @@
   <form>
     <div class="card" >
     <div class="form-group card-body">
-      <label for="naam">Naam reward:</label>
-      <input type="text" class="form-control" id="naam">
-      <label for="punten">Aantal punten:</label>
-      <input type="text" class="form-control" id="punten">
+      <label for="title">Naam reward:</label>
+      <input type="text" class="form-control" id="title">
+      <label for="points">Aantal punten:</label>
+      <input type="text" class="form-control" id="points">
       <br/>
       <div  style="text-align: center">
-        <a  href="#" class="btn btn-primary m-1">Toevoegen</a>
-        <a href="#" class="btn btn-primary m-1">Aanpassen</a>
-        <a href="#" class="btn btn-primary m-1">Verwijderen</a>
+        <a (click)="addReward()" class="btn text-white btn-primary m-1">Toevoegen</a>
+        <a (click)="editReward()" class="btn text-white btn-primary m-1">Aanpassen</a>
+        <a (click)="removeReward()" class="btn text-white btn-primary m-1">Verwijderen</a>
       </div>
 
     </div>

@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChallengeFormModule} from './challengeForm/challengeForm.module';
 import { EmployeeFormModule} from './employeeform/employeeForm.module';
 import { RewardFormModule} from './rewardForm/rewardForm.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RewardFormModule} from './rewardForm/rewardForm.module';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

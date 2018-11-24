@@ -49,10 +49,16 @@ export class AdminComponent implements OnInit {
   this.requestService.deleteRequest(id, i);
   }
 
-  passDataChallenge(title, points, id) {
-    const gegTitle = localStorage.setItem('title', title );
-    const gegPunten = localStorage.setItem('points', points);
-    const gegId = localStorage.setItem('id', id);
+  passDataChallenge(title, points,id) {
+    localStorage.setItem('title', title );
+    localStorage.setItem('points', points);
+    localStorage.setItem('id',id);
+  }
+
+  passDataReward(title, points, id) {
+    localStorage.setItem('title', title );
+    localStorage.setItem('points', points);
+    localStorage.setItem('id',id);
   }
 
   deleteUser(id) {
