@@ -56,9 +56,6 @@ export class UserService {
     return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
    }
 
-
-
-
    updateUser (id : any, currentPoints: any, totalPoints: any) {
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
