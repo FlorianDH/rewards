@@ -1,21 +1,31 @@
 <div class="container">
-  <form>
+  <form #f="ngForm" (submit)="addUser(f.value)">
     <div class="card" >
     <div class="form-group card-body">
-      <label for="naam">Naam medewerker:</label>
-      <input type="text" class="form-control" id="naam">
+      <label for="naam" >Naam medewerker:</label>
+      <input type="text" id="name" class="form-control"
+      required
+      minlength="3"
+      name="name"
+      [(ngModel)]="user.name">
       <label for="wachtwoord">Wachtwoord:</label>
-      <input type="password" class="form-control" id="wachtwoord">
+      <input type="password" id="password" class="form-control"
+      required
+      name="password"
+      [(ngModel)]="user.password">
       <div class="row m-2">
         <label for="punten">punten:</label>
         <div class="col-2">
-          <input type="text" width="20px" class="form-control" id="punten">
+          <input type="text" width="40px" id="punten" class="form-control"
+          required
+          name="punten"
+          [(ngModel)]="user.punten">
         </div>
       </div>
 
       <br/>
       <div  style="text-align: center">
-        <a class="btn text-white btn-primary m-1">Toevoegen</a>
+        <button type="submit" class="btn text-white btn-primary m-1">Toevoegen</button>
       </div>
     </div>
     </div>

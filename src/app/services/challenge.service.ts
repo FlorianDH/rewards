@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
+import { catchError, tap } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
-
 
 @Injectable({
   providedIn: 'root'
@@ -40,13 +37,25 @@ export class ChallengeService {
   private log(message: String) {
 
   }
-  addChallenge (title:string, points:string): Observable<Challenge> {
-    return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, this.httpOptions).pipe(
+  addChallenge (title: string, points: string): Observable<Challenge> {
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, {headers}).pipe(
       tap((challenge: Challenge) => this.log(`added challenge w/ id=${challenge.title}`)),
       catchError(err => throwError(err))
     );
   }
-
+  deleteChallenge(id){
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
+    this.challengesList.splice(index, 1);
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/challenges/'+id,{headers}).subscribe()
+  }
 
    getChallenges() {
      if (this.challengesList.length <= 0) {

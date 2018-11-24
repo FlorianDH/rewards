@@ -25,7 +25,7 @@ export class ChallengeFormComponent implements OnInit {
 if (localStorage.getItem('title') !== null && localStorage.getItem('points') !== null) {
 
     (<HTMLInputElement>document.getElementById('title')).value = localStorage.title;
-    (<HTMLInputElement>document.getElementById('points')).value = localStorage.punten;
+    (<HTMLInputElement>document.getElementById('points')).value = localStorage.points;
     localStorage.removeItem('title');
     localStorage.removeItem('points');
 
@@ -39,6 +39,14 @@ addChallenge() {
   let points = (<HTMLInputElement>document.getElementById('points')).value;
   console.log(title);
   this.challengeService.addChallenge(title, points).subscribe();
+}
+
+removeChallenge()
+{
+  let id = localStorage.id;
+  this.challengeService.deleteChallenge(id);
+  localStorage.removeItem('id');
+
 }
 
 

@@ -1,10 +1,21 @@
-<div *ngFor="let reward of rewardsList" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
+<div *ngFor="let reward of rewardsList; index as i" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-3 d-flex">
   <div class="card text-center flex-fill">
     <div class="card-body">
       <h5 class="card-title">{{ reward.title}}</h5>
       <p class="card-text">
-        <a href="#" class="btn btn-primary">{{ reward.points }} <i class="fas fa-fw fa-coins"></i></a>
+        <button class="btn btn-lg btn-outline-primary" (click)="rewardClaimed(content, i)">{{ reward.points }} <i class="fas fa-fw fa-coins"></i></button>
       </p>
     </div>
   </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{reward.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Uw reward is succesvol geclaimed!</p>
+    </div>
+  </ng-template>
 </div>
