@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'challenge', component: ChallengeComponent,canActivate:[LogGuard]},
   {path: 'reward', component: RewardComponent,canActivate:[LogGuard]},
   {path: 'achievement', component: AchievementComponent,canActivate:[LogGuard]},
-  {path: 'form', component: RewardFormComponent,canActivate:[LogGuard]},
+  {path: 'rewardform', component: RewardFormComponent,canActivate:[LogGuard]},
   {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
   {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
