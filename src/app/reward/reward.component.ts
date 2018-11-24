@@ -7,7 +7,7 @@ import { Reward} from '../interfaces/reward';
   templateUrl: './reward.component.html'
 })
 export class RewardComponent implements OnInit {
-
+  user = JSON.parse(localStorage.getItem('user'));
   rewardsList: Reward[] = [];
   user = JSON.parse(localStorage.getItem('user'));
 

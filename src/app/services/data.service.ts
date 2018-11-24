@@ -44,7 +44,15 @@ export class DataService {
         return data.rewards;
       })
     );
+  }
 
+  getClaims(): Observable<any> {
+    return this.http.get<any>('https://reward-platform-api.herokuapp.com/rewardClaims?populate=reward,user').pipe(
+      tap(),
+      map( data => {
+        return data.challengeRequests;
+      })
+    );
   }
 
 }

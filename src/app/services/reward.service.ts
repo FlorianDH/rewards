@@ -19,6 +19,7 @@ export class RewardService {
   };
 
   rewardsList: Reward[] = [];
+  claimList: Claim[] = [];
 
   constructor(public data: DataService, private  http: HttpClient) {}
 
@@ -47,13 +48,10 @@ export class RewardService {
   }
 
   getRewards() {
-
     if (this.rewardsList.length <= 0) {
 
      this.data.getRewards().subscribe(
-       data => {
-
-         for (let i = 0; i < data.length; i++) {
+       data => {for (let i = 0; i < data.length; i++) {
            const reward: Reward = {
              points : data[i].points,
              title : data[i].title,
@@ -65,4 +63,24 @@ export class RewardService {
     }
      return this.rewardsList;
    }
+
+  getClaims() {
+    if (this.claimList.length <= 0) {
+
+      this.data.getClaims().subscribe(
+        data => {for (let i = 0; i < data.length; i++) {
+            const claim: Claim = {
+              _id : data[i]._id,
+              reward_id : data[i].reward,
+              date : data[i].date,
+              received : data[i].received,
+              user_id : data[i].user,
+            };
+            this.claimList.push(claim);
+          }
+        }
+      );
+    }
+    return this.claimList;
+  }
 }

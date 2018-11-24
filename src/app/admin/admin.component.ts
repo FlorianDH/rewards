@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChallengeService } from '../services/challenge.service';
 import { Challenge } from '../interfaces/challenge';
 import { RewardService } from '../services/reward.service';
@@ -7,33 +7,34 @@ import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user';
 import { RequestService } from '../services/request.service';
 import { Request } from '../interfaces/request';
-
+import { Claim} from '../interfaces/claim';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styles: []
 })
+
 export class AdminComponent implements OnInit {
+
   challengesList: Challenge[] = [];
   rewardsList: Reward[] = [];
   usersList: User[] = [];
-  requestList : Request[] = [];
+  requestList: Request[] = [];
+  claimList: Claim[] = [];
 
-
-
-
-  constructor(private requestService: RequestService, private challengeService: ChallengeService, private rewardService: RewardService,private userService:UserService) {  }
+  constructor(private requestService: RequestService,
+              private challengeService: ChallengeService,
+              private rewardService: RewardService,
+              private userService: UserService) {  }
 
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
     this.rewardsList = this.rewardService.getRewards();
+    this.claimList = this.rewardService.getClaims();
     this.usersList = this.userService.getUsers();
     this.requestList = this.requestService.getRequests();
-
-    
   }
-
 
   acceptRequest(i){
 
@@ -42,10 +43,10 @@ export class AdminComponent implements OnInit {
   }
 
   deleteRequest(i){
-  
+
   const id = this.requestList[i]._id;
   console.log("id : " , id);
-  
+
   this.requestService.deleteRequest(id, i);
 
   }
@@ -55,8 +56,11 @@ export class AdminComponent implements OnInit {
     const gegPunten = localStorage.setItem('points', points);
     const gegId = localStorage.setItem('id',id);
   }
-  
+
   deleteUser(id){
     this.userService.deleteUser(id);
   }
+
+
+
 }

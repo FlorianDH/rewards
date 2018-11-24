@@ -2,11 +2,9 @@ import { Component, OnInit, ReflectiveInjector, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../services/data.service';
 import { ChallengeService } from '../services/challenge.service';
-
 import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
 import { formatDate } from '@angular/common';
-
 
 @Component({
   selector: 'app-challenge',
@@ -24,7 +22,6 @@ export class ChallengeComponent implements OnInit {
 
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
-    console.log(this.user);
     //
     // this.request = {
     //

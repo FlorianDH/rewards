@@ -23,7 +23,14 @@ export class ChallengeService {
 
 
   addChallangeRequest (request: Request): Observable<Request> {
-    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests/', request, this.httpOptions).pipe(
+
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    });
+
+
+    return this.http.post<Request>('https://reward-platform-api.herokuapp.com/challengeRequests/', request, {headers}).pipe(
     tap((request: Request) => this.log(`added challenge w/ id=${request.motivation}`)),
     catchError(err => throwError(err))
     );
@@ -36,7 +43,7 @@ export class ChallengeService {
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
-    })
+    });
     return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, {headers}).pipe(
       tap((challenge: Challenge) => this.log(`added challenge w/ id=${challenge.title}`)),
       catchError(err => throwError(err))
