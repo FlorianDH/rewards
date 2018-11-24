@@ -32,11 +32,21 @@ export class UserService {
         }
       );
     }
-    return this.userList;
-  }
+     return this.userList;
+   }
+   deleteUser(id){
+     let token = localStorage.getItem("token").split('"')
+     let headers : HttpHeaders = new HttpHeaders({
+       "Authorization":"bearer "+token[1]
+     })
+     let index = this.userList.indexOf(this.userList.find(user => user.id == id));
+     this.userList.splice(index, 1);
+    return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/'+id,{headers}).subscribe()
+   }
 
-  deleteUser(id) {
-    let token = localStorage.getItem('token').split('"')
+   addUser(name,password,punten){
+    let token = localStorage.getItem("token").split('"')
+
     let headers : HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
     })
@@ -49,6 +59,35 @@ export class UserService {
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
     })
-    return this.http.post<any>('https://reward-platform-api.herokuapp.com/users', {'name': name, 'password': password, 'punten': punten});
+    return this.http.post<any>("https://reward-platform-api.herokuapp.com/users",{"name":name,"password":password,"punten":punten},{headers})
+   }
+
+
+
+
+   updateUser (id : any, currentPoints: any, totalPoints: any) {
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    });
+
+
+    return this.http.patch("https://reward-platform-api.herokuapp.com/users/" + id, [
+      {
+      "propName": "currentPoints", "value" : currentPoints
+      },
+      {
+        "propName": "totalPoints", "value" : totalPoints
+        }
+      ],  {headers} ).subscribe(
+        data => {
+            console.log("PUT Request is successful ", data);
+        },
+        error => {
+            console.log("Error", error);
+        }
+    );
+
   }
+
 }

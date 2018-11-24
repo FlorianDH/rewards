@@ -21,11 +21,17 @@ export class RewardService {
   rewardsList: Reward[] = [];
   claimList: Claim[] = [];
 
+  user = JSON.parse(localStorage.getItem('user'));
+
   constructor(public data: DataService, private  http: HttpClient) {}
 
 
   addRewardClaim (claim: Claim): Observable<Claim> {
-    return this.http.post<Claim>('https://reward-platform-api.herokuapp.com/rewardClaims/', claim, this.httpOptions).pipe(
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    return this.http.post<Claim>('https://reward-platform-api.herokuapp.com/rewardClaims/', claim, {headers}).pipe(
       tap((claim: Claim) => this.log(`added rewardClaim`)),
       catchError(err => throwError(err))
     );
@@ -53,6 +59,7 @@ export class RewardService {
      this.data.getRewards().subscribe(
        data => {for (let i = 0; i < data.length; i++) {
            const reward: Reward = {
+             id:data[i]._id,
              points : data[i].points,
              title : data[i].title,
            };
