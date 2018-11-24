@@ -46,6 +46,30 @@ export class RewardService {
     );
   }
 
+  deleteReward(id: any){
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward.id == id));
+    this.rewardsList.splice(index, 1);
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/rewards/'+id,{headers}).subscribe();
+  }
+
+  EditReward(id: any, title: string ,points: string) {
+    let token = localStorage.getItem("token").split('"')
+    let headers : HttpHeaders = new HttpHeaders({
+      "Authorization":"bearer "+token[1]
+    })
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward.id == id));
+    this.rewardsList.splice(index, 1);
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/rewards/'+ id, 
+   [{"propName": "title" , "value": title},
+    {"propName":"points", "value": points}], 
+    {headers}).subscribe();
+
+  }
+
   private log(message: String) {
 
   }

@@ -28,11 +28,11 @@
   </div>
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
-      <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Rewards</h5>
+      <h5 class="card-header"><i class="fas fa-fw fa-award"></i> Rewards<a href="rewardForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i></a></h5>
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
           <div  *ngFor="let reward of rewardsList" class="list-group">
-            <a href="rewardForm" (click)="passDataReward(challenge.title, challenge.points, challenge._id)" class="list-group-item">{{reward.title}} - {{reward.points}} <i class="fas fa-fw fa-coins"></i></a>
+            <a href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward.id)" class="list-group-item">{{reward.title}} - {{reward.points}} <i class="fas fa-fw fa-coins"></i></a>
           </div>
           Toekennen van rewards voor een ingegeven ‘event’ van een medewerker<br>
           Als medewerker een opdracht heeft voltooid moet de administrator zijn toestemming geven om de rewards uit te keren
