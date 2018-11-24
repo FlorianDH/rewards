@@ -5,4 +5,5 @@ export class User {
   isAdmin: string;
   currentPoints: string;
   totalPoints: string;
+  points: string;
 }

@@ -2,30 +2,12 @@
   <div class="card-body text-center">
     <div class="totalPoints text-center">
       <h3 class="card-title">Uw punten</h3>
-      <h1 class="card-title">35 <i class="fas fa-fw fa-coins"></i></h1>
-    </div>
-    <div class="progress" style="height: 40px;">
-      <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="50" style="width: 75%">Puppy (50)</div>
+      <h1 class="card-title">{{user.currentPoints}} <i class="fas fa-fw fa-coins"></i></h1>
     </div>
   </div>
 </div>
 
 <app-challenge-item [challengesList]="challengesList" class="row"></app-challenge-item>
-
-<!--<div class="row">-->
-  <!--<div *ngFor="let challenge of challengesList; index as i" class="col-xl-4 col-sm-6 mt-3 d-flex">-->
-    <!--<div class="card text-center flex-fill">-->
-      <!--<div class="card-body">-->
-
-        <!--<h5 class="card-title"  id="title" >{{challenge.title}}</h5>-->
-        <!--<p class="card-text">{{challenge.points}}</p>-->
-
-        <!--<a (click)="challengeExecuted(i)" class="btn btn-primary" (click)="open(content)">Opdracht uitgevoerd</a>-->
-
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
 
 <hr>
 

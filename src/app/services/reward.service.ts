@@ -52,7 +52,6 @@ export class RewardService {
 
      this.data.getRewards().subscribe(
        data => {
-         console.log('** data ' , data);
 
          for (let i = 0; i < data.length; i++) {
            const reward: Reward = {
@@ -60,8 +59,6 @@ export class RewardService {
              title : data[i].title,
            };
            this.rewardsList.push(reward);
-
-           console.log('toegevoegd : ' + reward.title );
          }
        }
      );

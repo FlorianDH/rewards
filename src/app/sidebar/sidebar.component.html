@@ -7,17 +7,17 @@
     <i class="fas fa-fw fa-bars"></i> <span class="sidebar-text"> jstack rewards</span>
   </button>
   <ul class="list-unstyled">
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!admin">
       <a class="nav-link" routerLink="challenge" routerLinkActive="active" [class.activated]="currentUrl == '/challenge'">
         <i class="fas fa-fw fa-bullhorn"></i> <span class="sidebar-text"> Challenges</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!admin">
       <a class="nav-link" routerLink="reward" routerLinkActive="active" [class.activated]="currentUrl == '/reward'">
         <i class="fas fa-fw fa-award"></i> <span class="sidebar-text"> Rewards</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!admin">
       <a class="nav-link" routerLink="achievement" routerLinkActive="active" [class.activated]="currentUrl == '/achievement'">
         <i class="fas fa-fw fa-trophy"></i> <span class="sidebar-text"> Achievements</span>
       </a>
