@@ -17,6 +17,9 @@ import { Claim} from '../interfaces/claim';
 
 export class AdminComponent implements OnInit {
 
+  // @Input() claimList: any;
+  // @Input() claim: Claim;
+
   challengesList: Challenge[] = [];
   rewardsList: Reward[] = [];
   usersList: User[] = [];
@@ -36,20 +39,15 @@ export class AdminComponent implements OnInit {
     this.requestList = this.requestService.getRequests();
   }
 
-  acceptRequest(i){
-
+  acceptRequest(i) {
     const id = this.requestList[i]._id;
     this.requestService.acceptRequest(id, i);
-    this.requestList.splice(i,1);
+    this.requestList.splice(i, 1);
   }
 
-  deleteRequest(i){
-
+  deleteRequest(i) {
   const id = this.requestList[i]._id;
-  console.log("id : " , id);
-
   this.requestService.deleteRequest(id, i);
-
   }
 
   passDataChallenge(title, points,id) {
@@ -64,10 +62,9 @@ export class AdminComponent implements OnInit {
     localStorage.setItem('id',id);
   }
 
-  deleteUser(id){
+  deleteUser(id) {
     this.userService.deleteUser(id);
   }
-
-
-
+  claimReceived(i) {
+  }
 }

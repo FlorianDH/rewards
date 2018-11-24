@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalDismissReasons, NgbModal,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {formatDate} from '@angular/common';
 import {Request} from '../../interfaces/request';
 import {ChallengeService} from '../../services/challenge.service';
@@ -18,7 +18,7 @@ export class ChallengeItemComponent implements OnInit {
   today = new Date();
   jstoday = '';
   closeResult;
-  modalReference:NgbModalRef;
+  modalReference: NgbModalRef;
   ngOnInit() {
   }
 
@@ -30,7 +30,7 @@ export class ChallengeItemComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  close(){
+  close() {
     this.modalReference.close();
   }
   private getDismissReason(reason: any): string {
