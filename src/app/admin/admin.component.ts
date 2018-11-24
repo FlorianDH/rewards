@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  gegevensMeegeven(title, points,id) {
+  passDataChallenge(title, points,id) {
     const gegTitle = localStorage.setItem('title', title );
     const gegPunten = localStorage.setItem('points', points);
     const gegId = localStorage.setItem('id',id);
