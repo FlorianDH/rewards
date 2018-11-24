@@ -9,6 +9,7 @@ import { Reward} from '../interfaces/reward';
 export class RewardComponent implements OnInit {
 
   rewardsList: Reward[] = [];
+  user = JSON.parse(localStorage.getItem('user'));
 
   constructor(private rewardService: RewardService) {}
 
