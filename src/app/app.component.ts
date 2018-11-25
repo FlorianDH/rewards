@@ -15,7 +15,6 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         this.navVisible = this.authService.showNav();
       }
-      localStorage.setItem("teller","0")
     });
   }
 }

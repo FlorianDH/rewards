@@ -15,7 +15,9 @@
       </button>
     </div>
     <div class="modal-body">
-      <p>Uw reward is succesvol geclaimed!</p>
+      <p *ngIf="enoughPoints">Uw reward is succesvol geclaimed!</p>
+      <p *ngIf="!enoughPoints">Uw hebt te weinig punten om de reward te claime</p>
     </div>
   </ng-template>
+  
 </div>

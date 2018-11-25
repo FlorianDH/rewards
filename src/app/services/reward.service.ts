@@ -3,7 +3,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Observable, throwError } from 'rxjs';
 import { Reward } from '../interfaces/reward';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
@@ -27,19 +27,15 @@ export class RewardService {
   user = JSON.parse(localStorage.getItem('user'));
   token = localStorage.getItem('token').split('"');
   points;
+  constructor(private userService: UserService, public data: DataService, private  http: HttpClient) {
+    this.points = this.user.currentPoints;
+    this.getPunten();
 
-  constructor(private userService: UserService,
-              public data: DataService,
-              private  http: HttpClient,
-              private router: Router) {
-    this.getPoints();
   }
-
   addRewardClaim (claim: Claim): Observable<Claim> {
-    let token = localStorage.getItem('token').split('"');
     let headers : HttpHeaders = new HttpHeaders({
-      'Authorization': 'bearer ' + token[1]
-    });
+      "Authorization":"bearer "+this.token[1]
+    })
     return this.http.post<Claim>('https://reward-platform-api.herokuapp.com/rewardClaims/', claim, {headers}).pipe(
       tap((claim: Claim) => this.log(`added rewardClaim`)),
       catchError(err => throwError(err))
@@ -50,10 +46,8 @@ export class RewardService {
     const headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + this.token[1]
     });
-    return this.http.post<Reward>(
-      'https://reward-platform-api.herokuapp.com/rewards',
-      {'title': title, 'points': points},
-      {headers}).pipe(
+    return this.http.post<Reward>('https://reward-platform-api.herokuapp.com/rewards',
+      {'title': title, 'points': points}, {headers}).pipe(
       tap((reward: Reward) => this.log(`added reward w/ id=${reward.title}`)),
       catchError(err => throwError(err))
     );
@@ -62,11 +56,11 @@ export class RewardService {
   deleteReward(id: any){
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
-      "Authorization":"bearer "+ token[1]
+      "Authorization":"bearer "+token[1]
     })
-    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward._id === id));
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward._id == id));
     this.rewardsList.splice(index, 1);
-   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/rewards/' + id, {headers}).subscribe();
+   return this.http.delete<any>('https://reward-platform-api.herokuapp.com/rewards/'+id,{headers}).subscribe();
   }
 
   EditReward(id: any, title: string ,points: string) {
@@ -74,9 +68,9 @@ export class RewardService {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     })
-    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward._id === id));
+    let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward._id == id));
     this.rewardsList.splice(index, 1);
-   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/rewards/' + id,
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/rewards/'+ id,
    [{"propName": "title" , "value": title},
     {"propName":"points", "value": points}],
     {headers}).subscribe();
@@ -86,8 +80,14 @@ export class RewardService {
   private log(message: String) {
 
   }
-  private getPoints() {
-    this.points =  JSON.parse(localStorage.getItem('user')).currentPoints;
+  getPunten(){   
+  
+    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
+      data=>{
+        this.points = data.user.currentPoints
+      }
+    )
+    
   }
   getRewards() {
     if (this.rewardsList.length <= 0) {
@@ -134,7 +134,7 @@ export class RewardService {
 
       this.data.getClaims().subscribe(
         data => {
-          for (let i = 0; i < data.length; i++) {
+          for (let i = 0; i < 20; i++) {
             if (data[i].received === true) {
 
               const claim: Claim = {
@@ -152,11 +152,10 @@ export class RewardService {
     }
     return this.claimHistoryList;
   }
-
   rewardReceived (id: any, i: any) {
     let token = localStorage.getItem('token').split('"')
     let headers : HttpHeaders = new HttpHeaders({
-      'Authorization': 'bearer ' + token[1]
+      'Authorization': 'bearer '+token[1]
     });
 
     this.claimList[i].received = true;
