@@ -38,7 +38,13 @@ addChallenge() {
 
 }
 
+removeChallenge() {
+  let id = localStorage.id;
+  this.challengeService.deleteChallenge(id);
+  localStorage.removeItem('id');
+  this.router.navigate(["admin"]);
 
+}
 
 editChallenge() {
   let id = localStorage.id;
