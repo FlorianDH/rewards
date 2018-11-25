@@ -12,8 +12,9 @@ export class RewardComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user'));
   rewardsList: Reward[] = [];
   constructor(private rewardService: RewardService) {}
-  punten = this.user.currentPoints;
+  punten = this.rewardService.getPunten();
   ngOnInit() {
+
     this.rewardsList = this.rewardService.getRewards();
   }
   receiveValue($event){
