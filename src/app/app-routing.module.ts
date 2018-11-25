@@ -11,16 +11,16 @@ import { LogGuard } from './guards/log.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { ChallengeFormComponent} from './challengeForm/challengeForm.component';
 import { EmployeeFormComponent } from './employeeform/employeeForm.component';
-import { RewardFormComponent} from './rewardForm/rewardForm.component';
+import { RewardFormComponent } from './rewardForm/rewardForm.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: 'challenge', component: ChallengeComponent, canActivate: [LogGuard]},
-  {path: 'reward', component: RewardComponent, canActivate: [LogGuard]},
-  {path: 'achievement', component: AchievementComponent, canActivate: [LogGuard]},
-  {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
-  {path: 'rewardForm', component: RewardFormComponent, canActivate: [LogGuard]},
+  {path: '', component: LoginComponent, pathMatch: 'full',canActivate:[AuthGuard]},
+  {path: 'challenge', component: ChallengeComponent,canActivate:[LogGuard]},
+  {path: 'reward', component: RewardComponent,canActivate:[LogGuard]},
+  {path: 'achievement', component: AchievementComponent,canActivate:[LogGuard]},
+  {path: 'rewardForm', component: RewardFormComponent,canActivate:[LogGuard]},
+  {path: 'login', component: LoginComponent,canActivate:[AuthGuard]},
+  {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
   {path: 'challengeForm', component: ChallengeFormComponent},
   {path: 'employeeForm', component: EmployeeFormComponent},

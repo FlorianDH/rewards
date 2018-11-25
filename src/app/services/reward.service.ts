@@ -76,7 +76,9 @@ export class RewardService {
   private log(message: String) {
 
   }
-
+  getPunten(){
+    return JSON.parse(localStorage.getItem("user")).currentPoints;
+  }
   getRewards() {
     if (this.rewardsList.length <= 0) {
 
