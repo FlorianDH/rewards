@@ -49,10 +49,23 @@ export class UserService {
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + token[1]
     });
+    let user:User={
+      _id: "0",
+      name: name,
+      password: '***',
+      isAdmin: "false",
+      currentPoints: points,
+      totalPoints:  "0"
+    }
+    
+
+    console.log(this.userList)
+    this.userList.push(user);
     return this.http.post<any>(
       'https://reward-platform-api.herokuapp.com/users',
-      { 'name': name, 'password': password, 'points': points},
+      { 'name': name, 'password': password, 'currentPoints': points},
       {headers});
+
    }
 
    updateUser (id : any, currentPoints: any, totalPoints: any) {

@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   requestHistoryList: Request[] = [];
   claimList: Claim[] = [];
   claimHistoryList: Claim[] = [];
-
+  success = false;
   user = {
     name: '',
     password: '',
@@ -78,9 +78,8 @@ export class AdminComponent implements OnInit {
   }
 
   addUser(data) {
-    this.userService.addUser(data.name, data.password, data.points).subscribe( data=>{
-      this.router.navigate(['admin']);
-    });
+    this.userService.addUser(data.name, data.password, data.points).subscribe(data=>this.success = true);
+    
   }
 
   deleteUser(id) {
