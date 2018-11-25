@@ -56,8 +56,7 @@ export class UserService {
       isAdmin: "false",
       currentPoints: points,
       totalPoints:  "0"
-    }
-    
+    };
 
     console.log(this.userList)
     this.userList.push(user);
