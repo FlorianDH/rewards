@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({

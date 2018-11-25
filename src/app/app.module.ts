@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChallengeFormModule} from './challengeForm/challengeForm.module';
-import { EmployeeFormModule} from './employeeform/employeeForm.module';
 import { RewardFormModule} from './rewardForm/rewardForm.module';
 import { PipesModule } from './pipes/pipes.module';
 
@@ -37,7 +36,6 @@ import { PipesModule } from './pipes/pipes.module';
     AdminModule,
     HttpClientModule,
     ChallengeFormModule,
-    EmployeeFormModule,
     RewardFormModule,
     BrowserModule,
     ReactiveFormsModule,
