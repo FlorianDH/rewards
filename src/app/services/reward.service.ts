@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -29,7 +30,8 @@ export class RewardService {
 
   constructor(private userService: UserService,
               public data: DataService,
-              private  http: HttpClient) {
+              private  http: HttpClient,
+              private router: Router) {
     this.getPoints();
   }
 

@@ -10,7 +10,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { LogGuard } from './guards/log.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { ChallengeFormComponent} from './challengeForm/challengeForm.component';
-import { EmployeeFormComponent } from './employeeform/employeeForm.component';
 import { RewardFormComponent } from './rewardForm/rewardForm.component';
 
 const routes: Routes = [
@@ -23,7 +22,6 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent,canActivate:[AdminGuard]},
   {path: 'error404', component: Error404Component},
   {path: 'challengeForm', component: ChallengeFormComponent},
-  {path: 'employeeForm', component: EmployeeFormComponent},
   {path: '**', redirectTo: 'error404', canActivate: [LogGuard]}
 
 ];

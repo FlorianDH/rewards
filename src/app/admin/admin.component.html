@@ -86,6 +86,68 @@
 
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="employeeTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="employee-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="true"><i class="fas fa-fw fa-users"></i> Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="employeeCreate-tab" data-toggle="tab" href="#employeeCreate" role="tab" aria-controls="employeeCreate" aria-selected="true"><i class="fas fa-fw fa-user-plus"></i> Add new employee</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content" id="tabemployees">
+        <div class="tab-pane fade show active" id="employees" role="tabpanel" aria-labelledby="employees-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <div *ngFor="let user of usersList" class="list-group">
+              <div class="list-group-item">
+                <span class="mr-3 font-weight-bold">{{user.name}},</span> {{user.currentPoints}} <i class="fas fa-fw fa-coins"></i>
+                <button type="button" style="float: right" (click)="deleteUser(user._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="employeeCreate" role="tabpanel" aria-labelledby="requestsHistory-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <form #f="ngForm" (submit)="addUser(f.value)">
+              <div class="card" >
+                <div class="form-group card-body">
+                  <label for="name" >Naam medewerker:</label>
+                  <input type="text" id="name" class="form-control"
+                         required
+                         minlength="3"
+                         name="name"
+                         [(ngModel)]="user.name">
+                  <label for="password">Wachtwoord:</label>
+                  <input type="password" id="password" class="form-control"
+                         required
+                         name="password"
+                         [(ngModel)]="user.password">
+                  <div class="row m-2">
+                    <label for="punten">punten:</label>
+                    <div class="col-2">
+                      <input type="text" width="40px" id="punten" class="form-control"
+                             required
+                             name="punten"
+                             [(ngModel)]="user.points">
+                    </div>
+                  </div>
+                  <br/>
+                  <div  style="text-align: center">
+                    <button type="submit" class="btn text-white btn-primary m-1">Toevoegen</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12 mb-3 d-flex">
+    <div class="card flex-fill">
       <h5 class="card-header"><i class="fas fa-fw fa-bullhorn"></i> Challenges<a href="challengeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i></a></h5>
       <div class="card-body">
         <div style="overflow: auto; Height: 500px;">
@@ -109,24 +171,6 @@
           </div>
           Toekennen van rewards voor een ingegeven ‘event’ van een medewerker<br>
           Als medewerker een opdracht heeft voltooid moet de administrator zijn toestemming geven om de rewards uit te keren
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6  col-md-12 mb-3 d-flex">
-    <div class="card flex-fill" >
-      <h5 class="card-header"><i class="fas fa-fw fa-user"></i> Employees<a href="employeeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i>
-      </a></h5>
-      <div class="card-body">
-        <h5 class="card-title">Medewerkers aanpassen</h5>
-        <div style="overflow: visible; Height: 500px;">
-          <div *ngFor="let user of usersList" class="card mb-2 bg-info text-white">
-            <div class="card-body">{{user.name}}
-              <button type="button" style="float: right" (click)="deleteUser(user._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
-              </button>
-            </div>
-
-          </div>
         </div>
       </div>
     </div>
