@@ -28,7 +28,7 @@
             <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
               <div *ngFor="let claim of claimHistoryList" class="list-group">
                 <div class="list-group-item">
-                  <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
+                  <span class="mr-3 font-weight-bold" title="Gebruikernaam">{{claim.user_id.name}},</span> <span title="Opgevraagde reward">{{claim.reward_id.title}}</span>
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
@@ -43,11 +43,11 @@
     <div class="card flex-fill">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="requestTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="true"><i class="fas fa-fw fa-bullhorn"></i> Challenge requests</a>
+          <li class="nav-item" title="Weergave van alle challenge aanvragen die nog niet gecontroleerd zijn">
+            <a class="nav-link active" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="true"><i class="fas fa-fw fa-bullhorn" ></i> Challenge aanvragen</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="requestsHistory-tab" data-toggle="tab" href="#requestsHistory" role="tab" aria-controls="requestsHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> History</a>
+          <li class="nav-item" title="Weergave van alle challenge aanvragen die geaccepteerd waren">
+            <a class="nav-link" id="requestsHistory-tab" data-toggle="tab" href="#requestsHistory" role="tab" aria-controls="requestsHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> Geschiedenis</a>
           </li>
         </ul>
       </div>
@@ -56,16 +56,13 @@
           <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
             <div *ngFor="let request of requestList; index as i" class="list-group">
               <div class="list-group-item">
-                <span class="mr-3 font-weight-bold">{{request.user_id.name}},</span> {{request.challenge_id.title}}
+                <span class="mr-3 font-weight-bold" title="Gebruikernaam">{{request.user_id.name}},</span> <span title="Challenge tittel">{{request.challenge_id.title}}</span>
                 <div style="float:right">
-                  <button type="button" (click)="acceptRequest(i)" class="btn btn-succes mr-3"><i class="fa fa-check-square" aria-hidden="true"></i></button>
-                  <button type="button"  (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-
-
+                  <button type="button" (click)="acceptRequest(i)" class="btn btn-succes mr-3" title="Accepteer de aanvraag"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <button type="button"  (click)="deleteRequest(i)" class="btn btn-danger" title="Weiger de aanvraag"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
-
                 <br>
-                <span>{{request.motivation}}</span>
+                <span title="Motivatie en/of bewijs van een afgewerkte challenge">{{request.motivation}}</span>
                 <br>
                 <span class="small">{{ request.date | date:'dd-LL-yy, H:mm' }}</span>
               </div>
@@ -76,9 +73,9 @@
           <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
             <div *ngFor="let request of requestHistoryList" class="list-group">
               <div class="list-group-item">
-                <span class="mr-3 font-weight-bold">{{request.user_id.name}},</span> {{request.challenge_id.title}}
+                <span title="Gebruikernaam" class="mr-3 font-weight-bold">{{request.user_id.name}},</span> {{request.challenge_id.title}}
                 <br>
-                <span>{{request.motivation}}</span>
+                <span title="Motivatie en/of bewijs van een afgewerkte challenge">{{request.motivation}}</span>
                 <br>
                 <span class="small">{{ request.date | date:'dd-LL-yy, H:mm' }}</span>
               </div>
@@ -96,7 +93,7 @@
             <a class="nav-link active" id="reward-tab" data-toggle="tab" href="#rewards" role="tab" aria-controls="rewards" aria-selected="true"><i class="fas fa-fw fa-award"></i> Rewards</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="rewardCreate-tab" data-toggle="tab" href="#rewardCreate" role="tab" aria-controls="rewardCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new reward</a>
+            <a class="nav-link" id="rewardCreate-tab" data-toggle="tab" href="#rewardCreate" role="tab" aria-controls="rewardCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Voeg reward toe</a>
           </li>
         </ul>
       </div>
@@ -107,9 +104,9 @@
               <div class="list-group-item">
                 <span class="mr-3 font-weight-bold">{{reward.title}},</span> {{reward.points}} <i class="fas fa-fw fa-coins"></i>
                 <div style="float: right">
-                 
+
                   <a type="button" href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward._id)" class="btn btn-warning mr-3"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                  <button type="button"  (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>                
+                  <button type="button"  (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
              </div>
             </div>
@@ -150,7 +147,7 @@
             <a class="nav-link active" id="challenge-tab" data-toggle="tab" href="#challenges" role="tab" aria-controls="challenges" aria-selected="true"><i class="fas fa-fw fa-bullhorn"></i> Challenges</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="challengeCreate-tab" data-toggle="tab" href="#challengeCreate" role="tab" aria-controls="challengeCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new challenge</a>
+            <a class="nav-link" id="challengeCreate-tab" data-toggle="tab" href="#challengeCreate" role="tab" aria-controls="challengeCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Voeg challenge toe</a>
           </li>
         </ul>
       </div>
@@ -161,17 +158,15 @@
               <div class="list-group-item">
                 <span class="mr-3 font-weight-bold">{{challenge.title}},</span> {{challenge.points}} <i class="fas fa-fw fa-coins"></i>
                 <div style="float:right">
-                  
                   <a type="button"  href="challengeForm" (click)="passDataChallenge(challenge.title, challenge.points, challenge._id)" class="btn btn-warning mr-3"><i class="fa fa-edit" aria-hidden="true"></i></a>
                   <button type="button"  (click)="removeChallenge(challenge._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
-                
               </div>
             </div>
          </div>
         </div>
 
-        <div class="tab-pane fade" id="challengeCreate" role="tabpanel" aria-labelledby="requestsHistory-tab">
+        <div class="tab-pane fade" id="challengeCreate" role="tabpanel" aria-labelledby="challengeCreate-tab">
           <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
             <form>
               <div class="card" >
@@ -201,10 +196,10 @@
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="employeeTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="employee-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="true"><i class="fas fa-fw fa-users"></i> Employees</a>
+            <a class="nav-link active" id="employee-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="true"><i class="fas fa-fw fa-users"></i> Werknemers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="employeeCreate-tab" data-toggle="tab" href="#employeeCreate" role="tab" aria-controls="employeeCreate" aria-selected="true"><i class="fas fa-fw fa-user-plus"></i> Add new employee</a>
+            <a class="nav-link" id="employeeCreate-tab" data-toggle="tab" href="#employeeCreate" role="tab" aria-controls="employeeCreate" aria-selected="true"><i class="fas fa-fw fa-user-plus"></i> Voeg werknemer toe</a>
           </li>
         </ul>
       </div>
@@ -237,7 +232,7 @@
                          name="password"
                          [(ngModel)]="user.password">
                   <div class="row m-2">
-                    <label for="points">punten:</label>
+                    <label for="points">Punten:</label>
                     <div class="col-2">
                       <input type="text" width="40px" id="points" class="form-control"
                              required
