@@ -8,6 +8,7 @@ import { User } from '../interfaces/user';
 import { RequestService } from '../services/request.service';
 import { Request } from '../interfaces/request';
 import { Claim} from '../interfaces/claim';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -25,10 +26,17 @@ export class AdminComponent implements OnInit {
   claimList: Claim[] = [];
   claimHistoryList: Claim[] = [];
 
+  user = {
+    name: '',
+    password: '',
+    points: ''
+  };
+
   constructor(private requestService: RequestService,
               private challengeService: ChallengeService,
               private rewardService: RewardService,
-              private userService: UserService) {  }
+              private userService: UserService,
+              private router: Router) {  }
 
   ngOnInit() {
     this.challengesList = this.challengeService.getChallenges();
@@ -67,6 +75,12 @@ export class AdminComponent implements OnInit {
     localStorage.setItem('title', title );
     localStorage.setItem('points', points);
     localStorage.setItem('id', id);
+  }
+
+  addUser(data) {
+    this.userService.addUser(data.name, data.password, data.points).subscribe( data=>{
+      this.router.navigate(['admin']);
+    });
   }
 
   deleteUser(id) {
