@@ -14,11 +14,11 @@ export class RewardComponent implements OnInit {
   points = this.rewardService.points;
   constructor(private rewardService: RewardService) {
     this.rewardService.getPunten();
-    console.log(this.rewardService.points);
+    
   }
 
   ngOnInit() {
-    console.log(this.rewardService.points)
+    
     this.rewardsList = this.rewardService.getRewards();
 
   }
