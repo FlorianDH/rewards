@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
     this.usersList = this.userService.getUsers();
     this.requestList = this.requestService.getRequests();
     this.requestHistoryList = this.requestService.getRequestsHistory();
-    
+
     
   }
 

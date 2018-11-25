@@ -23,7 +23,7 @@ export class RewardItemComponent implements OnInit {
   modalReference: NgbModalRef;
   closeResult;
   currentPoints = 0;
-
+  enoughPoints = false;
   ngOnInit() {
 
   }
@@ -35,20 +35,27 @@ export class RewardItemComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    if(this.rewardService.punten > this.rewardsList[i].points){
+  
+      this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
+      this.claim = {
+        reward_id : this.rewardsList[i]._id,
+        date : this.jstoday,
+        received : false,
+        user_id : this.user._id[i]._id,
+        _id : ''
+      };
+      this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
+      this.msgEvent.emit(this.user.currentPoints);
+      this.rewardService.punten = this.user.currentPoints;
+      this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
+      this.rewardService.addRewardClaim(this.claim).subscribe();
+      this.enoughPoints = true;
+    }else{
 
-    this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
-    this.claim = {
-      reward_id : this.rewardsList[i]._id,
-      date : this.jstoday,
-      received : false,
-      user_id : this.user._id[i]._id,
-      _id : ''
-    };
-    this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
-    this.msgEvent.emit(this.user.currentPoints);
-    this.rewardService.punten = this.user.currentPoints;
-    this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
-    this.rewardService.addRewardClaim(this.claim).subscribe();
+      this.enoughPoints = false;
+    }
+
   }
   close() {
     this.modalReference.close();

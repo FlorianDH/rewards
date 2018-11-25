@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { RewardService } from '../services/reward.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   };
   loading = false;
   error = '';
-  constructor(private api: AuthService, private router: Router) { }
+  constructor(private api: AuthService, private router: Router,private rewardService:RewardService) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.api.login(data.myName,data.myPassword).pipe().subscribe(token=> {
       let user = JSON.parse(localStorage.getItem("user"));
       localStorage.setItem("admin",user.isAdmin);
+      this.rewardService.getPunten();
       this.router.navigate(["admin"])
     },error =>{
       this.loading = false;

@@ -3,7 +3,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Observable, throwError } from 'rxjs';
 import { Reward } from '../interfaces/reward';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
 import { UserService } from './user.service';
 
@@ -78,7 +78,19 @@ export class RewardService {
   private log(message: String) {
 
   }
-  private getPunten(){
+  getPunten(){   
+  //    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
+  //   data=>{
+  //     console.log(data);
+  //     this.punten = data.user.currentPoints
+  //     console.log(this.punten)
+  //   }
+  // )
+    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
+      data=>{
+        console.log(data.user)
+      }
+    )
     this.punten =  JSON.parse(localStorage.getItem("user")).currentPoints;
   }
   getRewards() {
