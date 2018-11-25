@@ -83,7 +83,101 @@
       </div>
     </div>
   </div>
+  <div class="col-lg-6 col-md-12 mb-3 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="rewardTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="reward-tab" data-toggle="tab" href="#rewards" role="tab" aria-controls="rewards" aria-selected="true"><i class="fas fa-fw fa-award"></i> Rewards</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="rewardCreate-tab" data-toggle="tab" href="#rewardCreate" role="tab" aria-controls="rewardCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new reward</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content" id="tabrewards">
+        <div class="tab-pane fade show active" id="rewards" role="tabpanel" aria-labelledby="reward-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <div *ngFor="let reward of rewardsList" class="list-group ">
+              <div class="list-group-item">
+                <span class="mr-3 font-weight-bold">{{reward.title}},</span> {{reward.points}} <i class="fas fa-fw fa-coins"></i>
+                <button type="button" style="float: right" (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <a type="button" style="float: right" href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="tab-pane fade" id="rewardCreate" role="tabpanel" aria-labelledby="rewardsHistory-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <form>
+              <div class="card" >
+                <div class="form-group card-body">
+                  <label for="titlereward">Naam reward:</label>
+                  <input type="text" class="form-control" id="titlereward">
+                  <label for="pointsreward">Aantal punten:</label>
+                  <input type="text" class="form-control" id="pointsreward">
+                  <br/>
+                  <div  style="text-align: center">
+                    <a (click)="addReward()" class="btn text-white btn-primary m-1">Toevoegen</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12 mb-3 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="challengeTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="challenge-tab" data-toggle="tab" href="#challenges" role="tab" aria-controls="challenges" aria-selected="true"><i class="fas fa-fw fa-bullhorn"></i> Challenges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="challengeCreate-tab" data-toggle="tab" href="#challengeCreate" role="tab" aria-controls="challengeCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new challenge</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content" id="tabchallenges">
+        <div class="tab-pane fade show active" id="challenges" role="tabpanel" aria-labelledby="challenges-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <div *ngFor="let challenge of challengesList" class="list-group ">
+              <div class="list-group-item">
+                <span class="mr-3 font-weight-bold">{{challenge.title}},</span> {{challenge.points}} <i class="fas fa-fw fa-coins"></i>
+                <button type="button" style="float: right" (click)="removeChallenge(challenge._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <a type="button" style="float: right" href="challengeForm" (click)="passDataChallenge(challenge.title, challenge.points, challenge._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+              </div>
+            </div>
+         </div>
+        </div>
+
+        <div class="tab-pane fade" id="challengeCreate" role="tabpanel" aria-labelledby="requestsHistory-tab">
+          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
+            <form>
+              <div class="card" >
+                <div class="form-group card-body">
+                  <label for="titlechallenge">Naam challenge:</label>
+                  <input type="text" class="form-control" id="titlechallenge">
+
+                  <label for="pointschallenge">Aantal punten:</label>
+                  <input type="text" class="form-control" id="pointschallenge">
+                  <br/>
+                  <div  style="text-align: center">
+                    <a (click)="addChallenge()" class="btn text-white btn-primary m-1">Toevoegen</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <div class="card-header">
@@ -143,102 +237,6 @@
                 </div>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-md-12 mb-3 d-flex">
-    <div class="card flex-fill">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs" id="challengeTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="challenge-tab" data-toggle="tab" href="#challenges" role="tab" aria-controls="challenges" aria-selected="true"><i class="fas fa-fw fa-bullhorn"></i> Challenges</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="challengeCreate-tab" data-toggle="tab" href="#challengeCreate" role="tab" aria-controls="challengeCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new challenge</a>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body tab-content" id="tabchallenges">
-        <div class="tab-pane fade show active" id="challenges" role="tabpanel" aria-labelledby="challenges-tab">
-          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
-            <div *ngFor="let challenge of challengesList" class="list-group ">
-              <div class="list-group-item">
-                <span class="mr-3 font-weight-bold">{{challenge.title}},</span> {{challenge.points}} <i class="fas fa-fw fa-coins"></i>
-                <button type="button" style="float: right" (click)="removeChallenge(challenge._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <a type="button" style="float: right" href="challengeForm" (click)="passDataChallenge(challenge.title, challenge.points, challenge._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
-              </div>
-            </div>
-         </div>
-        </div>
-
-        <div class="tab-pane fade" id="challengeCreate" role="tabpanel" aria-labelledby="requestsHistory-tab">
-          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
-            <form>
-              <div class="card" >
-                <div class="form-group card-body">
-                  <label for="titlechallenge">Naam challenge:</label>
-                  <input type="text" class="form-control" id="titlechallenge">
-
-                  <label for="pointschallenge">Aantal punten:</label>
-                  <input type="text" class="form-control" id="pointschallenge">
-                  <br/>
-                  <div  style="text-align: center">
-                    <a (click)="addChallenge()" class="btn text-white btn-primary m-1">Toevoegen</a>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-md-12 mb-3 d-flex">
-    <div class="card flex-fill">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs" id="rewardTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="reward-tab" data-toggle="tab" href="#rewards" role="tab" aria-controls="rewards" aria-selected="true"><i class="fas fa-fw fa-award"></i> Rewards</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="rewardCreate-tab" data-toggle="tab" href="#rewardCreate" role="tab" aria-controls="rewardCreate" aria-selected="true"><i class="fas fa-fw fa-plus"></i> Add new reward</a>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body tab-content" id="tabrewards">
-        <div class="tab-pane fade show active" id="rewards" role="tabpanel" aria-labelledby="reward-tab">
-          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
-            <div *ngFor="let reward of rewardsList" class="list-group ">
-              <div class="list-group-item">
-                <span class="mr-3 font-weight-bold">{{reward.title}},</span> {{reward.points}} <i class="fas fa-fw fa-coins"></i>
-                <button type="button" style="float: right" (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <a type="button" style="float: right" href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="rewardCreate" role="tabpanel" aria-labelledby="rewardsHistory-tab">
-          <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
-            <form>
-              <div class="card" >
-                <div class="form-group card-body">
-                  <label for="titlereward">Naam reward:</label>
-                  <input type="text" class="form-control" id="titlereward">
-                  <label for="pointsreward">Aantal punten:</label>
-                  <input type="text" class="form-control" id="pointsreward">
-                  <br/>
-                  <div  style="text-align: center">
-                    <a (click)="addReward()" class="btn text-white btn-primary m-1">Toevoegen</a>
-                  </div>
-                </div>
-              </div>
-            </form>
-
           </div>
         </div>
       </div>
