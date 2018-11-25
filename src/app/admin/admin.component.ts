@@ -78,7 +78,10 @@ export class AdminComponent implements OnInit {
   }
 
   addUser(data) {
-    this.userService.addUser(data.name, data.password, data.points).subscribe(data => this.success = true);
+    this.userService.addUser(data.name, data.password, data.points).subscribe(data=>{
+      this.success = true;
+      setTimeout(function(){ window.location.reload()}, 1000);
+    });
   }
 
   deleteUser(id) {
@@ -89,7 +92,8 @@ export class AdminComponent implements OnInit {
     let title= (<HTMLInputElement>document.getElementById('titlechallenge')).value;
     let points = (<HTMLInputElement>document.getElementById('pointschallenge')).value;
     this.challengeService.addChallenge(title, points).subscribe();
-    this.router.navigate(["admin"]);
+    this.success = true
+      setTimeout(function(){ window.location.reload() }, 1000);
 
   }
   removeChallenge(id) {
@@ -100,7 +104,8 @@ export class AdminComponent implements OnInit {
     let title= (<HTMLInputElement>document.getElementById('titlereward')).value;
     let points = (<HTMLInputElement>document.getElementById('pointsreward')).value;
     this.rewardService.addReward(title, points).subscribe();
-    this.router.navigate(['admin']);
+    this.success = true
+      setTimeout(function(){ window.location.reload() }, 1000);
   }
 
   removeReward(id) {

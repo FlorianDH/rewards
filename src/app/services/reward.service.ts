@@ -7,6 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Claim } from '../interfaces/claim';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { userInfo } from 'os';
 
 
 @Injectable({
@@ -29,7 +30,6 @@ export class RewardService {
   points;
   constructor(private userService: UserService, public data: DataService, private  http: HttpClient) {
     this.points = this.user.currentPoints;
-    this.getPunten();
 
   }
   addRewardClaim (claim: Claim): Observable<Claim> {
@@ -80,13 +80,8 @@ export class RewardService {
   private log(message: String) {
 
   }
-  getPunten(){   
-  
-    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
-      data=>{
-        this.points = data.user.currentPoints
-      }
-    )
+  getPoints(){     
+    this.points = this.user.currentPoints;
     
   }
   getRewards() {

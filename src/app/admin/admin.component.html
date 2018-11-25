@@ -117,6 +117,9 @@
                   <input type="text" class="form-control" id="titlereward">
                   <label for="pointsreward">Aantal punten:</label>
                   <input type="text" class="form-control" id="pointsreward">
+                  <div class="alert alert-success" role="alert" *ngIf="success">
+                    Reward is succesvol toegevoegd!
+                  </div>
                   <br/>
                   <div  style="text-align: center">
                     <a (click)="addReward()" class="btn text-white btn-primary m-1">Toevoegen</a>
@@ -166,6 +169,9 @@
 
                   <label for="pointschallenge">Aantal punten:</label>
                   <input type="text" class="form-control" id="pointschallenge">
+                  <div class="alert alert-success" role="alert" *ngIf="success">
+                    Challenge is succesvol toegevoegd!
+                  </div>
                   <br/>
                   <div  style="text-align: center">
                     <a (click)="addChallenge()" class="btn text-white btn-primary m-1">Toevoegen</a>
@@ -228,7 +234,7 @@
                     </div>
                   </div>
                   <div class="alert alert-success" role="alert" *ngIf="success">
-                    Gebruiker is succesvol toegevoegd
+                    Gebruiker is succesvol toegevoegd!
                   </div>
                   <br/>
                   <div  style="text-align: center">
