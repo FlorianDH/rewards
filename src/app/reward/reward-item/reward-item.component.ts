@@ -49,7 +49,7 @@ export class RewardItemComponent implements OnInit {
         reward_id : this.rewardsList[i]._id,
         date : this.jstoday,
         received : false,
-        user_id : this.user._id._id,
+        user_id : this.user._id,
         _id : ''
       };
 
