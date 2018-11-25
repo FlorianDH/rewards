@@ -38,8 +38,7 @@ addChallenge() {
 
 }
 
-removeChallenge()
-{
+removeChallenge() {
   let id = localStorage.id;
   this.challengeService.deleteChallenge(id);
   localStorage.removeItem('id');

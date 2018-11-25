@@ -78,11 +78,40 @@ export class AdminComponent implements OnInit {
   }
 
   addUser(data) {
+<<<<<<< HEAD
     this.userService.addUser(data.name, data.password, data.points).subscribe(data=>this.success = true);
     
+=======
+    this.userService.addUser(data.name, data.password, data.points).subscribe(  data => {
+      this.router.navigate(['admin']);
+    });
+>>>>>>> 3c9a745b3139e22124d4f6b4e9f8fcf0deb587b0
   }
 
   deleteUser(id) {
     this.userService.deleteUser(id);
+  }
+
+  addChallenge() {
+
+    let title= (<HTMLInputElement>document.getElementById('titlechallenge')).value;
+    let points = (<HTMLInputElement>document.getElementById('pointschallenge')).value;
+    this.challengeService.addChallenge(title, points).subscribe();
+    this.router.navigate(["admin"]);
+
+  }
+  removeChallenge(id) {
+    this.challengeService.deleteChallenge(id);
+  }
+
+  addReward() {
+    let title= (<HTMLInputElement>document.getElementById('titlereward')).value;
+    let points = (<HTMLInputElement>document.getElementById('pointsreward')).value;
+    this.rewardService.addReward(title, points).subscribe();
+    this.router.navigate(['admin']);
+  }
+
+  removeReward(id) {
+    this.rewardService.deleteReward(id);
   }
 }

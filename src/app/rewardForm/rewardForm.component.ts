@@ -27,6 +27,7 @@ export class RewardFormComponent implements OnInit {
   let points = (<HTMLInputElement>document.getElementById('points')).value;
   this.rewardService.addReward(title, points).subscribe();
   this.router.navigate(["admin"]);
+  
   }
 
   removeReward()
@@ -35,6 +36,7 @@ export class RewardFormComponent implements OnInit {
   this.rewardService.deleteReward(id);
   localStorage.removeItem('id');
   this.router.navigate(["admin"]);
+  
 
 }
 
