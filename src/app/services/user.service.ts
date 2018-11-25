@@ -18,22 +18,19 @@ export class UserService {
         data => {
 
           for (let i = 0; i < data.length; i++) {
-           
-            
             if (data[i].isAdmin === false) {
-              let user:User = {
+              let user: User = {
                 _id: data[i]._id,
                 name: data[i].name,
                 password: '***',
                 isAdmin: data[i].isAdmin,
                 currentPoints: data[i].currentPoints,
                 totalPoints:  data[i].totalPoints
-              }
-              this.userList.push(user);
               };
-              
+              this.userList.push(user);
+              }
             }
-          }        
+          }
       );
         }
      return this.userList;
@@ -43,7 +40,7 @@ export class UserService {
      let headers : HttpHeaders = new HttpHeaders({
        "Authorization":"bearer "+token[1]
      })
-     let index = this.userList.indexOf(this.userList.find(user => user._id == id));
+     let index = this.userList.indexOf(this.userList.find(user => user._id === id));
      this.userList.splice(index, 1);
     return this.http.delete<any>('https://reward-platform-api.herokuapp.com/users/' + id, {headers}).subscribe();
    }

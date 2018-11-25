@@ -1,5 +1,5 @@
 export class Reward {
-  _id: string;
+  _id: String;
   points: String;
   title: String;
 }
