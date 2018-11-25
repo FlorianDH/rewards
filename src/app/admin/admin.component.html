@@ -1,5 +1,5 @@
 <div class="row">
-  <!-- <div class="col-lg-6 col-md-12 mb-3 d-flex">
+   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="claimTab" role="tablist">
@@ -16,8 +16,8 @@
             <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
               <div *ngFor="let claim of claimList; index as i" class="list-group">
                 <div class="list-group-item">
-                  <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
-                  <button type="button" style="float: right" (click)="receivedReward(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <span class="mr-3 font-weight-bold">{{ claim.user_id.name }},</span> {{claim.reward_id.title}}
+                  <button type="button" style="float: right" class="btn btn-succes" (click)="rewardReceived(i)"><i class="fa fa-check-square" aria-hidden="true"></i></button>
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
@@ -28,7 +28,7 @@
             <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
               <div *ngFor="let claim of claimHistoryList" class="list-group">
                 <div class="list-group-item">
-                  <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
+                  <span class="mr-3 font-weight-bold">{{claim.user_id}},</span> {{claim.reward_id.title}}
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
@@ -37,7 +37,7 @@
           </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
@@ -84,6 +84,28 @@
     </div>
   </div>
 
+
+
+  <div class="col-lg-6  col-md-12 mb-3 d-flex">
+    <div class="card flex-fill" >
+      <h5 class="card-header"><i class="fas fa-fw fa-user"></i> Employees<a href="employeeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i>
+      </a></h5>
+      <div class="card-body">
+        <h5 class="card-title">Medewerkers aanpassen</h5>
+        <div style="overflow: visible; Height: 500px;">
+          <div *ngFor="let user of usersList" class="card mb-2 bg-info text-white">
+            <div class="card-body">{{user.name}}
+              <button type="button" style="float: right" (click)="deleteUser(user._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <h5 class="card-header"><i class="fas fa-fw fa-bullhorn"></i> Challenges<a href="challengeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i></a></h5>
@@ -113,22 +135,5 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-6  col-md-12 mb-3 d-flex">
-    <div class="card flex-fill" >
-      <h5 class="card-header"><i class="fas fa-fw fa-user"></i> Employees<a href="employeeForm" type="button" style="float: right" class="btn text-white btn-succes"><i class="fa fa-plus" aria-hidden="true"></i>
-      </a></h5>
-      <div class="card-body">
-        <h5 class="card-title">Medewerkers aanpassen</h5>
-        <div style="overflow: visible; Height: 500px;">
-          <div *ngFor="let user of usersList" class="card mb-2 bg-info text-white">
-            <div class="card-body">{{user.name}}
-              <button type="button" style="float: right" (click)="deleteUser(user._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 </div>

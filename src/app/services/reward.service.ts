@@ -25,11 +25,12 @@ export class RewardService {
 
   user = JSON.parse(localStorage.getItem('user'));
   token = localStorage.getItem('token').split('"');
-  punten;
+  points;
   constructor(private userService: UserService, public data: DataService, private  http: HttpClient) {
+    this.points = this.user.currentPoints;
     this.getPunten();
-  }
 
+  }
   addRewardClaim (claim: Claim): Observable<Claim> {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+this.token[1]
@@ -79,19 +80,13 @@ export class RewardService {
 
   }
   getPunten(){   
-  //    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
-  //   data=>{
-  //     console.log(data);
-  //     this.punten = data.user.currentPoints
-  //     console.log(this.punten)
-  //   }
-  // )
+  
     this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
       data=>{
-        console.log(data.user)
+        this.points = data.user.currentPoints
       }
     )
-    this.punten =  JSON.parse(localStorage.getItem("user")).currentPoints;
+    
   }
   getRewards() {
     if (this.rewardsList.length <= 0) {
@@ -156,7 +151,7 @@ export class RewardService {
     }
     return this.claimHistoryList;
   }
-  receivedReward (id: any, i: any) {
+  rewardReceived (id: any, i: any) {
     let token = localStorage.getItem('token').split('"')
     let headers : HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer '+token[1]

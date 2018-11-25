@@ -11,13 +11,18 @@ import { User } from '../interfaces/user';
 export class RewardComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user'));
   rewardsList: Reward[] = [];
-  constructor(private rewardService: RewardService) {}
-  punten = this.rewardService.punten;
-  ngOnInit() {
-
-    this.rewardsList = this.rewardService.getRewards();
+  points = this.rewardService.points;
+  constructor(private rewardService: RewardService) {
+    this.rewardService.getPunten();
+    console.log(this.rewardService.points);
   }
-  receiveValue($event){
-    this.punten = $event;
+
+  ngOnInit() {
+    console.log(this.rewardService.points)
+    this.rewardsList = this.rewardService.getRewards();
+
+  }
+  receiveValue($event) {
+    this.points = $event;
   }
 }

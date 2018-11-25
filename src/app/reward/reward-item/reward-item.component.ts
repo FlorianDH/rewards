@@ -1,9 +1,10 @@
-import { Component, Output,Input, OnInit ,EventEmitter} from '@angular/core';
+import { Component, Output, Input, OnInit , EventEmitter} from '@angular/core';
 import { RewardService } from '../../services/reward.service';
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { formatDate } from '@angular/common';
 import { Claim } from '../../interfaces/claim';
 import { UserService } from 'src/app/services/user.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-reward-item',
   templateUrl: './reward-item.component.html',
@@ -13,11 +14,10 @@ export class RewardItemComponent implements OnInit {
 
   @Input() rewardsList: any;
   @Input() claim: Claim;
-   @Output() msgEvent = new EventEmitter<string> ();
-  public datos:string;
+  @Output() msgEvent = new EventEmitter<string> ();
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public rewardService: RewardService, private modalService: NgbModal, private userService:UserService) { }
+  constructor(public rewardService: RewardService, private modalService: NgbModal, private userService: UserService,private http:HttpClient) { }
   today = new Date();
   jstoday = '';
   modalReference: NgbModalRef;
@@ -25,7 +25,11 @@ export class RewardItemComponent implements OnInit {
   currentPoints = 0;
   enoughPoints = false;
   ngOnInit() {
-
+    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
+      data=>{
+        this.user = data.user
+      }
+    )
   }
 
   rewardClaimed(content, i) {
@@ -35,7 +39,7 @@ export class RewardItemComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-    if(this.rewardService.punten > this.rewardsList[i].points){
+    if(this.rewardService.points > this.rewardsList[i].points){
   
       this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
       this.claim = {
@@ -45,9 +49,11 @@ export class RewardItemComponent implements OnInit {
         user_id : this.user._id[i]._id,
         _id : ''
       };
+      
       this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
+      localStorage.setItem("user",JSON.stringify(this.user))
       this.msgEvent.emit(this.user.currentPoints);
-      this.rewardService.punten = this.user.currentPoints;
+      this.rewardService.points = this.user.currentPoints;
       this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
       this.rewardService.addRewardClaim(this.claim).subscribe();
       this.enoughPoints = true;

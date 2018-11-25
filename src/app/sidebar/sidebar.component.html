@@ -2,10 +2,11 @@
   <div class="sidebar-header">
     <h1>jstack rewards</h1>
   </div>
-  <!--<button id="sidebar-button" class="navbar-toggler navbar-toggler-right" type="button" (click)="showFullSidebar()">-->
-  <button id="sidebar-button" class="navbar-toggler navbar-toggler-right" type="button">
+  <!-- <button id="sidebar-button" class="navbar-toggler navbar-toggler-right" type="button" (click)="showFullSidebar()"> -->
+  <button id="sidebar-button" data-toggle="collapse" class="navbar-toggler navbar-toggler-right" (click)="openSidebar()"  type="button">
     <i class="fas fa-fw fa-bars"></i> <span class="sidebar-text"> jstack rewards</span>
   </button>
+  <div id="navbarlist">
   <ul class="list-unstyled">
     <li class="nav-item" *ngIf="!admin">
       <a class="nav-link" routerLink="challenge" routerLinkActive="active" [class.activated]="currentUrl == '/challenge'">
@@ -33,4 +34,5 @@
       </a>
     </li>
   </ul>
+</div>
 </nav>

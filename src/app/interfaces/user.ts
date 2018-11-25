@@ -1,8 +1,8 @@
 export class User {
-  _id: string;
-  name: string;
-  password: string;
-  isAdmin: string;
-  currentPoints: string;
-  totalPoints: string;
+  _id: String;
+  name: String;
+  password: String;
+  isAdmin: String;
+  currentPoints: String;
+  totalPoints: String;
 }

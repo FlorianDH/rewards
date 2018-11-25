@@ -17,8 +17,8 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public challengeService: ChallengeService,public rewardService: RewardService) {}
-  punten = this.rewardService.punten;
+  constructor(public challengeService: ChallengeService, public rewardService: RewardService) {}
+  punten = this.rewardService.points;
   ngOnInit() {
 
     this.challengesList = this.challengeService.getChallenges();

@@ -95,7 +95,7 @@ export class RequestService {
 
       this.data.getRequests().subscribe(
         data => {
-          for (let i = 0; i < 20; i++) {
+          for (let i = 0; i < data.length; i++) {
             if (data[i].isAccepted === true) {
 
               const request: Request = {

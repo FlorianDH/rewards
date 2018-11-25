@@ -38,14 +38,18 @@ export class AdminComponent implements OnInit {
     this.usersList = this.userService.getUsers();
     this.requestList = this.requestService.getRequests();
     this.requestHistoryList = this.requestService.getRequestsHistory();
-
-    
   }
 
   acceptRequest(i) {
     const id = this.requestList[i]._id;
     this.requestService.acceptRequest(id, i);
     this.requestList.splice(i, 1);
+  }
+
+  rewardReceived(i) {
+    const id = this.claimList[i]._id;
+    this.rewardService.rewardReceived(id, i);
+    this.claimList.splice(i, 1);
   }
 
   deleteRequest(i) {
@@ -67,7 +71,5 @@ export class AdminComponent implements OnInit {
 
   deleteUser(id) {
     this.userService.deleteUser(id);
-  }
-  claimReceived(i) {
   }
 }
