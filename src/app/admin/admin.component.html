@@ -17,7 +17,7 @@
               <div *ngFor="let claim of claimList; index as i" class="list-group">
                 <div class="list-group-item">
                   <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
-                  <button type="button" style="float: right" (click)="receivedReward(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <button type="button" style="float: right" (click)="rewardReceived(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
