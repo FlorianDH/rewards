@@ -1,4 +1,4 @@
-import { Component, Output,Input, OnInit ,EventEmitter} from '@angular/core';
+import { Component, Output, Input, OnInit , EventEmitter} from '@angular/core';
 import { RewardService } from '../../services/reward.service';
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { formatDate } from '@angular/common';
@@ -13,11 +13,10 @@ export class RewardItemComponent implements OnInit {
 
   @Input() rewardsList: any;
   @Input() claim: Claim;
-   @Output() msgEvent = new EventEmitter<string> ();
-  public datos:string;
+  @Output() msgEvent = new EventEmitter<string> ();
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public rewardService: RewardService, private modalService: NgbModal, private userService:UserService) { }
+  constructor(public rewardService: RewardService, private modalService: NgbModal, private userService: UserService) { }
   today = new Date();
   jstoday = '';
   modalReference: NgbModalRef;
@@ -41,13 +40,13 @@ export class RewardItemComponent implements OnInit {
       reward_id : this.rewardsList[i]._id,
       date : this.jstoday,
       received : false,
-      user_id : this.user._id[i]._id,
+      user_id : this.user._id,
       _id : ''
     };
     this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
     this.msgEvent.emit(this.user.currentPoints);
-    this.rewardService.punten = this.user.currentPoints;
-    this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
+    this.rewardService.points = this.user.currentPoints;
+    this.userService.updateUser(this.user._id, this.user.currentPoints, this.user.totalPoints);
     this.rewardService.addRewardClaim(this.claim).subscribe();
   }
   close() {
