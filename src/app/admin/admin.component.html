@@ -125,13 +125,16 @@
                          name="password"
                          [(ngModel)]="user.password">
                   <div class="row m-2">
-                    <label for="punten">punten:</label>
+                    <label for="points">punten:</label>
                     <div class="col-2">
-                      <input type="text" width="40px" id="punten" class="form-control"
+                      <input type="text" width="40px" id="points" class="form-control"
                              required
-                             name="punten"
+                             name="points"
                              [(ngModel)]="user.points">
                     </div>
+                  </div>
+                  <div class="alert alert-success" role="alert" *ngIf="success">
+                    Gebruiker is succesvol toegevoegd
                   </div>
                   <br/>
                   <div  style="text-align: center">
