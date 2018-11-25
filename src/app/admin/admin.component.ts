@@ -78,14 +78,8 @@ export class AdminComponent implements OnInit {
   }
 
   addUser(data) {
-<<<<<<< HEAD
     this.userService.addUser(data.name, data.password, data.points).subscribe(data=>this.success = true);
     
-=======
-    this.userService.addUser(data.name, data.password, data.points).subscribe(  data => {
-      this.router.navigate(['admin']);
-    });
->>>>>>> 3c9a745b3139e22124d4f6b4e9f8fcf0deb587b0
   }
 
   deleteUser(id) {

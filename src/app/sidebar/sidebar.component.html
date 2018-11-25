@@ -18,11 +18,11 @@
         <i class="fas fa-fw fa-award"></i> <span class="sidebar-text"> Rewards</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="!admin">
+    <!-- <li class="nav-item" *ngIf="!admin">
       <a class="nav-link" routerLink="achievement" routerLinkActive="active" [class.activated]="currentUrl == '/achievement'">
         <i class="fas fa-fw fa-trophy"></i> <span class="sidebar-text"> Achievements</span>
       </a>
-    </li>
+    </li> -->
     <li class="nav-item" *ngIf="admin">
       <a class="nav-link" routerLink="admin" routerLinkActive="active" [class.activated]="currentUrl == '/admin'">
         <i class="fas fa-fw fa-wrench"></i> <span class="sidebar-text"> Admin dashboard</span>

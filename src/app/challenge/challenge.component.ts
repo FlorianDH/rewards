@@ -6,6 +6,7 @@ import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
 import { formatDate } from '@angular/common';
 import { RewardService } from '../services/reward.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-challenge',
@@ -17,10 +18,15 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public challengeService: ChallengeService, public rewardService: RewardService) {}
-  punten = this.rewardService.points;
+  constructor(public challengeService: ChallengeService, public rewardService: RewardService,private http:HttpClient) {}
+  points = this.rewardService.points;
   ngOnInit() {
-
+    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+ this.user._id).subscribe(
+      data => {
+        this.user = data.user;
+      }
+    );
+    this.points = this.user.currentPoints;
     this.challengesList = this.challengeService.getChallenges();
   }
 }
