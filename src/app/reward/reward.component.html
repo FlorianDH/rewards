@@ -2,9 +2,8 @@
   <div class="card-body text-center">
     <div class="totalPoints text-center">
       <h3 class="card-title">Uw punten</h3>
-      <h1 class="card-title">{{user.currentPoints}} <i class="fas fa-fw fa-coins"></i></h1>
+      <h1 class="card-title">{{punten}} <i class="fas fa-fw fa-coins"></i></h1>
     </div>
   </div>
 </div>
-
-<app-reward-item [rewardsList]="rewardsList" class="row"></app-reward-item>
+<app-reward-item [rewardsList]="rewardsList" class="row" (msgEvent)="receiveValue($event)"></app-reward-item>

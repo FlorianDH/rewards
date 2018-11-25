@@ -18,9 +18,10 @@ export class UserService {
         data => {
 
           for (let i = 0; i < data.length; i++) {
-            let user:User;
+           
+            
             if (data[i].isAdmin === false) {
-              user = {
+              let user:User = {
                 _id: data[i]._id,
                 name: data[i].name,
                 password: '***',
@@ -28,8 +29,9 @@ export class UserService {
                 currentPoints: data[i].currentPoints,
                 totalPoints:  data[i].totalPoints
               }
-              };
               this.userList.push(user);
+              };
+              
             }
           }        
       );
