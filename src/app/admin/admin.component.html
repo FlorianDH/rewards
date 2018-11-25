@@ -1,13 +1,13 @@
-<div class="row">
+<div class="row" xmlns="">
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="claimTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="claims-tab" data-toggle="tab" href="#claims" role="tab" aria-controls="claims" aria-selected="true"><i class="fas fa-fw fa-award"></i> Reward claims</a>
+          <li class="nav-item" title="Weergave van alle reward opvragingen die nog niet afgehandeld zijn">
+            <a class="nav-link active" id="claims-tab" data-toggle="tab" href="#claims" role="tab" aria-controls="claims" aria-selected="true"><i class="fas fa-fw fa-award"></i> Reward opvragingen</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="claimsHistory-tab" data-toggle="tab" href="#claimHistory" role="tab" aria-controls="claimHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> History</a>
+          <li class="nav-item" title="Weergave van alle reward opvragingen die al afgehandeld zijn">
+            <a class="nav-link" id="claimsHistory-tab" data-toggle="tab" href="#claimHistory" role="tab" aria-controls="claimHistory" aria-selected="true"><i class="fas fa-fw fa-history"></i> Geschiedenis</a>
           </li>
         </ul>
       </div>
@@ -16,8 +16,8 @@
             <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
               <div *ngFor="let claim of claimList; index as i" class="list-group">
                 <div class="list-group-item">
-                  <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
-                  <button type="button" style="float: right" (click)="rewardReceived(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <span class="mr-3 font-weight-bold" title="Gebruikernaam">{{claim.user_id.name}},</span> <span title="Opgevraagde reward">{{claim.reward_id.title}}</span>
+                  <button type="button" style="float: right" (click)="rewardReceived(i)" class="btn btn-succes" title="Klik op deze knop als de gebruiker zijn reward gekregen heeft"><i class="fa fa-check-square" aria-hidden="true"></i></button>
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
