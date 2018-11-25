@@ -46,6 +46,7 @@ export class RewardItemComponent implements OnInit {
     };
     this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
     this.msgEvent.emit(this.user.currentPoints);
+    this.rewardService.punten = this.user.currentPoints;
     this.userService.updateUser(this.user._id,this.user.currentPoints,this.user.totalPoints)
     this.rewardService.addRewardClaim(this.claim).subscribe();
   }

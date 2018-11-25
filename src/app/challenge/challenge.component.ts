@@ -5,6 +5,7 @@ import { ChallengeService } from '../services/challenge.service';
 import { Challenge } from '../interfaces/challenge';
 import { Request } from '../interfaces/request';
 import { formatDate } from '@angular/common';
+import { RewardService } from '../services/reward.service';
 
 @Component({
   selector: 'app-challenge',
@@ -16,9 +17,10 @@ export class ChallengeComponent implements OnInit {
   @Input() request: Request;
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public challengeService: ChallengeService) {}
-
+  constructor(public challengeService: ChallengeService,public rewardService: RewardService) {}
+  punten = this.rewardService.punten;
   ngOnInit() {
+
     this.challengesList = this.challengeService.getChallenges();
   }
 }

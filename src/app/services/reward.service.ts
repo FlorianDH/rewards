@@ -25,8 +25,10 @@ export class RewardService {
 
   user = JSON.parse(localStorage.getItem('user'));
   token = localStorage.getItem('token').split('"');
-
-  constructor(private userService: UserService, public data: DataService, private  http: HttpClient) {}
+  punten;
+  constructor(private userService: UserService, public data: DataService, private  http: HttpClient) {
+    this.getPunten();
+  }
 
   addRewardClaim (claim: Claim): Observable<Claim> {
     let headers : HttpHeaders = new HttpHeaders({
@@ -76,8 +78,8 @@ export class RewardService {
   private log(message: String) {
 
   }
-  getPunten(){
-    return JSON.parse(localStorage.getItem("user")).currentPoints;
+  private getPunten(){
+    this.punten =  JSON.parse(localStorage.getItem("user")).currentPoints;
   }
   getRewards() {
     if (this.rewardsList.length <= 0) {
