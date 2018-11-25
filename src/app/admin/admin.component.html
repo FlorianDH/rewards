@@ -28,7 +28,7 @@
             <div style="overflow: auto; min-height: 100px; max-Height: 500px;">
               <div *ngFor="let claim of claimHistoryList" class="list-group">
                 <div class="list-group-item">
-                  <span class="mr-3 font-weight-bold">{{claim.user_id}},</span> {{claim.reward_id.title}}
+                  <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
@@ -135,5 +135,5 @@
       </div>
     </div>
   </div>
- 
+
 </div>
