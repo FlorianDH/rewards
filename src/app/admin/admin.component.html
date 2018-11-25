@@ -57,8 +57,13 @@
             <div *ngFor="let request of requestList; index as i" class="list-group">
               <div class="list-group-item">
                 <span class="mr-3 font-weight-bold">{{request.user_id.name}},</span> {{request.challenge_id.title}}
-                <button type="button" style="float: right" (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button type="button" style="float: right" (click)="acceptRequest(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                <div style="float:right">
+                  <button type="button" (click)="acceptRequest(i)" class="btn btn-succes mr-3"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <button type="button"  (click)="deleteRequest(i)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+
+                </div>
+
                 <br>
                 <span>{{request.motivation}}</span>
                 <br>
@@ -101,9 +106,12 @@
             <div *ngFor="let reward of rewardsList" class="list-group ">
               <div class="list-group-item">
                 <span class="mr-3 font-weight-bold">{{reward.title}},</span> {{reward.points}} <i class="fas fa-fw fa-coins"></i>
-                <button type="button" style="float: right" (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <a type="button" style="float: right" href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
-              </div>
+                <div style="float: right">
+                 
+                  <a type="button" href="rewardForm" (click)="passDataReward(reward.title, reward.points, reward._id)" class="btn btn-warning mr-3"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                  <button type="button"  (click)="removeReward(reward._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>                
+                </div>
+             </div>
             </div>
           </div>
         </div>
@@ -152,8 +160,12 @@
             <div *ngFor="let challenge of challengesList" class="list-group ">
               <div class="list-group-item">
                 <span class="mr-3 font-weight-bold">{{challenge.title}},</span> {{challenge.points}} <i class="fas fa-fw fa-coins"></i>
-                <button type="button" style="float: right" (click)="removeChallenge(challenge._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <a type="button" style="float: right" href="challengeForm" (click)="passDataChallenge(challenge.title, challenge.points, challenge._id)" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <div style="float:right">
+                  
+                  <a type="button"  href="challengeForm" (click)="passDataChallenge(challenge.title, challenge.points, challenge._id)" class="btn btn-warning mr-3"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                  <button type="button"  (click)="removeChallenge(challenge._id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+                
               </div>
             </div>
          </div>
