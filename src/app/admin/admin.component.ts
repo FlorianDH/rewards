@@ -86,4 +86,12 @@ export class AdminComponent implements OnInit {
   deleteUser(id) {
     this.userService.deleteUser(id);
   }
+
+  removeChallenge() {
+    let id = localStorage.id;
+    this.challengeService.deleteChallenge(id);
+    localStorage.removeItem('id');
+    this.router.navigate(['admin']);
+
+  }
 }
