@@ -24,7 +24,7 @@ export class RewardService {
   claimHistoryList: Claim[] = [];
 
   user = JSON.parse(localStorage.getItem('user'));
-  // token = localStorage.getItem('token').split('"');
+  token = localStorage.getItem('token').split('"');
   points;
 
   constructor(private userService: UserService,
@@ -48,8 +48,10 @@ export class RewardService {
     const headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + this.token[1]
     });
-    return this.http.post<Reward>('https://reward-platform-api.herokuapp.com/rewards',
-      {'title': title, 'points': points}, {headers}).pipe(
+    return this.http.post<Reward>(
+      'https://reward-platform-api.herokuapp.com/rewards',
+      {'title': title, 'points': points},
+      {headers}).pipe(
       tap((reward: Reward) => this.log(`added reward w/ id=${reward.title}`)),
       catchError(err => throwError(err))
     );
@@ -58,7 +60,7 @@ export class RewardService {
   deleteReward(id: any){
     let token = localStorage.getItem("token").split('"')
     let headers : HttpHeaders = new HttpHeaders({
-      "Authorization":"bearer "+token[1]
+      "Authorization":"bearer "+ token[1]
     })
     let index = this.rewardsList.indexOf(this.rewardsList.find(reward => reward._id === id));
     this.rewardsList.splice(index, 1);

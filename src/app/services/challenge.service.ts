@@ -44,7 +44,10 @@ export class ChallengeService {
     let headers : HttpHeaders = new HttpHeaders({
       "Authorization":"bearer "+token[1]
     });
-    return this.http.post<Challenge>('https://reward-platform-api.herokuapp.com/challenges',{"title":title, "points":points}, {headers}).pipe(
+    return this.http.post<Challenge>(
+      'https://reward-platform-api.herokuapp.com/challenges',
+      {"title":title, "points":points},
+      {headers}).pipe(
       tap((challenge: Challenge) => this.log(`added challenge w/ title=${challenge.title}`)),
       catchError(err => throwError(err))
     );
@@ -67,9 +70,9 @@ export class ChallengeService {
     })
     let index = this.challengesList.indexOf(this.challengesList.find(challenge => challenge._id == id));
     this.challengesList.splice(index, 1);
-   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/challenges/'+ id, 
+   return this.http.patch<any>('https://reward-platform-api.herokuapp.com/challenges/'+ id,
    [{"propName": "title" , "value": title},
-    {"propName":"points", "value": points}], 
+    {"propName":"points", "value": points}],
     {headers}).subscribe();
 
   }
