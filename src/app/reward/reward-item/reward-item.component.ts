@@ -17,7 +17,10 @@ export class RewardItemComponent implements OnInit {
   @Output() msgEvent = new EventEmitter<string> ();
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(public rewardService: RewardService, private modalService: NgbModal, private userService: UserService,private http:HttpClient) { }
+  constructor(public rewardService: RewardService,
+              private modalService: NgbModal,
+              private userService: UserService,
+              private http: HttpClient) { }
   today = new Date();
   jstoday = '';
   modalReference: NgbModalRef;
@@ -25,11 +28,11 @@ export class RewardItemComponent implements OnInit {
   currentPoints = 0;
   enoughPoints = false;
   ngOnInit() {
-    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+this.user._id).subscribe(
-      data=>{
-        this.user = data.user
+    this.http.get<any>('https://reward-platform-api.herokuapp.com/users/'+ this.user._id).subscribe(
+      data => {
+        this.user = data.user;
       }
-    )
+    );
   }
 
   rewardClaimed(content, i) {
@@ -39,17 +42,17 @@ export class RewardItemComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-    if(this.rewardService.points > this.rewardsList[i].points){
-  
+    if (this.rewardService.points > this.rewardsList[i].points){
+
       this.jstoday = formatDate(this.today, 'MM-dd-yyyy hh:mm:ss', 'en-US', '+00:00');
       this.claim = {
         reward_id : this.rewardsList[i]._id,
         date : this.jstoday,
         received : false,
-        user_id : this.user._id[i]._id,
+        user_id : this.user._id,
         _id : ''
       };
-      
+
       this.user.currentPoints = this.user.currentPoints - this.rewardsList[i].points;
       localStorage.setItem("user",JSON.stringify(this.user))
       this.msgEvent.emit(this.user.currentPoints);

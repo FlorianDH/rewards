@@ -58,7 +58,4 @@ editChallenge() {
   this.router.navigate(["admin"]);
 
 }
-
-
-
 }
