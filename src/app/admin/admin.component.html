@@ -1,5 +1,5 @@
 <div class="row">
-  <!-- <div class="col-lg-6 col-md-12 mb-3 d-flex">
+   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="claimTab" role="tablist">
@@ -17,7 +17,7 @@
               <div *ngFor="let claim of claimList; index as i" class="list-group">
                 <div class="list-group-item">
                   <span class="mr-3 font-weight-bold">{{claim.user_id.name}},</span> {{claim.reward_id.title}}
-                  <button type="button" style="float: right" (click)="receivedReward(i)" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                  <button type="button" style="float: right" class="btn btn-succes"><i class="fa fa-check-square" aria-hidden="true"></i></button>
                   <br>
                   <span class="small">{{ claim.date | date:'dd-LL-yy, H:mm' }}</span>
                 </div>
@@ -37,7 +37,7 @@
           </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <div class="col-lg-6 col-md-12 mb-3 d-flex">
     <div class="card flex-fill">
